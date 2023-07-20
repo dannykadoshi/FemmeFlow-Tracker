@@ -1,6 +1,8 @@
 import datetime
 import webbrowser
 import pyfiglet
+from colorama import init, Fore
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 from oauth2client.service_account import ServiceAccountCredentials
@@ -18,6 +20,29 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 
 responses = SHEET.worksheet('responses')
+
+
+# Function to display the application name in big ASCII art
+def display_name():
+    name = "FemmeFlow Tracker"
+    ascii_art = pyfiglet.figlet_format(name, font="slant")
+    
+    # Get the width of the terminal to center the ASCII art
+    terminal_width = os.get_terminal_size().columns
+    centered_ascii_art = name.center(terminal_width) + "\n" + Fore.RED + ascii_art + Fore.RESET
+    print(centered_ascii_art)
+
+
+# Introduction page for the application
+def introduction():
+    display_name()
+    print("Welcome to FemmeFlow Tracker!")
+    print("This application allows you to track your menstrual cycle and predict your next period date.")
+    print("You can enter your menstrual cycle data in the Google Form, and we'll calculate the next period date for you.")
+    print("Let's get started!\n")
+
+# Call the introduction function
+introduction()
 
 
 # Open google form in the browser
