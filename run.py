@@ -128,15 +128,34 @@ def display_health_tips():
 
 
 # Function to display personalized recommendations
-def personalized_recommendations():
+def personalized_recommendations(cycle_length, period_duration, symptoms):
     print("\nPersonalized Recommendations:")
-    print("Here are some personalized recommendations for you:")
-    print("- Get plenty of rest during your period.")
-    print("- Consider trying relaxation techniques to manage menstrual pain.")
-    print("- Stay hydrated and maintain a balanced diet.")
-    print("- Engage in light exercises to reduce cramps and improve mood.")
-    print("- Track your symptoms and mood to better understand your cycle.")
-    print("- If you experience severe pain or irregularities, consult a healthcare professional.")
+    print("Based on your menstrual cycle data and symptoms," 
+          " we have some personalized recommendations to help you stay healthy " 
+          "and comfortable during your period:")
+
+    # Check the cycle length and offer relevant advice
+    if cycle_length < 28:
+        print("- Consider tracking your cycle and symptoms to identify any patterns.")
+        print("- If you experience irregular cycles, consult a healthcare professional.")
+    else:
+        print("- Maintain a healthy lifestyle with regular exercise and a balanced diet.")
+        print("- Get plenty of rest and manage stress during your period.")
+    
+    # Check the period duration and offer relevant advice
+    if period_duration > 7:
+        print("- If you experience prolonged periods, consider consulting a healthcare professional.")
+    
+    # Check for specific symptoms and offer advice based on them
+    if "cramps" in symptoms.lower():
+        print("- Engage in light exercises, such as yoga or walking, to reduce cramps.")
+    
+
+# Example usage:
+cycle_length = 28
+period_duration = 5
+symptoms = "cramps, fatigue"
+personalized_recommendations(cycle_length, period_duration, symptoms)
 
 
 # Function to display exercises tips
@@ -146,7 +165,7 @@ def display_exercises_tips():
           "Here are some exercises that you can try to alleviate discomfort and boost your mood:")
 
 
-    # Add a list of exercises to reduce cramps and improve mood
+    # List of exercises to reduce cramps and improve mood
     exercises = [
         "Yoga: Child's Pose",
         "Walking or Jogging",
