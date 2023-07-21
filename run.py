@@ -13,7 +13,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -27,7 +27,7 @@ responses = SHEET.worksheet('responses')
 def display_name():
     name = "FemmeFlow Tracker"
     ascii_art = pyfiglet.figlet_format(name, font="slant")
-    
+
     # Get the width of the terminal to center the ASCII art
     terminal_width = os.get_terminal_size().columns
     centered_ascii_art = name.center(terminal_width) + "\n" + Fore.RED + ascii_art + Fore.RESET
@@ -41,6 +41,7 @@ def introduction():
     print("This application allows you to track your menstrual cycle and predict your next period date.")
     print("You can enter your menstrual cycle data in the Google Form, and we'll calculate the next period date for you.")
     print("Let's get started!\n")
+
 
 # Call the introduction function
 introduction()
@@ -125,6 +126,18 @@ def display_health_tips():
         print(f"{tip_number}. {tip_text}")
 
 
+# Function to display personalized recommendations
+def personalized_recommendations():
+    print("\nPersonalized Recommendations:")
+    print("Here are some personalized recommendations for you:")
+    print("- Get plenty of rest during your period.")
+    print("- Consider trying relaxation techniques to manage menstrual pain.")
+    print("- Stay hydrated and maintain a balanced diet.")
+    print("- Engage in light exercises to reduce cramps and improve mood.")
+    print("- Track your symptoms and mood to better understand your cycle.")
+    print("- If you experience severe pain or irregularities, consult a healthcare professional.")
+
+
 # Main loop of the application
 while True:
     # Print the options table for the user to choose from
@@ -157,8 +170,8 @@ while True:
         # Display the calculated next period date
         print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
     elif choice == "5":
-        # Display personalized recommendations (You can add this feature later as per your requirements)
-        print("Personalized Recommendations: Coming soon!")
+        # Display personalized recommendations
+        personalized_recommendations()
     elif choice == "6":
         break  # Exit the application loop if the user chooses to quit
     else:
@@ -169,3 +182,4 @@ while True:
 
     # Clear the screen after the input is received
     os.system('cls' if os.name == 'nt' else 'clear')
+
