@@ -3,6 +3,7 @@ import webbrowser
 import pyfiglet
 from colorama import init, Fore
 import os
+import prettytable
 import gspread
 from google.oauth2.service_account import Credentials
 from oauth2client.service_account import ServiceAccountCredentials
@@ -49,6 +50,8 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
+    print("Google Form opened in your web browser. Please enter your information there.")
+    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
 
 
 # Prompt the user with an option to open the Google Form
@@ -58,8 +61,6 @@ response = input().strip().lower()
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-    print("Google Form opened in your web browser. Please enter your information there.")
-    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
 else:
     print("You chose not to enter your information in the Google Form.")
 
@@ -89,6 +90,28 @@ next_period = last_period + datetime.timedelta(days=cycle_length)
 # Calculate fertile days as 13 to 19 days after the last period date
 fertile_start = last_period + datetime.timedelta(days=13)
 fertile_end = last_period + datetime.timedelta(days=19)
+
+
+
+# Function to display health tips
+def display_health_tips():
+    print("\nHealth Tips:")
+    tips = {
+        1: "Maintain a healthy diet and drink plenty of water.",
+        2: "Exercise regularly to improve overall health and manage stress.",
+        3: "Ensure you get enough sleep and rest during your menstrual cycle.",
+        4: "Consider using a menstrual tracking app to keep track of your cycles and symptoms.",
+    }
+
+    if cycle_type.lower() == 'irregular':
+        tips[5] = "If you have irregular cycles, consider consulting a healthcare professional for guidance."
+
+    for tip_number, tip_text in tips.items():
+        print(f"{tip_number}. {tip_text}")
+
+
+# Display health tips
+display_health_tips()
 
 # Print the fetched data and calculated dates
 print("\nLast Form Submission Data:")
