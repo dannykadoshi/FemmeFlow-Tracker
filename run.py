@@ -211,7 +211,7 @@ while True:
         print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
     elif choice == "5":
         # Display personalized recommendations
-        personalized_recommendations()
+        personalized_recommendations(cycle_length, period_duration, symptoms)
     elif choice == "6":
         # Display exercises tips
         display_exercises_tips()
