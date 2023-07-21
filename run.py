@@ -93,6 +93,12 @@ fertile_start = last_period + datetime.timedelta(days=13)
 fertile_end = last_period + datetime.timedelta(days=19)
 
 
+# Function to display the confirmation message
+def display_confirmation_message():
+    print("Thank you for submitting your data!")
+    print("Your data has been recorded successfully.")
+
+
 # Function to display the available options for the user to choose from
 def print_options():
     table = prettytable.PrettyTable()
@@ -180,6 +186,18 @@ def display_exercises_tips():
 
 # Main loop of the application
 while True:
+    # Prompt the user with an option to open the Google Form
+    print("Would you like to enter your information in the Google Form? (yes/no)")
+    response = input().strip().lower()
+
+    if response == 'yes':
+        open_google_form()
+        display_confirmation_message()  # Display the confirmation message
+        print("Please click 'Enter' to continue to the options.")
+        input()  # Wait for the user to press 'Enter' before proceeding
+    else:
+        print("You chose not to enter your information in the Google Form.")
+
     # Print the options table for the user to choose from
     print_options()
 
