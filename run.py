@@ -50,8 +50,6 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
-    print("Google Form opened in your web browser. Please enter your information there.")
-    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
 
 
 # Prompt the user with an option to open the Google Form
@@ -61,6 +59,8 @@ response = input().strip().lower()
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
+    print("Google Form opened in your web browser. Please enter your information there.")
+    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
 else:
     print("You chose not to enter your information in the Google Form.")
 
@@ -92,6 +92,21 @@ fertile_start = last_period + datetime.timedelta(days=13)
 fertile_end = last_period + datetime.timedelta(days=19)
 
 
+# Function to display the available options for the user to choose from
+def print_options():
+    table = prettytable.PrettyTable()
+    table.field_names = ["Option", "Description"]
+    table.add_row(["1", "Health Tips"])
+    table.add_row(["2", "Form Submission Data"])
+    table.add_row(["3", "Fertile Days"])
+    table.add_row(["4", "Next Period Date"])
+    table.add_row(["5", "Personalized Recommendations"])
+    table.add_row(["6", "Quit the application"])
+
+    # Set the table text color to red using colorama
+    red_table = f"{Fore.RED}{table}{Fore.RESET}"
+    print(red_table)
+
 
 # Function to display health tips
 def display_health_tips():
@@ -110,25 +125,47 @@ def display_health_tips():
         print(f"{tip_number}. {tip_text}")
 
 
-# Display health tips
-display_health_tips()
+# Main loop of the application
+while True:
+    # Print the options table for the user to choose from
+    print_options()
 
-# Print the fetched data and calculated dates
-print("\nLast Form Submission Data:")
-print(f"Timestamp: {timestamp}")
-print(f"Last Period Date: {last_period.strftime('%d/%m/%Y')}")
-print(f"Cycle Length: {cycle_length} days")
-print(f"Period Duration: {period_duration} days")
-print(f"Cycle Type: {cycle_type}")
-print(f"Cycle Lengths (if irregular): {cycle_lengths}")
-print(f"Symptoms/Additional Information: {symptoms}")
-print(f"Email: {email}")
-print(f"Name: {name}")
-print(f"Age: {age}")
+    # Get the user's choice
+    choice = input("Enter your choice: ")
 
-# Display fertile days
-print("\nFertile Days:")
-print(f"{fertile_start.strftime('%d/%m/%Y')} to {fertile_end.strftime('%d/%m/%Y')}")
+    # Process the user's choice and execute the corresponding action
+    if choice == "1":
+        display_health_tips()
+    elif choice == "2":
+        # Print the fetched data and calculated dates
+        print("\nForm Submission Data:")
+        print(f"Timestamp: {timestamp}")
+        print(f"Last Period Date: {last_period.strftime('%d/%m/%Y')}")
+        print(f"Cycle Length: {cycle_length} days")
+        print(f"Period Duration: {period_duration} days")
+        print(f"Cycle Type: {cycle_type}")
+        print(f"Cycle Lengths (if irregular): {cycle_lengths}")
+        print(f"Symptoms/Additional Information: {symptoms}")
+        print(f"Email: {email}")
+        print(f"Name: {name}")
+        print(f"Age: {age}")
+    elif choice == "3":
+        # Display fertile days
+        print("\nFertile Days:")
+        print(f"{fertile_start.strftime('%d/%m/%Y')} to {fertile_end.strftime('%d/%m/%Y')}")
+    elif choice == "4":
+        # Display the calculated next period date
+        print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
+    elif choice == "5":
+        # Display personalized recommendations (You can add this feature later as per your requirements)
+        print("Personalized Recommendations: Coming soon!")
+    elif choice == "6":
+        break  # Exit the application loop if the user chooses to quit
+    else:
+        print("Invalid choice. Please enter a number between 1 and 6.")
 
-# Display the calculated next period date
-print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
+    # Pause before clearing the screen
+    input("Press Enter to continue...\n")
+
+    # Clear the screen after the input is received
+    os.system('cls' if os.name == 'nt' else 'clear')
