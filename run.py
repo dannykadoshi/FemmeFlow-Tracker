@@ -83,9 +83,29 @@ last_period = datetime.datetime.strptime(last_period_str, "%d/%m/%Y").date()
 cycle_length = int(cycle_length_str)
 period_duration = int(period_duration_str)
 
-
 # Calculate the next period date
 next_period = last_period + datetime.timedelta(days=cycle_length)
 
-# Print the calculated next period date
-print(f"Next Period Date: {next_period.strftime('%d/%m/%Y')}")
+# Calculate fertile days as 13 to 19 days after the last period date
+fertile_start = last_period + datetime.timedelta(days=13)
+fertile_end = last_period + datetime.timedelta(days=19)
+
+# Print the fetched data and calculated dates
+print("\nLast Form Submission Data:")
+print(f"Timestamp: {timestamp}")
+print(f"Last Period Date: {last_period.strftime('%d/%m/%Y')}")
+print(f"Cycle Length: {cycle_length} days")
+print(f"Period Duration: {period_duration} days")
+print(f"Cycle Type: {cycle_type}")
+print(f"Cycle Lengths (if irregular): {cycle_lengths}")
+print(f"Symptoms/Additional Information: {symptoms}")
+print(f"Email: {email}")
+print(f"Name: {name}")
+print(f"Age: {age}")
+
+# Display fertile days
+print("\nFertile Days:")
+print(f"{fertile_start.strftime('%d/%m/%Y')} to {fertile_end.strftime('%d/%m/%Y')}")
+
+# Display the calculated next period date
+print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
