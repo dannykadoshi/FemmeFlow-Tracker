@@ -51,6 +51,8 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
+    print("Google Form opened in your web browser. Please enter your information there.")
+    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
 
 
 # Prompt the user with an option to open the Google Form
@@ -60,8 +62,13 @@ response = input().strip().lower()
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-    print("Google Form opened in your web browser. Please enter your information there.")
-    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
+
+    # Since the form is opened, we don't need to call this again.
+    # Just print the message once here.
+    print("Thank you for submitting your data!")
+    print("Your data has been recorded successfully.")
+    print("Please click 'Enter' to continue to the options.")
+    input()  # Wait for the user to press 'Enter' before proceeding
 else:
     print("You chose not to enter your information in the Google Form.")
 
@@ -91,12 +98,6 @@ next_period = last_period + datetime.timedelta(days=cycle_length)
 # Calculate fertile days as 13 to 19 days after the last period date
 fertile_start = last_period + datetime.timedelta(days=13)
 fertile_end = last_period + datetime.timedelta(days=19)
-
-
-# Function to display the confirmation message
-def display_confirmation_message():
-    print("Thank you for submitting your data!")
-    print("Your data has been recorded successfully.")
 
 
 # Function to display the available options for the user to choose from
@@ -157,13 +158,6 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         print("- Engage in light exercises, such as yoga or walking, to reduce cramps.")
     
 
-# Example usage:
-cycle_length = 28
-period_duration = 5
-symptoms = "cramps, fatigue"
-personalized_recommendations(cycle_length, period_duration, symptoms)
-
-
 # Function to display exercises tips
 def display_exercises_tips():
     print("\nExercises Tips:")
@@ -186,18 +180,6 @@ def display_exercises_tips():
 
 # Main loop of the application
 while True:
-    # Prompt the user with an option to open the Google Form
-    print("Would you like to enter your information in the Google Form? (yes/no)")
-    response = input().strip().lower()
-
-    if response == 'yes':
-        open_google_form()
-        display_confirmation_message()  # Display the confirmation message
-        print("Please click 'Enter' to continue to the options.")
-        input()  # Wait for the user to press 'Enter' before proceeding
-    else:
-        print("You chose not to enter your information in the Google Form.")
-
     # Print the options table for the user to choose from
     print_options()
 
