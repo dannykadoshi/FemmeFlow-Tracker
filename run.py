@@ -102,7 +102,8 @@ def print_options():
     table.add_row(["3", "Fertile Days"])
     table.add_row(["4", "Next Period Date"])
     table.add_row(["5", "Personalized Recommendations"])
-    table.add_row(["6", "Quit the application"])
+    table.add_row(["6", "Exercises Tips"])  # Add "Exercises Tips" option
+    table.add_row(["7", "Quit the application"])
 
     # Set the table text color to red using colorama
     red_table = f"{Fore.RED}{table}{Fore.RESET}"
@@ -136,6 +137,26 @@ def personalized_recommendations():
     print("- Engage in light exercises to reduce cramps and improve mood.")
     print("- Track your symptoms and mood to better understand your cycle.")
     print("- If you experience severe pain or irregularities, consult a healthcare professional.")
+
+
+# Function to display exercises tips
+def display_exercises_tips():
+    print("\nExercises Tips:")
+    print("Regular physical activity can help reduce menstrual cramps, improve mood, and promote overall well-being during your menstrual cycle. "
+          "Here are some exercises that you can try to alleviate discomfort and boost your mood:")
+
+
+    # Add a list of exercises to reduce cramps and improve mood
+    exercises = [
+        "Yoga: Child's Pose",
+        "Walking or Jogging",
+        "Biking",
+        "Swimming",
+        "Dancing",
+        "Pilates",
+    ]
+    for i, exercise in enumerate(exercises, start=1):
+        print(f"{i}. {exercise}")
 
 
 # Main loop of the application
@@ -173,13 +194,15 @@ while True:
         # Display personalized recommendations
         personalized_recommendations()
     elif choice == "6":
+        # Display exercises tips
+        display_exercises_tips()
+    elif choice == "7":
         break  # Exit the application loop if the user chooses to quit
     else:
-        print("Invalid choice. Please enter a number between 1 and 6.")
+        print("Invalid choice. Please enter a number between 1 and 7.")
 
     # Pause before clearing the screen
     input("Press Enter to continue...\n")
 
     # Clear the screen after the input is received
     os.system('cls' if os.name == 'nt' else 'clear')
-
