@@ -222,6 +222,7 @@ while True:
         # Display exercises tips
         display_exercises_tips()
     elif choice == "7":
+        print("Thank you for using FemmeFlow Tracker! Have a great day!")
         break  # Exit the application loop if the user chooses to quit
     else:
         print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
