@@ -104,7 +104,7 @@ data = responses.get_all_values()
 last_row = data[-1]
 
 # Define the number of expected columns
-EXPECTED_COLUMNS = 10
+EXPECTED_COLUMNS = 11
 
 # If the number of columns in last_row is less than EXPECTED_COLUMNS,
 # fill in the missing values with empty strings
@@ -112,7 +112,8 @@ last_row.extend([''] * (EXPECTED_COLUMNS - len(last_row)))
 
 # Extract the user's inputs from the Google Sheets
 timestamp_str, last_period_str, cycle_length_str, period_duration_str, \
-    cycle_type, cycle_lengths, symptoms, email, name, age = last_row
+    cycle_type, cycle_lengths, symptoms, email, \
+    name, age, form_publisher = last_row
 
 
 # Convert the date strings to datetime objects
