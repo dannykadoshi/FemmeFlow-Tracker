@@ -59,6 +59,11 @@ def open_google_form():
 print("Would you like to enter your information in the Google Form? (yes/no)")
 response = input().strip().lower()
 
+# Validate the user's response
+while response not in ['yes', 'no']:
+    print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+    response = input().strip().lower()
+
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
@@ -80,7 +85,8 @@ last_row = data[-1]
 # Define the number of expected columns
 EXPECTED_COLUMNS = 10
 
-# If the number of columns in last_row is less than EXPECTED_COLUMNS, fill in the missing values with empty strings
+# If the number of columns in last_row is less than EXPECTED_COLUMNS,
+# fill in the missing values with empty strings
 last_row.extend([''] * (EXPECTED_COLUMNS - len(last_row)))
 
 # Extract the user's inputs from the Google Sheets
@@ -218,7 +224,7 @@ while True:
     elif choice == "7":
         break  # Exit the application loop if the user chooses to quit
     else:
-        print("Invalid choice. Please enter a number between 1 and 7.")
+        print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
 
     # Pause before clearing the screen
     input("Press Enter to continue...\n")
