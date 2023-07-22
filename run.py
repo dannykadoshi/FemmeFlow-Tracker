@@ -6,7 +6,6 @@ import os
 import prettytable
 import gspread
 from google.oauth2.service_account import Credentials
-from oauth2client.service_account import ServiceAccountCredentials
 from time import sleep
 
 # Set up Google Sheets credentials and scope
@@ -56,7 +55,7 @@ def display_name():
 
     # Animation step 4: Clear the screen and sleep for 3 seconds
     clear()
-    sleep(3)
+    sleep(1)
 
     # Clear the screen again
     clear()
@@ -86,7 +85,6 @@ def introduction():
 # Call the introduction function
 introduction()
 
-
 # Open google form in the browser
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
@@ -101,6 +99,14 @@ def open_google_form():
         " the calculated next period date."
     )
 
+# Get the email address used in the Google Form
+def get_user_email():
+    print("\nIf you have filled in the form, please enter the email address used:")
+    user_email = input().strip().lower()
+    while not user_email:
+        print(Fore.RED + "Please enter a valid email address." + Fore.RESET)
+        user_email = input().strip().lower()
+    return user_email
 
 # Prompt the user with an option to open the Google Form
 print("Would you like to enter your information in the Google Form? (yes/no)")
@@ -114,10 +120,7 @@ while response not in ['yes', 'no']:
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-    print("Thank you for submitting your data!")
-    print("Your data has been recorded successfully.")
-    print("Please click 'Enter' to continue to the options.")
-    input()  # Wait for the user to press 'Enter' before proceeding
+    input("Press Enter when you have submitted the data in the Google Form...")
 else:
     print("You chose not to enter your information in the Google Form.")
     print("For FemmeFlow Tracker to work, it requires your menstrual cycle data.")
@@ -129,31 +132,73 @@ else:
 
     if reconsider_response == 'yes':
         open_google_form()
-        print("Thank you for submitting your data!")
-        print("Your data has been recorded successfully.")
-        print("Please click 'Enter' to continue to the options.")
-        input()  # Wait for the user to press 'Enter' before proceeding
-    else:
-        print("Exiting FemmeFlow Tracker. Have a great day!")
+        input("Press Enter when you have submitted the data in the Google Form...")
+    elif reconsider_response == 'no':
+        print("Thank you for using FemmeFlow Tracker! Have a great day!")
         exit()  # Exit the application
 
+# Get the user's email address and proceed to display options
+user_email = get_user_email()
 
-# Get the last row of data in the Google Sheets
-data = responses.get_all_values()
-last_row = data[-1]
+# Fetch the user's data based on the provided email address
+def fetch_user_data(email, expected_columns):
+    try:
+        # Find all rows with the matching email address
+        email_column = 8  # Column index for the email address (zero-based)
+        email_cells = responses.findall(email)
+        user_rows = {cell.row for cell in email_cells}
+
+        # Get the user data from the rows
+        user_data = [responses.row_values(row) for row in user_rows]
+
+        # Filter out invalid data
+        valid_user_data = [
+            data for data in user_data if len(data) == expected_columns
+        ]
+
+        if not valid_user_data:
+            return None
+
+        # Sort responses by timestamp in descending order to get the latest one
+        valid_user_data.sort(
+            key=lambda x: datetime.datetime.strptime(x[0], "%d/%m/%Y %H:%M:%S"),
+            reverse=True,
+        )
+
+        return valid_user_data
+    except gspread.exceptions.CellNotFound:
+        return None
 
 # Define the number of expected columns
 EXPECTED_COLUMNS = 11
 
-# If the number of columns in last_row is less than EXPECTED_COLUMNS,
-# fill in the missing values with empty strings
-last_row.extend([''] * (EXPECTED_COLUMNS - len(last_row)))
+# Fetch the user data from Google Sheets
+user_data = fetch_user_data(user_email, EXPECTED_COLUMNS)
 
-# Extract the user's inputs from the Google Sheets
+# Check if the user data is found
+while not user_data:
+    print(
+        Fore.RED + "User data not found for the provided email address." + Fore.RESET
+    )
+    print("Do you want to try entering the correct email address again? (yes/no)")
+    retry_response = input().strip().lower()
+
+    while retry_response not in ['yes', 'no']:
+        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+        retry_response = input().strip().lower()
+
+    if retry_response == 'yes':
+        user_email = get_user_email()
+        user_data = fetch_user_data(user_email, EXPECTED_COLUMNS)
+    else:
+        print("Exiting FemmeFlow Tracker. Have a great day!")
+        exit()  # Exit the application
+
+# Extract the user's inputs from the latest Google Sheets response
+latest_response = user_data[0]
 timestamp_str, last_period_str, cycle_length_str, period_duration_str, \
     cycle_type, cycle_lengths, symptoms, email, \
-    name, age, form_publisher = last_row
-
+    name, age, form_publisher = latest_response
 
 # Convert the date strings to datetime objects
 timestamp = datetime.datetime.strptime(
