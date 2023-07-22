@@ -7,6 +7,7 @@ import prettytable
 import gspread
 from google.oauth2.service_account import Credentials
 from oauth2client.service_account import ServiceAccountCredentials
+from time import sleep
 
 # Set up Google Sheets credentials and scope
 SCOPE = [
@@ -23,18 +24,50 @@ SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 responses = SHEET.worksheet('responses')
 
 
-# Function to display the application name in big ASCII art
+# Function to clear the screen based on the operating system
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Function to display the application name in big ASCII art with animation
 def display_name():
     name = "FemmeFlow Tracker"
     ascii_art = pyfiglet.figlet_format(name, font="slant")
 
     # Get the width of the terminal to center the ASCII art
     terminal_width = os.get_terminal_size().columns
-    centered_ascii_art = name.center(
-        terminal_width
-    ) + "\n" + Fore.RED + ascii_art + Fore.RESET
-    print(centered_ascii_art)
 
+    # Clear the screen
+    clear()
+
+    # Animation step 1: Print centered text and sleep for 1 second
+    centered_text = center_logo([name], terminal_width)
+    print(centered_text)
+    sleep(1)
+
+    # Animation step 2: Print centered text in red and sleep for 2 seconds
+    clear()
+    print(Fore.RED + centered_text + Fore.RESET)
+    sleep(2)
+
+    # Animation step 3: Print each line of ASCII art one by one and sleep for 0.2 seconds
+    for line in ascii_art.splitlines():
+        print(Fore.RED + line.center(terminal_width) + Fore.RESET)
+        sleep(0.2)  
+
+    # Animation step 4: Clear the screen and sleep for 3 seconds
+    clear()
+    sleep(3)
+
+    # Clear the screen again
+    clear()
+
+# Function to center the logo
+def center_logo(logo_lines, width):
+    centered_logo = []
+    for line in logo_lines:
+        centered_line = line.center(width)
+        centered_logo.append(centered_line)
+    return '\n'.join(centered_logo)
 
 # Introduction page for the application
 def introduction():
@@ -49,7 +82,6 @@ def introduction():
         " and we'll calculate the next period date for you."
     )
     print("Let's get started!\n")
-
 
 # Call the introduction function
 introduction()
