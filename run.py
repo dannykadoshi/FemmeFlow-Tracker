@@ -71,33 +71,40 @@ def open_google_form():
 
 
 # Prompt the user with an option to open the Google Form
-print(
-    "Would you like to enter your information in the Google Form? (yes/no)"
-)
+print("Would you like to enter your information in the Google Form? (yes/no)")
 response = input().strip().lower()
 
 # Validate the user's response
 while response not in ['yes', 'no']:
-    print(
-        Fore.RED + "Invalid response. Please enter 'yes' or 'no'." +
-        Fore.RESET
-    )
+    print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
     response = input().strip().lower()
 
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-
-    # Since the form is opened, we don't need to call this again.
-    # Just print the message once here.
     print("Thank you for submitting your data!")
     print("Your data has been recorded successfully.")
     print("Please click 'Enter' to continue to the options.")
     input()  # Wait for the user to press 'Enter' before proceeding
 else:
-    print(
-        "You chose not to enter your information in the Google Form."
-    )
+    print("You chose not to enter your information in the Google Form.")
+    print("For FemmeFlow Tracker to work, it requires your menstrual cycle data.")
+    reconsider_response = input("Would you like to reconsider and open the Google Form now? (yes/no)").strip().lower()
+
+    while reconsider_response not in ['yes', 'no']:
+        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+        reconsider_response = input().strip().lower()
+
+    if reconsider_response == 'yes':
+        open_google_form()
+        print("Thank you for submitting your data!")
+        print("Your data has been recorded successfully.")
+        print("Please click 'Enter' to continue to the options.")
+        input()  # Wait for the user to press 'Enter' before proceeding
+    else:
+        print("Exiting FemmeFlow Tracker. Have a great day!")
+        exit()  # Exit the application
+
 
 # Get the last row of data in the Google Sheets
 data = responses.get_all_values()
