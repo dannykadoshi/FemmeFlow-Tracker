@@ -30,7 +30,9 @@ def display_name():
 
     # Get the width of the terminal to center the ASCII art
     terminal_width = os.get_terminal_size().columns
-    centered_ascii_art = name.center(terminal_width) + "\n" + Fore.RED + ascii_art + Fore.RESET
+    centered_ascii_art = name.center(
+        terminal_width
+    ) + "\n" + Fore.RED + ascii_art + Fore.RESET
     print(centered_ascii_art)
 
 
@@ -38,8 +40,14 @@ def display_name():
 def introduction():
     display_name()
     print("Welcome to FemmeFlow Tracker!")
-    print("This application allows you to track your menstrual cycle and predict your next period date.")
-    print("You can enter your menstrual cycle data in the Google Form, and we'll calculate the next period date for you.")
+    print(
+        "This application allows you to track your menstrual cycle and "
+        "predict your next period date."
+    )
+    print(
+        "You can enter your menstrual cycle data in the Google Form,"
+        " and we'll calculate the next period date for you."
+    )
     print("Let's get started!\n")
 
 
@@ -51,17 +59,29 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
-    print("Google Form opened in your web browser. Please enter your information there.")
-    print("After entering the information, you can come back to this terminal to see the calculated next period date.")
+    print(
+        "Google Form opened in your web browser."
+        "Please enter your information there."
+    )
+    print(
+        "After entering the information,"
+        " you can come back to this terminal to see"
+        " the calculated next period date."
+    )
 
 
 # Prompt the user with an option to open the Google Form
-print("Would you like to enter your information in the Google Form? (yes/no)")
+print(
+    "Would you like to enter your information in the Google Form? (yes/no)"
+)
 response = input().strip().lower()
 
 # Validate the user's response
 while response not in ['yes', 'no']:
-    print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+    print(
+        Fore.RED + "Invalid response. Please enter 'yes' or 'no'." +
+        Fore.RESET
+    )
     response = input().strip().lower()
 
 # If the user enters 'yes', open the Google Form in the web browser
@@ -75,8 +95,9 @@ if response == 'yes':
     print("Please click 'Enter' to continue to the options.")
     input()  # Wait for the user to press 'Enter' before proceeding
 else:
-    print("You chose not to enter your information in the Google Form.")
-
+    print(
+        "You chose not to enter your information in the Google Form."
+    )
 
 # Get the last row of data in the Google Sheets
 data = responses.get_all_values()
@@ -90,11 +111,16 @@ EXPECTED_COLUMNS = 10
 last_row.extend([''] * (EXPECTED_COLUMNS - len(last_row)))
 
 # Extract the user's inputs from the Google Sheets
-timestamp_str, last_period_str, cycle_length_str, period_duration_str, cycle_type, cycle_lengths, symptoms, email, name, age = last_row
+timestamp_str, last_period_str, cycle_length_str, period_duration_str, \
+    cycle_type, cycle_lengths, symptoms, email, name, age = last_row
+
 
 # Convert the date strings to datetime objects
-timestamp = datetime.datetime.strptime(timestamp_str, "%d/%m/%Y %H:%M:%S")
-last_period = datetime.datetime.strptime(last_period_str, "%d/%m/%Y").date()
+timestamp = datetime.datetime.strptime(
+    timestamp_str, "%d/%m/%Y %H:%M:%S"
+)
+last_period = datetime.datetime.strptime(last_period_str,
+                                         "%d/%m/%Y").date()
 cycle_length = int(cycle_length_str)
 period_duration = int(period_duration_str)
 
@@ -115,7 +141,9 @@ def print_options():
     table.add_row(["3", "Fertile Days"])
     table.add_row(["4", "Next Period Date"])
     table.add_row(["5", "Personalized Recommendations"])
-    table.add_row(["6", "Exercises Tips"])  # Add "Exercises Tips" option
+    table.add_row(
+        ["6", "Exercises Tips"]
+    )  # Add "Exercises Tips" option
     table.add_row(["7", "Quit the application"])
 
     # Set the table text color to red using colorama
@@ -127,49 +155,82 @@ def print_options():
 def display_health_tips():
     print("\nHealth Tips:")
     tips = {
-        1: "Maintain a healthy diet and drink plenty of water.",
-        2: "Exercise regularly to improve overall health and manage stress.",
-        3: "Ensure you get enough sleep and rest during your menstrual cycle.",
-        4: "Consider using a menstrual tracking app to keep track of your cycles and symptoms.",
+        1:
+        "Maintain a healthy diet and drink plenty of water.",
+        2:
+        "Exercise regularly to improve overall health and manage stress.",
+        3:
+        "Ensure you get enough sleep and rest during your menstrual cycle.",
+        4:
+        "Consider using a menstrual tracking app"
+        " to keep track of your cycles and symptoms.",
     }
 
     if cycle_type.lower() == 'irregular':
-        tips[5] = "If you have irregular cycles, consider consulting a healthcare professional for guidance."
+        tips[
+            5
+        ] = "If you have irregular cycles,"
+        " consider consulting a healthcare professional for guidance."
 
     for tip_number, tip_text in tips.items():
         print(f"{tip_number}. {tip_text}")
 
 
 # Function to display personalized recommendations
-def personalized_recommendations(cycle_length, period_duration, symptoms):
+def personalized_recommendations(
+    cycle_length, period_duration, symptoms
+):
     print("\nPersonalized Recommendations:")
-    print("Based on your menstrual cycle data and symptoms," 
-          " we have some personalized recommendations to help you stay healthy " 
-          "and comfortable during your period:")
+    print("""
+    Based on your menstrual cycle data and symptoms,
+    we have some personalized recommendations to help you stay healthy
+    and comfortable during your period:
+    """)
 
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
-        print("- Consider tracking your cycle and symptoms to identify any patterns.")
-        print("- If you experience irregular cycles, consult a healthcare professional.")
+        print(
+            "- Consider tracking your cycle and "
+            "symptoms to identify any patterns."
+        )
+        print(
+            "- If you experience irregular cycles,"
+            " consult a healthcare professional."
+        )
     else:
-        print("- Maintain a healthy lifestyle with regular exercise and a balanced diet.")
-        print("- Get plenty of rest and manage stress during your period.")
-    
+        print(
+            "- Maintain a healthy lifestyle with "
+            "regular exercise and a balanced diet."
+        )
+        print(
+            "- Get plenty of rest and "
+            "manage stress during your period."
+        )
+
     # Check the period duration and offer relevant advice
     if period_duration > 7:
-        print("- If you experience prolonged periods, consider consulting a healthcare professional.")
-    
+        print(
+            "- If you experience prolonged periods,"
+            " consider consulting a healthcare professional."
+        )
+
     # Check for specific symptoms and offer advice based on them
     if "cramps" in symptoms.lower():
-        print("- Engage in light exercises, such as yoga or walking, to reduce cramps.")
-    
+        print(
+            "- Engage in light exercises,"
+            " such as yoga or walking, to reduce cramps."
+        )
+
 
 # Function to display exercises tips
 def display_exercises_tips():
     print("\nExercises Tips:")
-    print("Regular physical activity can help reduce menstrual cramps, improve mood, and promote overall well-being during your menstrual cycle. "
-          "Here are some exercises that you can try to alleviate discomfort and boost your mood:")
-
+    print("""
+    Regular physical activity can help reduce menstrual cramps,
+    improve mood, and promote overall well-being during your menstrual cycle.
+    Here are some exercises that you can try
+    to alleviate discomfort and boost your mood:
+    """)
 
     # List of exercises to reduce cramps and improve mood
     exercises = [
@@ -211,21 +272,35 @@ while True:
     elif choice == "3":
         # Display fertile days
         print("\nFertile Days:")
-        print(f"{fertile_start.strftime('%d/%m/%Y')} to {fertile_end.strftime('%d/%m/%Y')}")
+        print(
+            f"{fertile_start.strftime('%d/%m/%Y')} to "
+            f"{fertile_end.strftime('%d/%m/%Y')}"
+        )
+
     elif choice == "4":
         # Display the calculated next period date
-        print(f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}")
+        print(
+            f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}"
+        )
     elif choice == "5":
         # Display personalized recommendations
-        personalized_recommendations(cycle_length, period_duration, symptoms)
+        personalized_recommendations(
+            cycle_length, period_duration, symptoms
+        )
     elif choice == "6":
         # Display exercises tips
         display_exercises_tips()
     elif choice == "7":
-        print("Thank you for using FemmeFlow Tracker! Have a great day!")
+        print(
+            "Thank you for using FemmeFlow Tracker! Have a great day!"
+        )
         break  # Exit the application loop if the user chooses to quit
     else:
-        print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
+        print(
+            Fore.RED +
+            "Invalid choice. Please enter a number between 1 and 7." +
+            Fore.RESET
+        )
 
     # Pause before clearing the screen
     input("Press Enter to continue...\n")
