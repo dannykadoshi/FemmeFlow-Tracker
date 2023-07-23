@@ -295,7 +295,24 @@ def update_data():
     if updated_symptoms.lower() != 'skip':
         symptoms = updated_symptoms
 
-    print("Data updated successfully.")    
+
+    # Calculate dates after updating the user's data
+    calculate_dates()    
+
+
+    print("Data updated successfully.")
+
+
+# Function to calculate dates based on user data
+def calculate_dates():
+    global fertile_start, fertile_end, next_period
+    next_period = last_period + datetime.timedelta(days=cycle_length)
+    fertile_start = last_period + datetime.timedelta(days=13)
+    fertile_end = last_period + datetime.timedelta(days=19)
+
+
+# Calculate dates based on the retrieved data
+calculate_dates()
 
 
 # Function to display health tips
