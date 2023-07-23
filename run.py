@@ -296,23 +296,22 @@ def update_data():
         symptoms = updated_symptoms
 
 
-    # Calculate dates after updating the user's data
-    calculate_dates()    
+    # Calculate dates and recommendations after updating the user's data
+    calculate_dates_and_recommendations()
 
 
     print("Data updated successfully.")
 
 
-# Function to calculate dates based on user data
-def calculate_dates():
+# Function to calculate dates and personalized recommendations based on user data
+def calculate_dates_and_recommendations():
     global fertile_start, fertile_end, next_period
     next_period = last_period + datetime.timedelta(days=cycle_length)
     fertile_start = last_period + datetime.timedelta(days=13)
     fertile_end = last_period + datetime.timedelta(days=19)
 
-
-# Calculate dates based on the retrieved data
-calculate_dates()
+    # Calculate personalized recommendations based on user data
+    personalized_recommendations(cycle_length, period_duration, symptoms)
 
 
 # Function to display health tips
