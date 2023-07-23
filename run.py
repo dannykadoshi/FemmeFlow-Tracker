@@ -7,6 +7,7 @@ import prettytable
 import gspread
 from google.oauth2.service_account import Credentials
 from time import sleep
+from prettytable import PrettyTable
 
 # Set up Google Sheets credentials and scope
 SCOPE = [
@@ -354,28 +355,32 @@ def display_health_tips():
         print(f"{tip_number}. {tip_text}")
 
 
+# Function to display personalized recommendations in a table
+def display_recommendations_table(symptom, tips):
+    print(f"\n\033[91mHere are some tips for dealing with {symptom}:\033[0m")
+
+    # Create a table with two columns: Tip Number and Tip Text
+    table = PrettyTable()
+    table.field_names = ["Tip Number", "Tip Text"]
+
+    # Set the maximum width for the columns
+    table.max_width["Tip Text"] = 60
+
+    # Add each tip to the table
+    for i, tip in enumerate(tips, start=1):
+        table.add_row([i, tip])
+
+    # Print the table
+    print(table)
+
 # Function to display personalized recommendations
-def personalized_recommendations(
-    cycle_length, period_duration, symptoms
-):
-    print("\nPersonalized Recommendations:")
-    print("""
-    Based on your menstrual cycle data and symptoms,
-    we have some personalized recommendations to help you stay healthy
-    and comfortable during your period:
-    """)
+def personalized_recommendations(cycle_length, period_duration, symptoms):
+    print("\033[91mBased on your menstrual cycle data and symptoms,"
+          " we have some personalized recommendations to help you stay healthy"
+          " and comfortable during your period:\033[0m")
 
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
-        print(
-            "- Consider tracking your cycle and "
-            "symptoms to identify any patterns."
-        )
-        print(
-            "- If you experience irregular cycles,"
-            " consult a healthcare professional."
-        )
-    else:
         print(
             "- Maintain a healthy lifestyle with "
             "regular exercise and a balanced diet."
@@ -399,42 +404,69 @@ def personalized_recommendations(
             " consider discussing this with a healthcare professional."
         )    
 
-    # Check for specific symptoms and offer advice based on them
-    if "cramps" in symptoms.lower():
-        print(
-            "- Engage in light exercises,"
-            " such as yoga or walking, to reduce cramps."
-        )
+    # Define the personalized recommendations for each symptom
+    recommendations = {
+        "Cramps": [
+            "Engage in light exercises, such as yoga or walking, to reduce cramps.",
+            "Apply a heating pad to the lower abdomen to soothe cramps."
+        ],
+        "Acne": [
+            "Keep your skin clean and consider using non-comedogenic skincare products.",
+            "Avoid touching your face and change pillowcases regularly to prevent acne breakouts."
+        ],
+        "Nausea": [
+            "Avoid greasy or heavy foods, and try eating smaller, more frequent meals.",
+            "Drink ginger tea or peppermint tea to help alleviate nausea."
+        ],
+        "Anxiety": [
+            "Practice deep breathing exercises and consider talking to a supportive friend or family member.",
+            "Engage in regular physical activity to help reduce anxiety."
+        ],
+        # Add more symptoms and recommendations here
+        "Breast Tenderness": [
+            "Wear a supportive bra and consider applying a warm compress to alleviate breast tenderness.",
+            "Avoid consuming caffeine and salty foods, which can worsen breast tenderness."
+        ],
+        "Food Cravings": [
+            "Satisfy cravings in moderation, and try to choose healthier alternatives when possible.",
+            "Keep healthy snacks, like fruits and nuts, readily available to curb cravings."
+        ],
+        "Insomnia": [
+            "Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
+            "Use blackout curtains and white noise machines to create a sleep-friendly environment."
+        ],
+        "Hot Flashes": [
+            "Wear lightweight and breathable clothing, and try to stay in a cool environment.",
+            "Avoid triggers like spicy foods and caffeine that can worsen hot flashes."
+        ],
+        "Dizziness": [
+            "Stay hydrated and avoid sudden changes in position. If dizziness persists, consult a healthcare professional.",
+            "Practice relaxation techniques, such as deep breathing, to manage dizziness."
+        ],
+        "Fatigue": [
+            "Ensure you are getting enough rest and consider taking short naps if needed.",
+            "Eat energy-boosting foods like fruits, nuts, and whole grains to combat fatigue."
+        ],
+        "Insomnia": [
+            "Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
+            "Use blackout curtains and white noise machines to create a sleep-friendly environment."
+        ],
+        "Anxiety": [
+            "Practice deep breathing exercises and consider talking to a supportive friend or family member.",
+            "Engage in regular physical activity to help reduce anxiety."
+        ]
+    }
 
-    if "headache" in symptoms.lower():
-        print(
-            "- Stay hydrated and consider using a cold or warm compress to alleviate headaches."
-        )
+    # Filter the symptoms based on the user's input
+    user_symptoms = symptoms.split(",")
+    user_symptoms = [symptom.strip().capitalize() for symptom in user_symptoms if symptom.strip().capitalize() in recommendations]
 
-    if "mood swings" in symptoms.lower():
-        print(
-            "- Practice mindfulness and meditation to manage mood swings."
-        )
-
-    if "fatigue" in symptoms.lower():
-        print(
-            "- Ensure you are getting enough rest and consider taking short naps if needed."
-        )
-
-    if "bloating" in symptoms.lower():
-        print(
-            "- Reduce salt intake and avoid carbonated drinks to minimize bloating."
-        )
-
-    if "acne" in symptoms.lower():
-        print(
-            "- Keep your skin clean and consider using non-comedogenic skincare products."
-        )
-
+    # Display personalized recommendations for each selected symptom
+    for symptom in user_symptoms:
+        display_recommendations_table(symptom, recommendations[symptom])
 
     print("\nThese recommendations are meant to provide general guidance."
           " For personalized advice, consult with a healthcare professional.")
-
 
 
 # Function to display exercises tips
