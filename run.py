@@ -5,6 +5,7 @@ from colorama import init, Fore
 import os
 import prettytable
 import gspread
+import textwrap
 from google.oauth2.service_account import Credentials
 from time import sleep
 from prettytable import PrettyTable
@@ -22,6 +23,11 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 
 responses = SHEET.worksheet('responses')
+
+
+# Function to wrap text to a maximum width of 75
+def wrap_text(text):
+    return textwrap.fill(text, width=75)
 
 
 # Function to clear the screen based on the operating system
@@ -69,19 +75,28 @@ def center_logo(logo_lines, width):
         centered_logo.append(centered_line)
     return '\n'.join(centered_logo)
 
+# Function to display the welcome message in red and bigger
+def display_welcome_message():
+    welcome_message = "🌺 WELCOME TO FEMMEFLOW TRACKER! 🌺"
+    red_welcome_message = f"{Fore.RED}{welcome_message}{Fore.RESET}"
+    print(red_welcome_message)
+
 # Introduction page for the application
 def introduction():
     display_name()
-    print("Welcome to FemmeFlow Tracker!")
+    display_welcome_message()
+    print()
     print(
-        "This application allows you to track your menstrual cycle and "
-        "predict your next period date."
+        wrap_text("This application allows you to track your menstrual cycle and "
+                  "predict your next period date. "
+                  "You can enter your menstrual cycle data in the Google Form, "
+                  "and we'll calculate the next period date for you. "
+                )
     )
-    print(
-        "You can enter your menstrual cycle data in the Google Form,"
-        " and we'll calculate the next period date for you."
-    )
-    print("Let's get started!\n")
+    print()
+    print("Let's get started! 🚀")
+    print()
+
 
 # Call the introduction function
 introduction()
@@ -90,15 +105,17 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
-    print(
-        "Google Form opened in your web browser."
-        "Please enter your information there."
-    )
-    print(
-        "After entering the information,"
-        " you can come back to this terminal to see"
-        " the calculated next period date."
-    )
+    print(wrap_text(
+        "Google Form opened in your web browser. "
+        "Please enter your information there. "
+    ))
+    print()
+    print(wrap_text(
+        "After entering the information, "
+        "you can come back to this terminal to see "
+        "the calculated next period date."
+    ))
+    print()
 
 # Get the email address used in the Google Form
 def get_user_email():
@@ -112,6 +129,7 @@ def get_user_email():
 # Prompt the user with an option to open the Google Form
 print("Would you like to enter your information in the Google Form? (yes/no)")
 response = input().strip().lower()
+clear()
 
 # Validate the user's response
 while response not in ['yes', 'no']:
