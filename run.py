@@ -333,22 +333,22 @@ def calculate_dates_and_recommendations():
 def display_health_tips():
     print("\nHealth Tips:")
     tips = {
-        1:
-        "Maintain a healthy diet and drink plenty of water.",
-        2:
-        "Exercise regularly to improve overall health and manage stress.",
-        3:
-        "Ensure you get enough sleep and rest during your menstrual cycle.",
-        4:
-        "Consider using a menstrual tracking app"
-        " to keep track of your cycles and symptoms.",
+        1: "Maintain a healthy diet and drink plenty of water.",
+        2: "Exercise regularly to improve overall health and manage stress.",
+        3: "Ensure you get enough sleep and rest during your menstrual cycle.",
+        4: "Consider using a menstrual tracking app to keep track of your cycles and symptoms.",
+        5: "Manage stress through relaxation techniques like meditation or deep breathing.",
+        6: "Limit caffeine and alcohol intake, as they can affect your menstrual cycle.",
+        7: "Avoid smoking and exposure to secondhand smoke for better reproductive health.",
+        8: "Engage in activities that bring you joy and help you relax.",
+        9: "Consider taking supplements like iron and calcium to support your health.",
+        10: "Listen to your body and take breaks when needed, especially during your period.",
     }
 
     if cycle_type.lower() == 'irregular':
-        tips[
-            5
-        ] = "If you have irregular cycles,"
-        " consider consulting a healthcare professional for guidance."
+        tips[11] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
+        tips[12] = "Talk to your healthcare provider to rule out any underlying health issues."
+        tips[13] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
 
     for tip_number, tip_text in tips.items():
         print(f"{tip_number}. {tip_text}")
@@ -392,12 +392,49 @@ def personalized_recommendations(
             " consider consulting a healthcare professional."
         )
 
+    # Check if the period length is too short
+    if period_duration < 3:
+        print(
+            "- If you experience very short periods,"
+            " consider discussing this with a healthcare professional."
+        )    
+
     # Check for specific symptoms and offer advice based on them
     if "cramps" in symptoms.lower():
         print(
             "- Engage in light exercises,"
             " such as yoga or walking, to reduce cramps."
         )
+
+    if "headache" in symptoms.lower():
+        print(
+            "- Stay hydrated and consider using a cold or warm compress to alleviate headaches."
+        )
+
+    if "mood swings" in symptoms.lower():
+        print(
+            "- Practice mindfulness and meditation to manage mood swings."
+        )
+
+    if "fatigue" in symptoms.lower():
+        print(
+            "- Ensure you are getting enough rest and consider taking short naps if needed."
+        )
+
+    if "bloating" in symptoms.lower():
+        print(
+            "- Reduce salt intake and avoid carbonated drinks to minimize bloating."
+        )
+
+    if "acne" in symptoms.lower():
+        print(
+            "- Keep your skin clean and consider using non-comedogenic skincare products."
+        )
+
+
+    print("\nThese recommendations are meant to provide general guidance."
+          " For personalized advice, consult with a healthcare professional.")
+
 
 
 # Function to display exercises tips
