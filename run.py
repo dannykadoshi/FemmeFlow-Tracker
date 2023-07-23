@@ -235,6 +235,68 @@ def print_options():
     red_table = f"{Fore.RED}{table}{Fore.RESET}"
     print(red_table)
 
+# Function to update user data in the terminal
+def update_data():
+    global last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms
+
+    print("\nUpdate Data:")
+    print("Enter 'skip' for any field you want to leave unchanged.")
+
+    # Get the updated last period date
+    updated_last_period = input(
+        f"Last Period Date ({last_period.strftime('%d/%m/%Y')}): "
+    ).strip()
+    if updated_last_period.lower() != 'skip':
+        try:
+            last_period = datetime.datetime.strptime(
+                updated_last_period, "%d/%m/%Y"
+            ).date()
+        except ValueError:
+            print(Fore.RED + "Invalid date format. Last Period Date not updated." + Fore.RESET)
+
+    # Get the updated cycle length
+    updated_cycle_length = input(
+        f"Cycle Length ({cycle_length} days): "
+    ).strip()
+    if updated_cycle_length.lower() != 'skip':
+        try:
+            cycle_length = int(updated_cycle_length)
+        except ValueError:
+            print(Fore.RED + "Invalid input. Cycle Length not updated." + Fore.RESET)
+
+    # Get the updated period duration
+    updated_period_duration = input(
+        f"Period Duration ({period_duration} days): "
+    ).strip()
+    if updated_period_duration.lower() != 'skip':
+        try:
+            period_duration = int(updated_period_duration)
+        except ValueError:
+            print(Fore.RED + "Invalid input. Period Duration not updated." + Fore.RESET)
+
+    # Get the updated cycle type
+    updated_cycle_type = input(
+        f"Cycle Type ({cycle_type}): "
+    ).strip()
+    if updated_cycle_type.lower() != 'skip':
+        cycle_type = updated_cycle_type
+
+    # Get the updated cycle lengths for irregular cycles
+    updated_cycle_lengths = input(
+        f"Cycle Lengths (if irregular) ({cycle_lengths}): "
+    ).strip()
+    if updated_cycle_lengths.lower() != 'skip':
+        cycle_lengths = updated_cycle_lengths
+
+    # Get the updated symptoms/additional information
+    updated_symptoms = input(
+        f"Symptoms/Additional Information ({symptoms}): "
+    ).strip()
+    if updated_symptoms.lower() != 'skip':
+        symptoms = updated_symptoms
+
+    print("Data updated successfully.")    
+
 
 # Function to display health tips
 def display_health_tips():
@@ -354,6 +416,13 @@ while True:
         print(f"Email: {email}")
         print(f"Name: {name}")
         print(f"Age: {age}")
+
+        # Offer the option to update the data
+        print("\nWould you like to update your data? (yes/no)")
+        update_choice = input().strip().lower()
+
+        if update_choice == 'yes':
+            update_data()
     elif choice == "3":
         # Display fertile days
         print("\nFertile Days:")
