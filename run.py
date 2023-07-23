@@ -295,12 +295,29 @@ def update_data():
     if updated_symptoms.lower() != 'skip':
         symptoms = updated_symptoms
 
+    # Update the Google Sheets with the new data
+    update_google_sheets(user_email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms)
 
     # Calculate dates and recommendations after updating the user's data
     calculate_dates_and_recommendations()
 
-
     print("Data updated successfully.")
+
+
+def update_google_sheets(email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms):
+    # Find all rows with the matching email address
+    email_column = 8  # Column index for the email address (zero-based)
+    email_cells = responses.findall(email)
+    user_rows = {cell.row for cell in email_cells}
+
+    # Update each row with the new data
+    for row in user_rows:
+        SHEET.worksheet('responses').update_cell(row, 2, last_period.strftime('%d/%m/%Y'))
+        SHEET.worksheet('responses').update_cell(row, 3, str(cycle_length))
+        SHEET.worksheet('responses').update_cell(row, 4, str(period_duration))
+        SHEET.worksheet('responses').update_cell(row, 5, cycle_type)
+        SHEET.worksheet('responses').update_cell(row, 6, cycle_lengths)
+        SHEET.worksheet('responses').update_cell(row, 7, symptoms)
 
 
 # Function to calculate dates and personalized recommendations based on user data
