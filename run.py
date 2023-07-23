@@ -298,8 +298,6 @@ def update_data():
     # Update the Google Sheets with the new data
     update_google_sheets(user_email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms)
 
-    # Calculate dates and recommendations after updating the user's data
-    calculate_dates_and_recommendations()
 
     print("Data updated successfully.")
 
