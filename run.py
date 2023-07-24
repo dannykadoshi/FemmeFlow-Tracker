@@ -29,7 +29,8 @@ SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 responses = SHEET.worksheet('responses')
 
 
-def animate_text(message, delay=0.05):
+# Function to define animated typewriter text
+def animate_text(message, delay=0.04):
     """
     Prints the passed string to the console, simulating a typewriter.
     """
@@ -38,6 +39,7 @@ def animate_text(message, delay=0.05):
         time.sleep(delay)
 
 
+# Function to define wrap_text max-width of 75
 def wrap_text(text, width=75, color=None):
     if isinstance(text, list):
         wrapped_list = []
@@ -473,10 +475,9 @@ def display_recommendations_table(symptom, tips):
     print(table)
 
 
-#Function to define Personalized recommendations based on the User data
 def personalized_recommendations(cycle_length, period_duration, symptoms):
     intro_message = (
-        "Based on your menstrual cycle data and symptoms,"
+        f"{Fore.GREEN}Based on your menstrual cycle data and symptoms,"
         " we have some personalized recommendations to help you stay healthy"
         " and comfortable during your period:"
     )
@@ -522,71 +523,92 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
 
     # Define the personalized recommendations for each symptom
     recommendations = {
-        "Cramps": [
-            "Engage in light exercises, such as yoga or walking, to reduce cramps.",
-            "Apply a heating pad to the lower abdomen to soothe cramps."
+        "cramps": [
+            "- Engage in light exercises, such as yoga or walking, to reduce cramps.",
+            "- Apply a heating pad to the lower abdomen to soothe cramps."
         ],
-        "Acne": [
-            "Keep your skin clean and consider using non-comedogenic skincare products.",
-            "Avoid touching your face and change pillowcases regularly to prevent acne breakouts."
+        "acne": [
+            "- Keep your skin clean and consider using non-comedogenic skincare products.",
+            "- Avoid touching your face and change pillowcases regularly to prevent acne breakouts."
         ],
-        "Nausea": [
-            "Avoid greasy or heavy foods, and try eating smaller, more frequent meals.",
-            "Drink ginger tea or peppermint tea to help alleviate nausea."
+        "nausea": [
+            "- Avoid greasy or heavy foods, and try eating smaller, more frequent meals.",
+            "- Drink ginger tea or peppermint tea to help alleviate nausea."
         ],
-        "Anxiety": [
-            "Practice deep breathing exercises and consider talking to a supportive friend or family member.",
-            "Engage in regular physical activity to help reduce anxiety."
+        "anxiety": [
+            "- Practice deep breathing exercises and consider talking to a supportive friend or family member.",
+            "- Engage in regular physical activity to help reduce anxiety."
         ],
-        "Breast Tenderness": [
-            "Wear a supportive bra and consider applying a warm compress to alleviate breast tenderness.",
-            "Avoid consuming caffeine and salty foods, which can worsen breast tenderness."
+        "breast tenderness": [
+            "- Wear a supportive bra and consider applying a warm compress to alleviate breast tenderness.",
+            "- Avoid consuming caffeine and salty foods, which can worsen breast tenderness."
         ],
-        "Food Cravings": [
-            "Satisfy cravings in moderation, and try to choose healthier alternatives when possible.",
-            "Keep healthy snacks, like fruits and nuts, readily available to curb cravings."
+        "food cravings": [
+            "- Satisfy cravings in moderation, and try to choose healthier alternatives when possible.",
+            "- Keep healthy snacks, like fruits and nuts, readily available to curb cravings."
         ],
-        "Insomnia": [
-            "Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
-            "Use blackout curtains and white noise machines to create a sleep-friendly environment."
+        "insomnia": [
+            "- Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
+            "- Use blackout curtains and white noise machines to create a sleep-friendly environment."
         ],
-        "Hot Flashes": [
-            "Wear lightweight and breathable clothing, and try to stay in a cool environment.",
-            "Avoid triggers like spicy foods and caffeine that can worsen hot flashes."
+        "hot flashes": [
+            "- Wear lightweight and breathable clothing, and try to stay in a cool environment.",
+            "- Avoid triggers like spicy foods and caffeine that can worsen hot flashes."
         ],
-        "Dizziness": [
-            "Stay hydrated and avoid sudden changes in position. If dizziness persists, consult a healthcare professional.",
-            "Practice relaxation techniques, such as deep breathing, to manage dizziness."
+        "dizziness": [
+            "- Stay hydrated and avoid sudden changes in position. If dizziness persists, consult a healthcare professional.",
+            "- Practice relaxation techniques, such as deep breathing, to manage dizziness."
         ],
-        "Fatigue": [
-            "Ensure you are getting enough rest and consider taking short naps if needed.",
-            "Eat energy-boosting foods like fruits, nuts, and whole grains to combat fatigue."
+        "fatigue": [
+            "- Ensure you are getting enough rest and consider taking short naps if needed.",
+            "- Eat energy-boosting foods like fruits, nuts, and whole grains to combat fatigue."
         ],
-        "Insomnia": [
-            "Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
-            "Use blackout curtains and white noise machines to create a sleep-friendly environment."
+        "insomnia": [
+            "- Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
+            "- Use blackout curtains and white noise machines to create a sleep-friendly environment."
         ],
-        "Anxiety": [
-            "Practice deep breathing exercises and consider talking to a supportive friend or family member.",
-            "Engage in regular physical activity to help reduce anxiety."
-        ]
+        "anxiety": [
+            "- Practice deep breathing exercises and consider talking to a supportive friend or family member.",
+            "- Engage in regular physical activity to help reduce anxiety."
+        ],
+        "mood swings": [
+            "- Practice mindfulness and meditation techniques to manage mood swings.",
+            "- Engage in activities that bring joy and relaxation, such as spending time with loved ones or pursuing hobbies."
+            "- Consider keeping a mood journal to identify patterns and triggers for your mood swings."
+        ],
+        "bloating": [
+            "- Stay hydrated and drink plenty of water to help reduce bloating.",
+            "- Avoid consuming foods that are known to cause bloating, such as beans, cabbage, and carbonated drinks.",
+            "- Consider eating smaller, more frequent meals to prevent overeating and bloating.",
+            "- Incorporate foods rich in potassium, such as bananas and avocados, which can help reduce water retention.",
+            "- Try incorporating ginger or peppermint tea into your diet, as they may help alleviate bloating."
+        ],
     }
+
     # Filter the symptoms based on the user's input
     user_symptoms = symptoms.split(",")
     user_symptoms = [symptom.strip().capitalize() for symptom in user_symptoms if symptom.strip().capitalize() in recommendations]
-    
+
+    # Convert user-inputted symptoms and dictionary keys to lowercase
+    user_symptoms = [symptom.strip().lower() for symptom in symptoms.split(",")]
+
     # Display personalized recommendations for each selected symptom
     for symptom in user_symptoms:
-        print(f"\n\033[1m{symptom}:\033[0m")
-        table = PrettyTable(["Recommendations"])
-        table.max_width["Recommendations"] = 70  # Set the maximum width for the table
-        for rec in recommendations[symptom]:
-            table.add_row([wrap_text(rec)])
-        print(table)
+        if symptom in recommendations:
+            print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
+            table = PrettyTable(["Recommendations"])
+            table.max_width["Recommendations"] = 70  # Set the maximum width for the table
+            for rec in recommendations[symptom]:
+                table.add_row([wrap_text(rec)])
+            print(table)
+        else:
+            print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
+            print(wrap_text("No specific recommendations available for this symptom."))
+    
     print()
     advisory_message = (
-    "🚨 These recommendations are meant to provide general guidance."
-    " For personalized advice, consult with a healthcare professional. 🚨"
+        "🚨 These recommendations are meant to provide general guidance."
+        " For personalized advice, consult with a healthcare professional. 🚨"
     )
     print(wrap_text(wrap_text(advisory_message, color=Fore.RED)))
     print()
@@ -598,7 +620,7 @@ def display_exercises_tips():
     print(f"\n{Fore.YELLOW}EXERCICES TIPS 🚴‍♀️ 🏃‍♀️ 🧘‍♀️{Fore.RESET}")
     print()
     exercise_description = wrap_text(
-        "Regular physical activity can help reduce menstrual cramps, "
+        f"{Fore.GREEN}Regular physical activity can help reduce menstrual cramps, "
         "improve mood, and promote overall well-being during your menstrual cycle. "
         "Here are some exercises that you can try to alleviate discomfort and boost your mood."
     )
@@ -708,6 +730,24 @@ def display_fertile_days(fertile_start, fertile_end):
 # Function to display the calculated next period date for the next 6 months
 def display_next_period_date(next_period):
     print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅  🌺{Fore.RESET}")
+
+    print()
+
+    # Description for Next period dates
+    period_description = wrap_text(
+        f"{Fore.GREEN}Tracking your menstrual cycle is vital for understanding your body and "
+        "monitoring your reproductive health." 
+        "Here are the predicted start dates of your periods for the next six months." 
+        "These dates can be helpful for planning ahead and being prepared." 
+        "Keep in mind that individual variations are common, "
+        "so the actual dates may differ slightly." 
+        "Remember to listen to your body and take care of yourself throughout your cycle."
+    )
+
+    print(period_description)
+    print()
+
+
     table = PrettyTable(["Month", "Next Period Date"])
     for _ in range(6):
         table.add_row([
