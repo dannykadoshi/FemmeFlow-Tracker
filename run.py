@@ -31,7 +31,10 @@ def wrap_text(text, width=75, color=None):
         wrapped_list = []
         for item in text:
             if isinstance(item, str):
-                wrapped_list.extend(textwrap.wrap(item, width=width))
+                if color:
+                    wrapped_list.append(f"{color}{textwrap.fill(item, width=width)}{Fore.RESET}")
+                else:
+                    wrapped_list.extend(textwrap.wrap(item, width=width))
             else:
                 wrapped_list.append(str(item))
         return wrapped_list
@@ -39,7 +42,8 @@ def wrap_text(text, width=75, color=None):
         if color:
             return f"{color}{text}{Fore.RESET}"
         else:
-            return textwrap.fill(text, width=width)        
+            return textwrap.fill(text, width=width)
+
 
 
 # Function to clear the screen based on the operating system
@@ -256,7 +260,7 @@ def print_options():
 
     # Description guiding the user
     description = (
-        "Please choose an option by entering the corresponding number below:"
+        "Please choose an option by entering the corresponding number"
     )
     print(f"{Fore.YELLOW}{description}{Fore.RESET}")
     print()
@@ -372,7 +376,7 @@ def calculate_dates_and_recommendations():
 
 # Function to display health tips
 def display_health_tips():
-    print("\nHealth Tips 🌟")
+    print(f"\n{Fore.YELLOW}HEALTH TIPS 🌟{Fore.RESET}")
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
@@ -436,32 +440,43 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     )
     print(wrap_text(intro_message))
 
-
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
         cycle_advice = [
-            "- Maintain a healthy lifestyle with "
-            "regular exercise and a balanced diet.",
-            "- Get plenty of rest and "
-            "manage stress during your period."
+            "- Maintain a healthy lifestyle with regular exercise and a balanced diet.",
+            "- Get plenty of rest and manage stress during your period."
         ]
-        print("\n".join(wrap_text_list(cycle_advice)))
+        print("\n\033[1mCycle Length Advice (if cycle < 28 days):\033[0m")
+        cycle_table = PrettyTable(["Recommendations"])
+        cycle_table.max_width["Recommendations"] = 70
+        for rec in cycle_advice:
+            cycle_table.add_row([wrap_text(rec)])
+        print(cycle_table)
 
     # Check the period duration and offer relevant advice
     if period_duration > 7:
         duration_advice = [
-            "- If you experience prolonged periods,"
-            " consider consulting a healthcare professional."
+            "- If you experience prolonged periods, consider consulting a healthcare professional."
         ]
-        print("\n".join(wrap_text_list(duration_advice)))
+        print("\n\033[1mPeriod Duration Advice (if duration > 7 days):\033[0m")
+        duration_table = PrettyTable(["Recommendations"])
+        duration_table.max_width["Recommendations"] = 70
+        for rec in duration_advice:
+            duration_table.add_row([wrap_text(rec)])
+        print(duration_table)
 
     # Check if the period length is too short
     if period_duration < 3:
         short_period_advice = [
-            "- If you experience very short periods,"
-            " consider discussing this with a healthcare professional."
+            "- If you experience very short periods, consider discussing this with a healthcare professional."
         ]
-        print("\n".join(wrap_text_list(short_period_advice)))
+        print("\n\033[1mShort Period Advice (if duration < 3 days):\033[0m")
+        short_period_table = PrettyTable(["Recommendations"])
+        short_period_table.max_width["Recommendations"] = 70
+        for rec in short_period_advice:
+            short_period_table.add_row([wrap_text(rec)])
+        print(short_period_table)
+
 
     # Define the personalized recommendations for each symptom
     recommendations = {
@@ -514,12 +529,10 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             "Engage in regular physical activity to help reduce anxiety."
         ]
     }
-
     # Filter the symptoms based on the user's input
     user_symptoms = symptoms.split(",")
     user_symptoms = [symptom.strip().capitalize() for symptom in user_symptoms if symptom.strip().capitalize() in recommendations]
     
-
     # Display personalized recommendations for each selected symptom
     for symptom in user_symptoms:
         print(f"\n\033[1m{symptom}:\033[0m")
@@ -528,7 +541,6 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         for rec in recommendations[symptom]:
             table.add_row([wrap_text(rec)])
         print(table)
-
     print()
     advisory_message = (
     "🚨 These recommendations are meant to provide general guidance."
@@ -538,9 +550,10 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     print()
 
 
+
 # Function to display exercises tips
 def display_exercises_tips():
-    print("\nExercises Tips 🚴‍♀️ 🏃‍♀️ 🧘‍♀️")
+    print(f"\n{Fore.YELLOW}EXERCICES TIPS 🚴‍♀️ 🏃‍♀️ 🧘‍♀️{Fore.RESET}")
     print()
     exercise_description = wrap_text(
         "Regular physical activity can help reduce menstrual cramps, "
@@ -606,12 +619,12 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.add_row(["Name", name])
     table.add_row(["Age", age])
 
-    print("\nForm Submission Data 🗄️  📝")
+    print(f"\n{Fore.YELLOW}FORM SUBMISSION DATA 🗄️  📝{Fore.RESET}")
     print(table)
 
 # Function to display fertile days for the next 6 months
 def display_fertile_days(fertile_start, fertile_end):
-    print("\nFertile Days for the Next 6 Months 📆  🌼")
+    print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
     table = PrettyTable(["Month", "Fertile Start Date", "Fertile End Date"])
     for _ in range(6):
         table.add_row([
@@ -626,7 +639,7 @@ def display_fertile_days(fertile_start, fertile_end):
 
 # Function to display the calculated next period date for the next 6 months
 def display_next_period_date(next_period):
-    print("\nNext Period Dates for the Next 6 Months 📅  🌺")
+    print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅  🌺{Fore.RESET}")
     table = PrettyTable(["Month", "Next Period Date"])
     for _ in range(6):
         table.add_row([
