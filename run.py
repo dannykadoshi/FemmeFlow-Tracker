@@ -541,6 +541,20 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     print("\nForm Submission Data:")
     print(table)
 
+# Function to display fertile days
+def display_fertile_days(fertile_start, fertile_end):
+    print("\nFertile Days:")
+    table = PrettyTable(["Start Date", "End Date"])
+    table.add_row([fertile_start.strftime('%d/%m/%Y'), fertile_end.strftime('%d/%m/%Y')])
+    print(table)
+
+# Function to display the calculated next period date
+def display_next_period_date(next_period):
+    print("\nNext Period Date:")
+    table = PrettyTable(["Date"])
+    table.add_row([next_period.strftime('%d/%m/%Y')])
+    print(table)    
+
 
 # Main loop of the application
 while True:
@@ -567,17 +581,11 @@ while True:
             update_data()
     elif choice == "3":
         # Display fertile days
-        print("\nFertile Days:")
-        print(
-            f"{fertile_start.strftime('%d/%m/%Y')} to "
-            f"{fertile_end.strftime('%d/%m/%Y')}"
-        )
+        display_fertile_days(fertile_start, fertile_end)
 
     elif choice == "4":
         # Display the calculated next period date
-        print(
-            f"\nNext Period Date: {next_period.strftime('%d/%m/%Y')}"
-        )
+        display_next_period_date(next_period)
     elif choice == "5":
         # Display personalized recommendations
         personalized_recommendations(
