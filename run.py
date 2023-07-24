@@ -26,16 +26,20 @@ SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 responses = SHEET.worksheet('responses')
 
 
-# Function to wrap text to a maximum width of 75
-def wrap_text(text):
-    return textwrap.fill(text, width=75)
-
-# Function to wrap a list of strings to a maximum width of 75
-def wrap_text_list(text_list):
-    wrapped_list = []
-    for text in text_list:
-        wrapped_list.extend(textwrap.wrap(text, width=75))
-    return wrapped_list    
+def wrap_text(text, width=75, color=None):
+    if isinstance(text, list):
+        wrapped_list = []
+        for item in text:
+            if isinstance(item, str):
+                wrapped_list.extend(textwrap.wrap(item, width=width))
+            else:
+                wrapped_list.append(str(item))
+        return wrapped_list
+    else:
+        if color:
+            return f"{color}{text}{Fore.RESET}"
+        else:
+            return textwrap.fill(text, width=width)        
 
 
 # Function to clear the screen based on the operating system
@@ -382,7 +386,7 @@ def display_health_tips():
     table.field_names = ["Tip Number", "Tip Text"]
 
     # Set the maximum width for the Tip Text column
-    table.max_width["Tip Text"] = 60
+    table.max_width["Tip Text"] = 70
 
     # Add each tip to the table
     for tip_number, tip_text in tips.items():
@@ -402,7 +406,7 @@ def display_recommendations_table(symptom, tips):
     table.field_names = ["Tip Number", "Tip Text"]
 
     # Set the maximum width for the columns
-    table.max_width["Tip Text"] = 60
+    table.max_width["Tip Text"] = 70
 
     # Add each tip to the table
     for i, tip in enumerate(tips, start=1):
@@ -411,6 +415,8 @@ def display_recommendations_table(symptom, tips):
     # Print the table
     print(table)
 
+
+#Function to define Personalized recommendations based on the User data
 def personalized_recommendations(cycle_length, period_duration, symptoms):
     intro_message = (
         "\033[91mBased on your menstrual cycle data and symptoms,"
@@ -418,6 +424,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         " and comfortable during your period:\033[0m"
     )
     print(wrap_text(intro_message))
+
 
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
@@ -500,14 +507,24 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     # Filter the symptoms based on the user's input
     user_symptoms = symptoms.split(",")
     user_symptoms = [symptom.strip().capitalize() for symptom in user_symptoms if symptom.strip().capitalize() in recommendations]
+    
 
     # Display personalized recommendations for each selected symptom
     for symptom in user_symptoms:
         print(f"\n\033[1m{symptom}:\033[0m")
-        print("\n".join(wrap_text_list(recommendations[symptom])))
+        table = PrettyTable(["Recommendations"])
+        table.max_width["Recommendations"] = 70  # Set the maximum width for the table
+        for rec in recommendations[symptom]:
+            table.add_row([wrap_text(rec)])
+        print(table)
 
-    print(wrap_text("\nThese recommendations are meant to provide general guidance."
-                    " For personalized advice, consult with a healthcare professional."))
+    print()
+    advisory_message = (
+    "🚨 These recommendations are meant to provide general guidance."
+    " For personalized advice, consult with a healthcare professional. 🚨"
+    )
+    print(wrap_text(wrap_text(advisory_message, color=Fore.RED)))
+    print()
 
 
 # Function to display exercises tips
