@@ -680,7 +680,12 @@ while True:
             cycle_lengths, symptoms, email, name, age
         )
         # Offer the option to update the data
-        print("\nWould you like to update your data? (yes/no)")
+        print(f"\n{Fore.RED}❗❗ DISCLAIMER ❗❗{Fore.RESET}")
+        print()
+        print("Choosing 'yes' will update your data with the new information you provide.")
+        print("Choosing 'no' will keep your current data unchanged.")
+        print("If no changes are necessary choose 'no' to move on")
+        print("\nWould you like to update your data? ('yes' / 'no')")
         update_choice = input().strip().lower()
 
         if update_choice == 'yes':
