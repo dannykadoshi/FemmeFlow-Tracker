@@ -638,14 +638,24 @@ def display_next_period_date(next_period):
     print()
 
 
+# Function to clear the screen
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 # Main loop of the application
 while True:
+    # Clear the screen before printing the options
+    clear_screen()
+
     # Print the options table for the user to choose from
     print_options()
 
     # Get the user's choice
     print()
     choice = input("Enter your choice: ")
+
+    # Clear the screen after the user inputs their choice
+    clear_screen()
 
     # Process the user's choice and execute the corresponding action
     if choice == "1":
@@ -678,19 +688,10 @@ while True:
         # Display exercises tips
         display_exercises_tips()
     elif choice == "7":
-        print(
-            "Thank you for using FemmeFlow Tracker! Have a great day!"
-        )
+        print("Thank you for using FemmeFlow Tracker! Have a great day!")
         break  # Exit the application loop if the user chooses to quit
     else:
-        print(
-            Fore.RED +
-            "Invalid choice. Please enter a number between 1 and 7." +
-            Fore.RESET
-        )
+        print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
 
-    # Pause before clearing the screen
+    # Pause before continuing
     input("Press Enter to continue...\n")
-
-    # Clear the screen after the input is received
-    os.system('cls' if os.name == 'nt' else 'clear')
