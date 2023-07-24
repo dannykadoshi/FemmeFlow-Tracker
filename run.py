@@ -30,6 +30,13 @@ responses = SHEET.worksheet('responses')
 def wrap_text(text):
     return textwrap.fill(text, width=75)
 
+# Function to wrap a list of strings to a maximum width of 75
+def wrap_text_list(text_list):
+    wrapped_list = []
+    for text in text_list:
+        wrapped_list.extend(textwrap.wrap(text, width=75))
+    return wrapped_list    
+
 
 # Function to clear the screen based on the operating system
 def clear():
@@ -404,36 +411,39 @@ def display_recommendations_table(symptom, tips):
     # Print the table
     print(table)
 
-# Function to display personalized recommendations
 def personalized_recommendations(cycle_length, period_duration, symptoms):
-    print("\033[91mBased on your menstrual cycle data and symptoms,"
-          " we have some personalized recommendations to help you stay healthy"
-          " and comfortable during your period:\033[0m")
+    intro_message = (
+        "\033[91mBased on your menstrual cycle data and symptoms,"
+        " we have some personalized recommendations to help you stay healthy"
+        " and comfortable during your period:\033[0m"
+    )
+    print(wrap_text(intro_message))
 
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
-        print(
+        cycle_advice = [
             "- Maintain a healthy lifestyle with "
-            "regular exercise and a balanced diet."
-        )
-        print(
+            "regular exercise and a balanced diet.",
             "- Get plenty of rest and "
             "manage stress during your period."
-        )
+        ]
+        print("\n".join(wrap_text_list(cycle_advice)))
 
     # Check the period duration and offer relevant advice
     if period_duration > 7:
-        print(
+        duration_advice = [
             "- If you experience prolonged periods,"
             " consider consulting a healthcare professional."
-        )
+        ]
+        print("\n".join(wrap_text_list(duration_advice)))
 
     # Check if the period length is too short
     if period_duration < 3:
-        print(
+        short_period_advice = [
             "- If you experience very short periods,"
             " consider discussing this with a healthcare professional."
-        )    
+        ]
+        print("\n".join(wrap_text_list(short_period_advice)))
 
     # Define the personalized recommendations for each symptom
     recommendations = {
@@ -453,7 +463,6 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             "Practice deep breathing exercises and consider talking to a supportive friend or family member.",
             "Engage in regular physical activity to help reduce anxiety."
         ],
-        # Add more symptoms and recommendations here
         "Breast Tenderness": [
             "Wear a supportive bra and consider applying a warm compress to alleviate breast tenderness.",
             "Avoid consuming caffeine and salty foods, which can worsen breast tenderness."
@@ -494,10 +503,11 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
 
     # Display personalized recommendations for each selected symptom
     for symptom in user_symptoms:
-        display_recommendations_table(symptom, recommendations[symptom])
+        print(f"\n\033[1m{symptom}:\033[0m")
+        print("\n".join(wrap_text_list(recommendations[symptom])))
 
-    print("\nThese recommendations are meant to provide general guidance."
-          " For personalized advice, consult with a healthcare professional.")
+    print(wrap_text("\nThese recommendations are meant to provide general guidance."
+                    " For personalized advice, consult with a healthcare professional."))
 
 
 # Function to display exercises tips
