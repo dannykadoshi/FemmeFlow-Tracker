@@ -9,10 +9,12 @@ import textwrap
 import cursor
 import sys
 import time
+import threading
 from google.oauth2.service_account import Credentials
 from time import sleep
 from datetime import timedelta
 from prettytable import PrettyTable
+from dateutil.parser import parse
 
 # Set up Google Sheets credentials and scope
 SCOPE = [
@@ -29,6 +31,14 @@ SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 responses = SHEET.worksheet('responses')
 
 
+# Function to display a processing animation
+def animate_processing():
+    processing_symbols = "|/-\\"
+    for i in range(10):
+        time.sleep(0.1)
+        print(f"\rProcessing... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
+
+
 # Function to define animated typewriter text
 def animate_text(message, delay=0.04):
     """
@@ -39,8 +49,8 @@ def animate_text(message, delay=0.04):
         time.sleep(delay)
 
 
-# Function to define wrap_text max-width of 75
-def wrap_text(text, width=75, color=None):
+# Function to define wrap_text max-width of 70
+def wrap_text(text, width=70, color=None):
     if isinstance(text, list):
         wrapped_list = []
         for item in text:
@@ -310,6 +320,27 @@ def print_options():
     red_table = f"{Fore.RED}{table}{Fore.RESET}"
     print(red_table)
 
+# Function to define animated typewriter text
+def animate_text(message, delay=0.04):
+    """
+    Prints the passed string to the console, simulating a typewriter.
+    """
+    for char in message:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+
+# Function to display a processing animation
+def animate_processing():
+    processing_symbols = "|/-\\"
+    for i in range(10):
+        time.sleep(0.1)
+        print(f"\rProcessing... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
+
+# Function to wrap text and handle text formatting
+def wrap_text(text, width=70):
+    wrapped_text = textwrap.fill(text, width=width)
+    return wrapped_text
+
 # Function to update user data in the terminal
 def update_data():
     global last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms
@@ -323,9 +354,7 @@ def update_data():
     ).strip()
     if updated_last_period.lower() != 'skip':
         try:
-            last_period = datetime.datetime.strptime(
-                updated_last_period, "%d/%m/%Y"
-            ).date()
+            last_period = parse(updated_last_period).date()
         except ValueError:
             print(Fore.RED + "Invalid date format. Last Period Date not updated." + Fore.RESET)
 
@@ -350,36 +379,91 @@ def update_data():
             print(Fore.RED + "Invalid input. Period Duration not updated." + Fore.RESET)
 
     # Get the updated cycle type
+    cycle_type_options = ["regular", "irregular"]
     updated_cycle_type = input(
         f"Cycle Type ({cycle_type}): "
-    ).strip()
-    if updated_cycle_type.lower() != 'skip':
+    ).strip().lower()
+    if updated_cycle_type != 'skip' and updated_cycle_type in cycle_type_options:
         cycle_type = updated_cycle_type
+    else:
+        print(Fore.RED + "Invalid input. Cycle Type not updated." + Fore.RESET)
 
     # Get the updated cycle lengths for irregular cycles
     updated_cycle_lengths = input(
         f"Cycle Lengths (if irregular) ({cycle_lengths}): "
     ).strip()
     if updated_cycle_lengths.lower() != 'skip':
-        cycle_lengths = updated_cycle_lengths
+        cycle_lengths_list = updated_cycle_lengths.split(",")
+        try:
+            cycle_lengths = [int(cycle.strip()) for cycle in cycle_lengths_list]
+        except ValueError:
+            print(Fore.RED + "Invalid input. Cycle Lengths (if irregular) not updated." + Fore.RESET)
 
     # Get the updated symptoms/additional information
-    updated_symptoms = input(
-        f"Symptoms/Additional Information ({symptoms}): "
-    ).strip()
-    if updated_symptoms.lower() != 'skip':
-        symptoms = updated_symptoms
+    available_symptoms = [
+        "Cramps", "Headache", "Mood Swings", "Fatigue", "Bloating", "Acne",
+        "Breast Tenderness", "Food Cravings", "Nausea", "Insomnia", "Anxiety",
+        "Hot Flashes", "Dizziness"
+    ]
+
+    # Description for available symptoms
+    symptoms_description = wrap_text(
+        f"{Fore.GREEN}Here are the list of symptoms available, type all that apply separated by comma:"
+    )
+    print(symptoms_description)
+
+    # Display the available symptoms in a table-like format
+    symptoms_table = PrettyTable(["Available Symptoms"])
+    symptoms_table.max_width["Available Symptoms"] = 40  # Set the maximum width for the table
+    for symptom in available_symptoms:
+        symptoms_table.add_row([wrap_text(symptom)])
+    print(symptoms_table)
+
+    # Convert all symptom names to lowercase for case-insensitive comparison
+    available_symptoms_lower = [symptom.lower() for symptom in available_symptoms]
+
+    # Prompt the user to update symptoms
+    while True:
+        updated_symptoms = input(
+            f"Symptoms/Additional Information ({wrap_text(symptoms)}): "
+        ).strip().lower()  # Convert input to lowercase
+
+        if updated_symptoms == 'skip':
+            break
+
+        if not updated_symptoms:  # If the user presses Enter without entering anything
+            print(Fore.RED + "Invalid input. Symptoms/Additional Information not updated." + Fore.RESET)
+            print()
+            clear()
+            break
+
+        # Split the input into a list of symptoms
+        updated_symptoms_list = [symptom.strip() for symptom in updated_symptoms.split(",")]
+
+        # Check if all entered symptoms are valid
+        if all(symptom in available_symptoms_lower for symptom in updated_symptoms_list):
+            # Find the corresponding symptoms in the original case and update the 'symptoms' variable
+            symptoms = ", ".join([next(symptom for symptom in available_symptoms if symptom.lower() == s) for s in updated_symptoms_list])
+            break
+        else:
+            print(Fore.RED + "Invalid input. Please enter valid symptoms from the list." + Fore.RESET)
+
+    # Display the processing animation
+    print()
+    animate_processing()
+    print()
 
     # Update the Google Sheets with the new data
     update_google_sheets(user_email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms)
 
-     # Animate the "Data updated successfully" message
-    print() 
+    # Animate the "Data updated successfully" message
+    print()
     print(Fore.GREEN, end='')
     success_message = "Data updated successfully."
     animate_text(success_message)
     print()
     print()
+
 
 
 def update_google_sheets(email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms):
@@ -605,13 +689,15 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
             print(wrap_text("No specific recommendations available for this symptom."))
     
-    print()
+        print()
+        
+    # Display the advisory message with the specified color
     advisory_message = (
         "🚨 These recommendations are meant to provide general guidance."
         " For personalized advice, consult with a healthcare professional. 🚨"
     )
-    print(wrap_text(wrap_text(advisory_message, color=Fore.RED)))
-    print()
+    print(Fore.RED + wrap_text(advisory_message) + Fore.RESET)
+    print()    
 
 
 
@@ -667,6 +753,7 @@ def display_exercises_tips():
     print()
 
 
+
 # Function to display the Form Submission Data in a table
 def display_form_submission_data(timestamp, last_period, cycle_length, period_duration,
                                  cycle_type, cycle_lengths, symptoms, email, name, age):
@@ -674,7 +761,7 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.field_names = ["Field", "Value"]
     table.add_row(["Name", name])
     table.add_row(["Age", age])
-    table.add_row(["Email", email])    
+    table.add_row(["Email", email])
     table.add_row(["Last Period Date", last_period.strftime('%d/%m/%Y')])
     table.add_row(["Cycle Length", f"{cycle_length} days"])
     table.add_row(["Period Duration", f"{period_duration} days"])
@@ -682,21 +769,27 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.add_row(["Cycle Lengths (if irregular)", cycle_lengths])
     table.add_row(["Symptoms/Additional Information", symptoms])
 
-
     print(f"\n{Fore.YELLOW}FORM SUBMISSION DATA 🗄️  📝{Fore.RESET}")
     print()
 
     # Description of the Form submission data
     submission_description = wrap_text(
-    f"{Fore.GREEN}Thank you for submitting your data!" 
-    "Your menstrual cycle information is essential for providing personalized insights and tips." 
-    "By tracking your cycle, you can better understand your body and take proactive steps to manage "
-    "your well-being." 
-    "Access the main menu to explore your data, view tips, and receive recommendations tailored to your needs."
+        f"{Fore.GREEN}Thank you for submitting your data! "
+        "Your menstrual cycle information is essential for providing personalized insights and tips. "
+        "By tracking your cycle, you can better understand your body and take proactive steps to manage "
+        "your well-being. "
+        "Access the main menu to explore your data, view tips, and receive recommendations tailored to your needs."
     )
 
     print(submission_description)
     print()
+
+    # Set the max width for each column in the table
+    table_max_width = 70
+    for field in table.field_names:
+        table.max_width[field] = table_max_width
+
+    # Print the table
     print(table)
 
 # Function to display fertile days for the next 6 months
