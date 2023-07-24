@@ -170,6 +170,7 @@ else:
 
 # Get the user's email address and proceed to display options
 user_email = get_user_email()
+clear()
 
 # Fetch the user's data based on the provided email address
 def fetch_user_data(email, expected_columns):
@@ -250,6 +251,17 @@ fertile_end = last_period + datetime.timedelta(days=19)
 
 # Function to display the available options for the user to choose from
 def print_options():
+    # Initialize colorama
+    init(autoreset=True)
+
+    # Description guiding the user
+    description = (
+        "Please choose an option by entering the corresponding number below:"
+    )
+    print(f"{Fore.YELLOW}{description}{Fore.RESET}")
+    print()
+
+    # Create the table with available options
     table = prettytable.PrettyTable()
     table.field_names = ["Option", "Description"]
     table.add_row(["1", "Health Tips"])
@@ -257,9 +269,7 @@ def print_options():
     table.add_row(["3", "Fertile Days"])
     table.add_row(["4", "Next Period Date"])
     table.add_row(["5", "Personalized Recommendations"])
-    table.add_row(
-        ["6", "Exercises Tips"]
-    )  # Add "Exercises Tips" option
+    table.add_row(["6", "Exercises Tips"])
     table.add_row(["7", "Quit the application"])
 
     # Set the table text color to red using colorama
@@ -634,6 +644,7 @@ while True:
     print_options()
 
     # Get the user's choice
+    print()
     choice = input("Enter your choice: ")
 
     # Process the user's choice and execute the corresponding action
