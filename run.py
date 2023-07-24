@@ -369,8 +369,20 @@ def display_health_tips():
         tips[12] = "Talk to your healthcare provider to rule out any underlying health issues."
         tips[13] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
 
+    # Create a table with two columns: Tip Number and Tip Text
+    table = PrettyTable()
+    table.field_names = ["Tip Number", "Tip Text"]
+
+    # Set the maximum width for the Tip Text column
+    table.max_width["Tip Text"] = 60
+
+    # Add each tip to the table
     for tip_number, tip_text in tips.items():
-        print(f"{tip_number}. {tip_text}")
+        table.add_row([tip_number, wrap_text(tip_text)])
+
+    # Print the table
+    print(table)
+
 
 
 # Function to display personalized recommendations in a table
