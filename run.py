@@ -8,6 +8,7 @@ import gspread
 import textwrap
 from google.oauth2.service_account import Credentials
 from time import sleep
+from datetime import timedelta
 from prettytable import PrettyTable
 
 # Set up Google Sheets credentials and scope
@@ -541,19 +542,31 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     print("\nForm Submission Data:")
     print(table)
 
-# Function to display fertile days
+# Function to display fertile days for the next 6 months
 def display_fertile_days(fertile_start, fertile_end):
-    print("\nFertile Days:")
-    table = PrettyTable(["Start Date", "End Date"])
-    table.add_row([fertile_start.strftime('%d/%m/%Y'), fertile_end.strftime('%d/%m/%Y')])
+    print("\nFertile Days for the Next 6 Months:")
+    table = PrettyTable(["Month", "Fertile Start Date", "Fertile End Date"])
+    for _ in range(6):
+        table.add_row([
+            fertile_start.strftime('%B %Y'),
+            fertile_start.strftime('%d/%m/%Y'),
+            fertile_end.strftime('%d/%m/%Y')
+        ])
+        fertile_start += timedelta(days=28)
+        fertile_end += timedelta(days=28)
     print(table)
 
-# Function to display the calculated next period date
+# Function to display the calculated next period date for the next 6 months
 def display_next_period_date(next_period):
-    print("\nNext Period Date:")
-    table = PrettyTable(["Date"])
-    table.add_row([next_period.strftime('%d/%m/%Y')])
-    print(table)    
+    print("\nNext Period Dates for the Next 6 Months:")
+    table = PrettyTable(["Month", "Next Period Date"])
+    for _ in range(6):
+        table.add_row([
+            next_period.strftime('%B %Y'),
+            next_period.strftime('%d/%m/%Y')
+        ])
+        next_period += timedelta(days=28)
+    print(table)
 
 
 # Main loop of the application
