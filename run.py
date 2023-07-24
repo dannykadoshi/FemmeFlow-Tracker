@@ -177,19 +177,26 @@ if response == 'yes':
     open_google_form()
     input("Press Enter when you have submitted the data in the Google Form...")
 else:
-    print("You chose not to enter your information in the Google Form.")
-    print("For FemmeFlow Tracker to work, it requires your menstrual cycle data.")
-    reconsider_response = input("Would you like to reconsider and open the Google Form now? (yes/no)").strip().lower()
+    animate_text("You chose not to enter your information in the Google Form.")
+    print()
+    print()
+    animate_text("For FemmeFlow Tracker to work, it requires your menstrual cycle data.")
+    print()
+    print()
+    reconsider_response = input("Would you like to reconsider and open the Google Form now? (yes/no)  ").strip().lower()
+    clear()
 
     while reconsider_response not in ['yes', 'no']:
         print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
         reconsider_response = input().strip().lower()
 
     if reconsider_response == 'yes':
+        print()
         open_google_form()
         input("Press Enter when you have submitted the data in the Google Form...")
     elif reconsider_response == 'no':
         print("Thank you for using FemmeFlow Tracker! Have a great day!")
+        print()
         exit()  # Exit the application
 
 # Get the user's email address and proceed to display options
@@ -364,8 +371,13 @@ def update_data():
     # Update the Google Sheets with the new data
     update_google_sheets(user_email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms)
 
-
-    print("Data updated successfully.")
+     # Animate the "Data updated successfully" message
+    print() 
+    print(Fore.GREEN, end='')
+    success_message = "Data updated successfully."
+    animate_text(success_message)
+    print()
+    print()
 
 
 def update_google_sheets(email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms):
@@ -708,6 +720,7 @@ while True:
         print("Choosing 'no' will keep your current data unchanged.")
         print("If no changes are necessary choose 'no' to move on")
         print("\nWould you like to update your data? ('yes' / 'no')")
+        print()
         update_choice = input().strip().lower()
 
         if update_choice == 'yes':
