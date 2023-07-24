@@ -6,6 +6,9 @@ import os
 import prettytable
 import gspread
 import textwrap
+import cursor
+import sys
+import time
 from google.oauth2.service_account import Credentials
 from time import sleep
 from datetime import timedelta
@@ -26,24 +29,32 @@ SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 responses = SHEET.worksheet('responses')
 
 
+def animate_text(message, delay=0.05):
+    """
+    Prints the passed string to the console, simulating a typewriter.
+    """
+    for char in message:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+
+
 def wrap_text(text, width=75, color=None):
     if isinstance(text, list):
         wrapped_list = []
         for item in text:
             if isinstance(item, str):
+                wrapped_text = textwrap.fill(item, width=width)
                 if color:
-                    wrapped_list.append(f"{color}{textwrap.fill(item, width=width)}{Fore.RESET}")
-                else:
-                    wrapped_list.extend(textwrap.wrap(item, width=width))
+                    wrapped_text = f"{color}{wrapped_text}{Fore.RESET}"
+                wrapped_list.append(wrapped_text)
             else:
                 wrapped_list.append(str(item))
         return wrapped_list
     else:
+        wrapped_text = textwrap.fill(text, width=width)
         if color:
-            return f"{color}{text}{Fore.RESET}"
-        else:
-            return textwrap.fill(text, width=width)
-
+            wrapped_text = f"{color}{wrapped_text}{Fore.RESET}"
+        return wrapped_text
 
 
 # Function to clear the screen based on the operating system
@@ -102,17 +113,20 @@ def introduction():
     display_name()
     display_welcome_message()
     print()
-    print(
-        wrap_text("This application allows you to track your menstrual cycle and "
-                  "predict your next period date. "
-                  "You can enter your menstrual cycle data in the Google Form, "
-                  "and we'll calculate the next period date for you. "
-                )
-    )
-    print()
-    print("Let's get started! 🚀")
-    print()
 
+    wrapped_text = wrap_text("This application allows you to track your menstrual cycle and "
+                             "predict your next period date. "
+                             "You can enter your menstrual cycle data in the Google Form, "
+                             "and we'll calculate the next period date for you.", color=Fore.GREEN)
+
+    for line in wrapped_text:
+        animate_text(line)
+
+    print()
+    print()
+    animate_text("Let's get started! 🚀")
+    print()
+    print()
 
 # Call the introduction function
 introduction()
@@ -654,6 +668,7 @@ def display_next_period_date(next_period):
 # Function to clear the screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 # Main loop of the application
 while True:
