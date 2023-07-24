@@ -363,7 +363,6 @@ def calculate_dates_and_recommendations():
 # Function to display health tips
 def display_health_tips():
     print("\nHealth Tips 🌟")
-    print()
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
@@ -395,6 +394,7 @@ def display_health_tips():
 
     # Print the table
     print(table)
+    print()
 
 
 
@@ -597,7 +597,6 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.add_row(["Age", age])
 
     print("\nForm Submission Data 🗄️  📝")
-    print()
     print(table)
 
 # Function to display fertile days for the next 6 months
@@ -626,6 +625,7 @@ def display_next_period_date(next_period):
         ])
         next_period += timedelta(days=28)
     print(table)
+    print()
 
 
 # Main loop of the application
