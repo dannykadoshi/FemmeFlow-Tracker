@@ -410,23 +410,32 @@ def calculate_dates_and_recommendations():
 # Function to display health tips
 def display_health_tips():
     print(f"\n{Fore.YELLOW}HEALTH TIPS 🌟{Fore.RESET}")
+    print()
+
+    # Description of the tips
+    description = wrap_text(
+        f"{Fore.GREEN}Taking care of your health during your menstrual cycle is essential. "
+        "Follow these tips to improve your well-being and make your period more manageable. "
+        "Explore personalized recommendations in the main menu to discover more insights related to the data you've provided."
+    )
+    print(description)
+    print()
+
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
         3: "Ensure you get enough sleep and rest during your menstrual cycle.",
-        4: "Consider using a menstrual tracking app to keep track of your cycles and symptoms.",
-        5: "Manage stress through relaxation techniques like meditation or deep breathing.",
-        6: "Limit caffeine and alcohol intake, as they can affect your menstrual cycle.",
-        7: "Avoid smoking and exposure to secondhand smoke for better reproductive health.",
-        8: "Engage in activities that bring you joy and help you relax.",
-        9: "Consider taking supplements like iron and calcium to support your health.",
-        10: "Listen to your body and take breaks when needed, especially during your period.",
+        4: "Manage stress through relaxation techniques like meditation or deep breathing.",
+        5: "Limit caffeine and alcohol intake, as they can affect your menstrual cycle.",
+        6: "Avoid smoking and exposure to secondhand smoke for better reproductive health.",
+        7: "Consider taking supplements like iron and calcium to support your health.",
+        8: "Listen to your body and take breaks when needed, especially during your period.",
     }
 
     if cycle_type.lower() == 'irregular':
-        tips[11] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
-        tips[12] = "Talk to your healthcare provider to rule out any underlying health issues."
-        tips[13] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
+        tips[9] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
+        tips[10] = "Talk to your healthcare provider to rule out any underlying health issues."
+        tips[11] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
 
     # Create a table with two columns: Tip Number and Tip Text
     table = PrettyTable()
@@ -641,23 +650,49 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
                                  cycle_type, cycle_lengths, symptoms, email, name, age):
     table = PrettyTable()
     table.field_names = ["Field", "Value"]
-    table.add_row(["Timestamp", timestamp])
+    table.add_row(["Name", name])
+    table.add_row(["Age", age])
+    table.add_row(["Email", email])    
     table.add_row(["Last Period Date", last_period.strftime('%d/%m/%Y')])
     table.add_row(["Cycle Length", f"{cycle_length} days"])
     table.add_row(["Period Duration", f"{period_duration} days"])
     table.add_row(["Cycle Type", cycle_type])
     table.add_row(["Cycle Lengths (if irregular)", cycle_lengths])
     table.add_row(["Symptoms/Additional Information", symptoms])
-    table.add_row(["Email", email])
-    table.add_row(["Name", name])
-    table.add_row(["Age", age])
+
 
     print(f"\n{Fore.YELLOW}FORM SUBMISSION DATA 🗄️  📝{Fore.RESET}")
+    print()
+
+    # Description of the Form submission data
+    submission_description = wrap_text(
+    f"{Fore.GREEN}Thank you for submitting your data!" 
+    "Your menstrual cycle information is essential for providing personalized insights and tips." 
+    "By tracking your cycle, you can better understand your body and take proactive steps to manage "
+    "your well-being." 
+    "Access the main menu to explore your data, view tips, and receive recommendations tailored to your needs."
+    )
+
+    print(submission_description)
+    print()
     print(table)
 
 # Function to display fertile days for the next 6 months
 def display_fertile_days(fertile_start, fertile_end):
     print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
+    print()
+    
+    # Description for the fertile days function
+    fertile_description = wrap_text(
+        f"{Fore.GREEN}Knowing your fertile days can be helpful if you're planning a pregnancy "
+        "or want to be aware of when you are most likely to conceive." 
+        "These are the projected fertile days for the next 6 months based on your menstrual cycle data."
+        f"{Fore.RESET}"
+    )
+
+    print(fertile_description)
+    print()
+
     table = PrettyTable(["Month", "Fertile Start Date", "Fertile End Date"])
     for _ in range(6):
         table.add_row([
