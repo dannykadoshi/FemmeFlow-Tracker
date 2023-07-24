@@ -362,7 +362,7 @@ def calculate_dates_and_recommendations():
 
 # Function to display health tips
 def display_health_tips():
-    print("\nHealth Tips:")
+    print("\nHealth Tips 🌟")
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
@@ -419,9 +419,9 @@ def display_recommendations_table(symptom, tips):
 #Function to define Personalized recommendations based on the User data
 def personalized_recommendations(cycle_length, period_duration, symptoms):
     intro_message = (
-        "\033[91mBased on your menstrual cycle data and symptoms,"
+        "Based on your menstrual cycle data and symptoms,"
         " we have some personalized recommendations to help you stay healthy"
-        " and comfortable during your period:\033[0m"
+        " and comfortable during your period:"
     )
     print(wrap_text(intro_message))
 
@@ -566,12 +566,12 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.add_row(["Name", name])
     table.add_row(["Age", age])
 
-    print("\nForm Submission Data:")
+    print("\nForm Submission Data 🗄️  📝")
     print(table)
 
 # Function to display fertile days for the next 6 months
 def display_fertile_days(fertile_start, fertile_end):
-    print("\nFertile Days for the Next 6 Months:")
+    print("\nFertile Days for the Next 6 Months 📆  🌼")
     table = PrettyTable(["Month", "Fertile Start Date", "Fertile End Date"])
     for _ in range(6):
         table.add_row([
@@ -585,7 +585,7 @@ def display_fertile_days(fertile_start, fertile_end):
 
 # Function to display the calculated next period date for the next 6 months
 def display_next_period_date(next_period):
-    print("\nNext Period Dates for the Next 6 Months:")
+    print("\nNext Period Dates for the Next 6 Months 📅  🌺")
     table = PrettyTable(["Month", "Next Period Date"])
     for _ in range(6):
         table.add_row([
