@@ -522,6 +522,26 @@ def display_exercises_tips():
         print(f"{i}. {exercise}")
 
 
+# Function to display the Form Submission Data in a table
+def display_form_submission_data(timestamp, last_period, cycle_length, period_duration,
+                                 cycle_type, cycle_lengths, symptoms, email, name, age):
+    table = PrettyTable()
+    table.field_names = ["Field", "Value"]
+    table.add_row(["Timestamp", timestamp])
+    table.add_row(["Last Period Date", last_period.strftime('%d/%m/%Y')])
+    table.add_row(["Cycle Length", f"{cycle_length} days"])
+    table.add_row(["Period Duration", f"{period_duration} days"])
+    table.add_row(["Cycle Type", cycle_type])
+    table.add_row(["Cycle Lengths (if irregular)", cycle_lengths])
+    table.add_row(["Symptoms/Additional Information", symptoms])
+    table.add_row(["Email", email])
+    table.add_row(["Name", name])
+    table.add_row(["Age", age])
+
+    print("\nForm Submission Data:")
+    print(table)
+
+
 # Main loop of the application
 while True:
     # Print the options table for the user to choose from
@@ -535,18 +555,10 @@ while True:
         display_health_tips()
     elif choice == "2":
         # Print the fetched data and calculated dates
-        print("\nForm Submission Data:")
-        print(f"Timestamp: {timestamp}")
-        print(f"Last Period Date: {last_period.strftime('%d/%m/%Y')}")
-        print(f"Cycle Length: {cycle_length} days")
-        print(f"Period Duration: {period_duration} days")
-        print(f"Cycle Type: {cycle_type}")
-        print(f"Cycle Lengths (if irregular): {cycle_lengths}")
-        print(f"Symptoms/Additional Information: {symptoms}")
-        print(f"Email: {email}")
-        print(f"Name: {name}")
-        print(f"Age: {age}")
-
+        display_form_submission_data(
+            timestamp, last_period, cycle_length, period_duration, cycle_type,
+            cycle_lengths, symptoms, email, name, age
+        )
         # Offer the option to update the data
         print("\nWould you like to update your data? (yes/no)")
         update_choice = input().strip().lower()
