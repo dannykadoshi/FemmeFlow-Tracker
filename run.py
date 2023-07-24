@@ -363,6 +363,7 @@ def calculate_dates_and_recommendations():
 # Function to display health tips
 def display_health_tips():
     print("\nHealth Tips 🌟")
+    print()
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
@@ -529,25 +530,54 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
 
 # Function to display exercises tips
 def display_exercises_tips():
-    print("\nExercises Tips:")
-    print("""
-    Regular physical activity can help reduce menstrual cramps,
-    improve mood, and promote overall well-being during your menstrual cycle.
-    Here are some exercises that you can try
-    to alleviate discomfort and boost your mood:
-    """)
+    print("\nExercises Tips 🚴‍♀️ 🏃‍♀️ 🧘‍♀️")
+    print()
+    exercise_description = wrap_text(
+        "Regular physical activity can help reduce menstrual cramps, "
+        "improve mood, and promote overall well-being during your menstrual cycle. "
+        "Here are some exercises that you can try to alleviate discomfort and boost your mood."
+    )
+
+    print(exercise_description)
+
 
     # List of exercises to reduce cramps and improve mood
-    exercises = [
+    cramp_exercises = [
         "Yoga: Child's Pose",
-        "Walking or Jogging",
-        "Biking",
-        "Swimming",
-        "Dancing",
         "Pilates",
+        "Walking or Jogging",
+        "Cycling",
+        "Swimming",
     ]
-    for i, exercise in enumerate(exercises, start=1):
-        print(f"{i}. {exercise}")
+
+    mood_exercises = [
+        "Dancing",
+        "Hiking",
+        "Aerobics",
+        "Jump Rope",
+        "Tai Chi",
+        "Zumba",
+    ]
+
+    # Create a table for cramp exercises
+    cramp_table = PrettyTable()
+    cramp_table.field_names = ["Cramp-Reducing Exercises"]
+    for i, exercise in enumerate(cramp_exercises, start=1):
+        cramp_table.add_row([f"{i}. {exercise}"])
+
+    # Create a table for mood-improving exercises
+    mood_table = PrettyTable()
+    mood_table.field_names = ["Mood-Improving Exercises"]
+    for i, exercise in enumerate(mood_exercises, start=1):
+        mood_table.add_row([f"{i}. {exercise}"])
+
+    # Print the tables
+    print()
+    print(cramp_table)
+
+    print()
+    print(mood_table)
+    print()
 
 
 # Function to display the Form Submission Data in a table
@@ -567,6 +597,7 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     table.add_row(["Age", age])
 
     print("\nForm Submission Data 🗄️  📝")
+    print()
     print(table)
 
 # Function to display fertile days for the next 6 months
@@ -582,6 +613,7 @@ def display_fertile_days(fertile_start, fertile_end):
         fertile_start += timedelta(days=28)
         fertile_end += timedelta(days=28)
     print(table)
+    print()
 
 # Function to display the calculated next period date for the next 6 months
 def display_next_period_date(next_period):
