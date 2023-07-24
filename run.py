@@ -131,16 +131,16 @@ def introduction():
 # Call the introduction function
 introduction()
 
-# Open google form in the browser
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
-    animate_text(wrap_text(
+
+    print(wrap_text(
         "Google Form opened in your web browser. "
-        "Please enter your information there. "
+        "Please enter your information there."
     ))
     print()
-    animate_text(wrap_text(
+    print(wrap_text(
         "After entering the information, "
         "you can come back to this terminal to see "
         "the calculated next period date."
@@ -681,7 +681,7 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
 def display_fertile_days(fertile_start, fertile_end):
     print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
     print()
-    
+
     # Description for the fertile days function
     fertile_description = wrap_text(
         f"{Fore.GREEN}Knowing your fertile days can be helpful if you're planning a pregnancy "
