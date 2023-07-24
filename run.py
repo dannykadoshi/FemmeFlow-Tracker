@@ -135,29 +135,35 @@ introduction()
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
-    print(wrap_text(
+    animate_text(wrap_text(
         "Google Form opened in your web browser. "
         "Please enter your information there. "
     ))
     print()
-    print(wrap_text(
+    animate_text(wrap_text(
         "After entering the information, "
         "you can come back to this terminal to see "
         "the calculated next period date."
     ))
     print()
+    print()
 
 # Get the email address used in the Google Form
 def get_user_email():
-    print("\nIf you have filled in the form, please enter the email address used:")
+    animate_text("\nIf you have filled in the form, please enter the email address used:  ")
+    print()
+    print()
+    print(Fore.GREEN, end='')
     user_email = input().strip().lower()
     while not user_email:
-        print(Fore.RED + "Please enter a valid email address." + Fore.RESET)
+        animate_text(Fore.RED + "Please enter a valid email address." + Fore.RESET)
         user_email = input().strip().lower()
     return user_email
 
 # Prompt the user with an option to open the Google Form
-print("Would you like to enter your information in the Google Form? (yes/no)")
+animate_text("Would you like to enter your information in the Google Form? (yes/no)")
+print()
+print()
 response = input().strip().lower()
 clear()
 
@@ -231,6 +237,7 @@ while not user_data:
         Fore.RED + "User data not found for the provided email address." + Fore.RESET
     )
     print("Do you want to try entering the correct email address again? (yes/no)")
+    print()
     retry_response = input().strip().lower()
 
     while retry_response not in ['yes', 'no']:
