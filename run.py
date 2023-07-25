@@ -114,6 +114,10 @@ def center_logo(logo_lines, width):
         centered_logo.append(centered_line)
     return '\n'.join(centered_logo)
 
+
+user_name = None  # Initialize the user_name as None
+
+
 # Function to display the welcome message in red and bigger
 def display_welcome_message():
     welcome_message = "🌺 WELCOME TO FEMMEFLOW TRACKER! 🌺"
@@ -140,13 +144,16 @@ def introduction():
     print()
     print()
 
+    global user_name
+
     # Ask for the user's name
     while True:
         user_name = input("Please enter your name: ").strip()
         if user_name:
             break
         else:
-            print(Fore.RED + "Error: A name needs to be entered." + Fore.RESET)
+            print(Fore.RED + "Error: Your name is required to continue" + Fore.RESET)
+
 
     # Continue with the rest of the introduction
     print()
@@ -161,6 +168,8 @@ def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
 
+    print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
+    print()
     print(wrap_text(
         "Google Form opened in your web browser. "
         "Please enter your information there."
@@ -168,16 +177,15 @@ def open_google_form():
     print()
     print(wrap_text(
         "After entering the information, "
-        "you can come back to this terminal to see "
-        "the calculated next period date."
+        "you can come back here to access "
+        "your data and all features of this application"
     ))
     print()
     print()
 
 # Get the email address used in the Google Form
 def get_user_email():
-    animate_text("\nIf you have filled in the form, please enter the email address used:  ")
-    print()
+    print(f"{Fore.YELLOW}{user_name}, if you have filled in the google form, please enter the email address used:{Fore.RESET}")
     print()
     print(Fore.GREEN, end='')
     user_email = input().strip().lower()
@@ -187,7 +195,7 @@ def get_user_email():
     return user_email
 
 # Prompt the user with an option to open the Google Form
-animate_text("Would you like to enter your information in the Google Form? (yes/no)")
+print(f"{Fore.YELLOW}{user_name}, would you like to enter your information in the Google Form? (yes/no){Fore.RESET}")
 print()
 print()
 response = input().strip().lower()
@@ -202,6 +210,7 @@ while response not in ['yes', 'no']:
 if response == 'yes':
     open_google_form()
     input("Press Enter when you have submitted the data in the Google Form...")
+    clear()
 else:
     animate_text("You chose not to enter your information in the Google Form.")
     print()
@@ -272,6 +281,7 @@ while not user_data:
     print("Do you want to try entering the correct email address again? (yes/no)")
     print()
     retry_response = input().strip().lower()
+    print()
 
     while retry_response not in ['yes', 'no']:
         print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
@@ -314,9 +324,10 @@ def print_options():
 
     # Description guiding the user
     description = (
-        "Please choose an option by entering the corresponding number"
+        "please choose an option by entering the corresponding number"
     )
-    print(f"{Fore.YELLOW}{description}{Fore.RESET}")
+    print()
+    print(f"{Fore.YELLOW}{user_name}, {description}{Fore.RESET}")
     print()
 
     # Create the table with available options
