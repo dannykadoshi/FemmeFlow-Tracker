@@ -120,25 +120,36 @@ def display_welcome_message():
     red_welcome_message = f"{Fore.RED}{welcome_message}{Fore.RESET}"
     print(red_welcome_message)
 
-# Introduction page for the application
 def introduction():
     display_name()
     display_welcome_message()
     print()
 
-    wrapped_text = wrap_text("This application allows you to track your menstrual cycle and "
-                             "predict your next period date. "
-                             "You can enter your menstrual cycle data in the Google Form, "
-                             "and we'll calculate the next period date for you.", color=Fore.GREEN)
+    wrapped_text = wrap_text("Welcome to FemmeFlow Tracker! 🌸🌺", color=Fore.GREEN)
+    for line in wrapped_text:
+        animate_text(line)
+
+    print()
+    print()
+
+    wrapped_text = wrap_text("FemmeFlow Tracker is a comprehensive tool designed to help you "
+                             "understand and manage your menstrual health with ease. "
+                             "Whether you want to track your menstrual cycle, predict your "
+                             "next period date, receive personalized recommendations, "
+                             "or access valuable health tips, this application has got you covered! "
+                             "Empower yourself with valuable insights about your body and well-being "
+                             "throughout your menstrual journey.", color=Fore.GREEN)
 
     for line in wrapped_text:
         animate_text(line)
 
     print()
     print()
+
     animate_text("Let's get started! 🚀")
     print()
     print()
+
 
 # Call the introduction function
 introduction()
@@ -334,7 +345,7 @@ def animate_processing():
     processing_symbols = "|/-\\"
     for i in range(10):
         time.sleep(0.1)
-        print(f"\rProcessing... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
+        print(f"\rProcessing data... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
 
 # Function to wrap text and handle text formatting
 def wrap_text(text, width=70):
