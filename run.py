@@ -125,23 +125,13 @@ def introduction():
     display_welcome_message()
     print()
 
-    wrapped_text = wrap_text("Welcome to FemmeFlow Tracker! 🌸🌺", color=Fore.GREEN)
-    for line in wrapped_text:
-        animate_text(line)
-
-    print()
-    print()
-
-    wrapped_text = wrap_text("FemmeFlow Tracker is a comprehensive tool designed to help you "
-                             "understand and manage your menstrual health with ease. "
-                             "Whether you want to track your menstrual cycle, predict your "
-                             "next period date, receive personalized recommendations, "
-                             "or access valuable health tips, this application has got you covered! "
-                             "Empower yourself with valuable insights about your body and well-being "
-                             "throughout your menstrual journey.", color=Fore.GREEN)
-
-    for line in wrapped_text:
-        animate_text(line)
+    print(wrap_text("FemmeFlow Tracker is a comprehensive tool designed to help you "
+                    "understand and manage your menstrual health with ease. "
+                    "Whether you want to track your menstrual cycle, predict your "
+                    "next period date, receive personalized recommendations, "
+                    "or access valuable health tips, this application has got you covered! "
+                    "Empower yourself with valuable insights about your body and well-being "
+                    "throughout your menstrual journey.", color=Fore.GREEN))
 
     print()
     print()
