@@ -140,9 +140,22 @@ def introduction():
     print()
     print()
 
+    # Ask for the user's name
+    while True:
+        user_name = input("Please enter your name: ").strip()
+        if user_name:
+            break
+        else:
+            print(Fore.RED + "Error: A name needs to be entered." + Fore.RESET)
+
+    # Continue with the rest of the introduction
+    print()
+    print()
+
 
 # Call the introduction function
 introduction()
+
 
 def open_google_form():
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
