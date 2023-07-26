@@ -185,7 +185,8 @@ def open_google_form():
 
 # Get the email address used in the Google Form
 def get_user_email():
-    print(f"{Fore.YELLOW}{user_name}, if you have filled in the google form, please enter the email address used:{Fore.RESET}")
+    print(f"{Fore.YELLOW}{user_name},{Fore.RESET}")
+    print(f"{Fore.YELLOW}If you have filled in the google form, please enter the email address used:{Fore.RESET}")
     print()
     print(Fore.GREEN, end='')
     user_email = input().strip().lower()
@@ -195,6 +196,8 @@ def get_user_email():
     return user_email
 
 # Prompt the user with an option to open the Google Form
+print(f"{Fore.RED}To use this application, kindly complete a form providing essential information.{Fore.RESET}")
+print()
 print(f"{Fore.YELLOW}{user_name}, would you like to enter your information in the Google Form? (yes/no){Fore.RESET}")
 print()
 print()
@@ -209,7 +212,7 @@ while response not in ['yes', 'no']:
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-    input("Press Enter when you have submitted the data in the Google Form...")
+    print(f"{Fore.YELLOW}Press Enter when you have submitted the data in the Google Form...{Fore.RESET}")
     clear()
 else:
     animate_text("You chose not to enter your information in the Google Form.")
@@ -366,22 +369,35 @@ def wrap_text(text, width=70):
     wrapped_text = textwrap.fill(text, width=width)
     return wrapped_text
 
+
 # Function to update user data in the terminal
 def update_data():
     global last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms
 
-    print("\nUpdate Data:")
-    print("Enter 'skip' for any field you want to leave unchanged.")
+    print(f"{Fore.YELLOW}UPDATE DATA 🗃{Fore.RESET}")
+    print()
+    print(f"{Fore.GREEN}Please enter the new details below, and your data will be updated in our systems.{Fore.RESET}")
+    print()
+
 
     # Get the updated last period date
-    updated_last_period = input(
-        f"Last Period Date ({last_period.strftime('%d/%m/%Y')}): "
-    ).strip()
-    if updated_last_period.lower() != 'skip':
-        try:
-            last_period = parse(updated_last_period).date()
-        except ValueError:
-            print(Fore.RED + "Invalid date format. Last Period Date not updated." + Fore.RESET)
+    while True:
+        updated_last_period = input(
+            f"Last Period Date ({last_period.strftime('%d/%m/%Y')}): "
+        ).strip()
+
+        if updated_last_period.lower() == 'skip':
+            break
+        elif updated_last_period == '':
+            print(Fore.RED + "Invalid input. Last Period date not updated." + Fore.RESET)
+            break
+        else:
+            try:
+                last_period = datetime.datetime.strptime(updated_last_period, '%d/%m/%Y').date()
+                break
+            except ValueError:
+                print(Fore.RED + "Invalid date format. Please enter the date in the format dd/mm/yyyy." + Fore.RESET)
+
 
     # Get the updated cycle length
     updated_cycle_length = input(
@@ -452,6 +468,7 @@ def update_data():
         updated_symptoms = input(
             f"Symptoms/Additional Information ({wrap_text(symptoms)}): "
         ).strip().lower()  # Convert input to lowercase
+        clear()
 
         if updated_symptoms == 'skip':
             break
@@ -803,7 +820,6 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
         "Your menstrual cycle information is essential for providing personalized insights and tips. "
         "By tracking your cycle, you can better understand your body and take proactive steps to manage "
         "your well-being. "
-        "Access the main menu to explore your data, view tips, and receive recommendations tailored to your needs."
     )
 
     print(submission_description)
@@ -909,12 +925,19 @@ while True:
         # Offer the option to update the data
         print(f"\n{Fore.RED}❗❗ DISCLAIMER ❗❗{Fore.RESET}")
         print()
+
+        text = f"{Fore.RED}Only update it, if there are any inaccuracies or if any changes have occurred since your last access.{Fore.RESET}"
+        wrapped_text = wrap_text(text)
+        print(wrapped_text)
+
+        print()
         print("Choosing 'yes' will update your data with the new information you provide.")
         print("Choosing 'no' will keep your current data unchanged.")
         print("If no changes are necessary choose 'no' to move on")
         print("\nWould you like to update your data? ('yes' / 'no')")
         print()
         update_choice = input().strip().lower()
+        clear()
 
         if update_choice == 'yes':
             update_data()
