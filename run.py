@@ -73,6 +73,7 @@ def wrap_text(text, width=70, color=None):
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 # Function to display the application name in big ASCII art with animation
 def display_name():
     name = "FemmeFlow Tracker"
@@ -99,10 +100,9 @@ def display_name():
         print(Fore.RED + line.center(terminal_width) + Fore.RESET)
         sleep(0.2)  
 
-    # Animation step 4: Sleep for 2 seconds and Clear the screen
-    sleep(2)
+    # Animation step 4: Sleep for 1.5 seconds and Clear the screen
+    sleep(1.5)
     clear()
-
 
     # Clear the screen again
     clear()
@@ -123,7 +123,8 @@ user_name = None  # Initialize the user_name as None
 def display_welcome_message():
     welcome_message = "🌺 WELCOME TO FEMMEFLOW TRACKER! 🌺"
     red_welcome_message = f"{Fore.RED}{welcome_message}{Fore.RESET}"
-    print(red_welcome_message)
+    animate_text(red_welcome_message)
+    print()
 
 def introduction():
     display_name()
@@ -150,6 +151,7 @@ def introduction():
     # Ask for the user's name
     while True:
         user_name = input("Please enter your name: ").strip()
+        clear()
         if user_name:
             break
         else:
@@ -187,7 +189,8 @@ def open_google_form():
 # Get the email address used in the Google Form
 def get_user_email():
     print(f"{Fore.YELLOW}{user_name},{Fore.RESET}")
-    print(f"{Fore.YELLOW}If you have filled in the google form, please enter the email address used:{Fore.RESET}")
+    print()
+    print("If you have filled in the google form, please enter the email address used:")
     print()
     print(Fore.GREEN, end='')
     user_email = input().strip().lower()
@@ -196,8 +199,17 @@ def get_user_email():
         user_email = input().strip().lower()
     return user_email
 
+
+def display_prompt_message():
+    prompt_message = "To use this application, kindly complete a form providing essential information."
+    red_prompt_message = f"{Fore.RED}{prompt_message}{Fore.RESET}"
+    animate_text(red_prompt_message)  # Apply animated text effect to the prompt message
+
+
+
 # Prompt the user with an option to open the Google Form
-print(f"{Fore.RED}To use this application, kindly complete a form providing essential information.{Fore.RESET}")
+display_prompt_message()
+print()
 print()
 print(f"{Fore.YELLOW}{user_name}, would you like to enter your information in the Google Form? (yes/no){Fore.RESET}")
 print()
@@ -214,6 +226,7 @@ while response not in ['yes', 'no']:
 if response == 'yes':
     open_google_form()
     print(f"{Fore.YELLOW}Press Enter when you have submitted the data in the Google Form...{Fore.RESET}")
+    input()  # Wait for the user to press Enter
     clear()
 else:
     animate_text("You chose not to enter your information in the Google Form.")
@@ -234,13 +247,20 @@ else:
         open_google_form()
         input("Press Enter when you have submitted the data in the Google Form...")
     elif reconsider_response == 'no':
-        print("Thank you for using FemmeFlow Tracker! Have a great day!")
+        print()
+        print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
+        print()
+        print(f"{Fore.GREEN}Thank you for accessing FemmeFlow Tracker!{Fore.RESET}")
+        print(f"{Fore.GREEN}To unlock all the application functions, data submission is required!{Fore.RESET}")
+        print(f"{Fore.GREEN}If you change your mind, you're welcome to come back at any time.{Fore.RESET}")
+        print(f"{Fore.GREEN}We hope to see you again soon! Have a great day!{Fore.RESET}")
         print()
         exit()  # Exit the application
 
 # Get the user's email address and proceed to display options
 user_email = get_user_email()
 clear()
+
 
 # Fetch the user's data based on the provided email address
 def fetch_user_data(email, expected_columns):
@@ -545,7 +565,6 @@ def display_health_tips():
     description = wrap_text(
         f"{Fore.GREEN}Taking care of your health during your menstrual cycle is essential. "
         "Follow these tips to improve your well-being and make your period more manageable. "
-        "Explore personalized recommendations in the main menu to discover more insights related to the data you've provided."
     )
     print(description)
     print()
@@ -558,20 +577,19 @@ def display_health_tips():
         5: "Limit caffeine and alcohol intake, as they can affect your menstrual cycle.",
         6: "Avoid smoking and exposure to secondhand smoke for better reproductive health.",
         7: "Consider taking supplements like iron and calcium to support your health.",
-        8: "Listen to your body and take breaks when needed, especially during your period.",
     }
 
     if cycle_type.lower() == 'irregular':
-        tips[9] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
-        tips[10] = "Talk to your healthcare provider to rule out any underlying health issues."
-        tips[11] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
+        tips[8] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
+        tips[9] = "Talk to your healthcare provider to rule out any underlying health issues."
+        tips[10] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
 
     # Create a table with two columns: Tip Number and Tip Text
     table = PrettyTable()
     table.field_names = ["Tip Number", "Tip Text"]
 
     # Set the maximum width for the Tip Text column
-    table.max_width["Tip Text"] = 70
+    table.max_width["Tip Text"] = 75
 
     # Add each tip to the table
     for tip_number, tip_text in tips.items():
@@ -958,7 +976,12 @@ while True:
         # Display exercises tips
         display_exercises_tips()
     elif choice == "7":
-        print("Thank you for using FemmeFlow Tracker! Have a great day!")
+        print()
+        print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
+        print()
+        print(f"{Fore.GREEN}Thank you for using FemmeFlow Tracker!{Fore.RESET}")
+        print(f"{Fore.GREEN}We hope to see you again soon! Have a great day!{Fore.RESET}")
+        print()
         break  # Exit the application loop if the user chooses to quit
     else:
         print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
