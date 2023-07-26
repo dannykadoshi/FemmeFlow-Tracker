@@ -99,9 +99,10 @@ def display_name():
         print(Fore.RED + line.center(terminal_width) + Fore.RESET)
         sleep(0.2)  
 
-    # Animation step 4: Clear the screen and sleep for 3 seconds
+    # Animation step 4: Sleep for 2 seconds and Clear the screen
+    sleep(2)
     clear()
-    sleep(1)
+
 
     # Clear the screen again
     clear()
