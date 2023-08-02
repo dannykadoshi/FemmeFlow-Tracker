@@ -736,7 +736,11 @@ def display_health_tips():
     )
     print(description)
     print()
+    input("Press Enter to view tips...\n")
 
+    clear()
+
+    # Tips dictionary
     tips = {
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
