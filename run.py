@@ -1,20 +1,34 @@
+# Module for working with dates and times
 import datetime
+# Module for opening web browsers (Open Google Forms)
 import webbrowser
+# Module for creating ASCII art text
 import pyfiglet
+# Module for terminal text color formatting
 from colorama import init, Fore
+# Module for interacting with the operating system
 import os
+# Module for creating pretty tables in the terminal
 import prettytable
+# Module for working with Google Sheets
 import gspread
+# Module for wrapping text to a specified width
 import textwrap
-import cursor
+# Module for interacting with the Python interpreter
 import sys
+# Module for working with time-related functions
 import time
-import threading
+# Module for Google Sheets authentication
 from google.oauth2.service_account import Credentials
+# Importing the sleep function from time module
 from time import sleep
+# Module for representing time intervals
 from datetime import timedelta
+# Module for creating and formatting tables in the terminal
 from prettytable import PrettyTable
+# Module for parsing date strings
 from dateutil.parser import parse
+
 
 # Set up Google Sheets credentials and scope
 SCOPE = [
@@ -23,34 +37,48 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
 ]
 
+# Load credentials from the service account file and create scoped credentials
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+
+# Authorize the gspread client using the scoped credentials
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+
+# Open the Google Sheets document named 'FemmeFlow Tracker (Responses)'
 SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
 
+# Access the 'responses' worksheet within the Google Sheets document
 responses = SHEET.worksheet('responses')
 
 
-# Function to display a processing animation
 def animate_processing():
+    """
+    This function displays a sequence of processing symbols
+    to simulate an animation while a task is being processed.
+    """
     processing_symbols = "|/-\\"
     for i in range(10):
         time.sleep(0.1)
+        # Print the animation on the same line using carriage return '\r'
         print(f"\rProcessing... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
 
 
-# Function to define animated typewriter text
 def animate_text(message, delay=0.04):
     """
-    Prints the passed string to the console, simulating a typewriter.
+    This function simulates the effect of a typewriter by printing each
+    character of the input message with a specified delay between characters.
     """
     for char in message:
         print(char, end='', flush=True)
         time.sleep(delay)
 
 
-# Function to define wrap_text max-width of 70
 def wrap_text(text, width=70, color=None):
+    """
+    This function wraps the input text to the specified maximum width,
+    breaking the text into multiple lines.
+    If a color is provided, it applies the color to the wrapped text.
+    """
     if isinstance(text, list):
         wrapped_list = []
         for item in text:
@@ -69,13 +97,23 @@ def wrap_text(text, width=70, color=None):
         return wrapped_text
 
 
-# Function to clear the screen based on the operating system
 def clear():
+    """
+    This function clears the terminal screen using the appropriate
+    command based on the operating system.
+    It uses 'cls' command for Windows and 
+    'clear' command for other operating systems.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-# Function to display the application name in big ASCII art with animation
 def display_name():
+    """
+    This function displays the application name "FemmeFlow Tracker"
+    using ASCII art with an animation effect.
+    The ASCII art is generated using the pyfiglet library
+    with the "slant" font style.
+    """
     name = "FemmeFlow Tracker"
     ascii_art = pyfiglet.figlet_format(name, font="slant")
 
@@ -95,7 +133,8 @@ def display_name():
     print(Fore.RED + centered_text + Fore.RESET)
     sleep(2)
 
-    # Animation step 3: Print each line of ASCII art one by one and sleep for 0.2 seconds
+    # Animation step 3: Print each line of ASCII art one by one 
+    # and sleep for 0.2 seconds
     for line in ascii_art.splitlines():
         print(Fore.RED + line.center(terminal_width) + Fore.RESET)
         sleep(0.2)  
@@ -107,8 +146,13 @@ def display_name():
     # Clear the screen again
     clear()
 
-# Function to center the logo
+
 def center_logo(logo_lines, width):
+    """
+    This function takes a list of logo lines and centers each line within
+    the specified width.
+    It returns a single string containing the centered logo.
+    """
     centered_logo = []
     for line in logo_lines:
         centered_line = line.center(width)
@@ -119,14 +163,25 @@ def center_logo(logo_lines, width):
 user_name = None  # Initialize the user_name as None
 
 
-# Function to display the welcome message in red and bigger
 def display_welcome_message():
+    """
+    This function displays the application name "FemmeFlow Tracker"
+    using ASCII art with an animation effect.
+    """
     welcome_message = "🌺 WELCOME TO FEMMEFLOW TRACKER! 🌺"
     red_welcome_message = f"{Fore.RED}{welcome_message}{Fore.RESET}"
     animate_text(red_welcome_message)
     print()
 
+
 def introduction():
+    """
+    This function presents the introductory messages to the user.
+    It includes the display of the application name and welcome message,
+    along with a description of the application's purpose.
+    The user is prompted to enter their name, and input validation
+    ensures a non-empty name is provided before proceeding.
+    """
     display_name()
     display_welcome_message()
     print()
@@ -157,7 +212,6 @@ def introduction():
         else:
             print(Fore.RED + "Error: Your name is required to continue" + Fore.RESET)
 
-
     # Continue with the rest of the introduction
     print()
     print()
@@ -168,6 +222,14 @@ introduction()
 
 
 def open_google_form():
+    """
+    This function opens a specified Google Form URL in the default web browser,
+    allowing the user to enter their information through the form.
+    Instructions are then provided to the user, indicating that they should
+    enter their information in the Google Form.
+    Once the information is entered, the user can return
+    to the application to access their data and utilize its features.
+    """
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
     webbrowser.open(form_url)
 
@@ -184,10 +246,26 @@ def open_google_form():
         "your data and all features of this application"
     ))
     print()
+    print(Fore.RED + wrap_text(
+        "RETURNING USER?"
+    ))
+    print()
+    print(Fore.GREEN + wrap_text(
+        "Save time! Skip the form, press 'Enter,' and provide the "
+        "email previously used for personalized insights."
+        "Your convenience matters!"
+    ))
     print()
 
-# Get the email address used in the Google Form
+
 def get_user_email():
+    """
+    This function prompts the user to enter their email address,
+    which should match the email address they provided in the Google Form.
+    If the user does not provide a valid email address, an error message is
+    displayed, and they are prompted again until
+    a valid email address is entered.
+    """
     print(f"{Fore.YELLOW}{user_name},{Fore.RESET}")
     print()
     print("If you have filled in the google form, please enter the email address used:")
@@ -201,10 +279,14 @@ def get_user_email():
 
 
 def display_prompt_message():
+    """
+    This function displays a prompt message informing the user about
+    the requirement to complete a form with essential information in
+    order to use the application.
+    """
     prompt_message = "To use this application, kindly complete a form providing essential information."
     red_prompt_message = f"{Fore.RED}{prompt_message}{Fore.RESET}"
-    animate_text(red_prompt_message)  # Apply animated text effect to the prompt message
-
+    animate_text(red_prompt_message)
 
 
 # Prompt the user with an option to open the Google Form
@@ -255,18 +337,22 @@ else:
         print(f"{Fore.GREEN}If you change your mind, you're welcome to come back at any time.{Fore.RESET}")
         print(f"{Fore.GREEN}We hope to see you again soon! Have a great day!{Fore.RESET}")
         print()
-        exit()  # Exit the application
+        exit()
 
 # Get the user's email address and proceed to display options
 user_email = get_user_email()
 clear()
 
 
-# Fetch the user's data based on the provided email address
 def fetch_user_data(email, expected_columns):
+    """
+    This function searches for rows in the Google Sheets response
+    worksheet that match the provided email address.
+    It retrieves and processes the user data, filtering out invalid entries
+    and sorting the responses by timestamp to get the latest one.
+    """
     try:
         # Find all rows with the matching email address
-        email_column = 8  # Column index for the email address (zero-based)
         email_cells = responses.findall(email)
         user_rows = {cell.row for cell in email_cells}
 
@@ -290,6 +376,7 @@ def fetch_user_data(email, expected_columns):
         return valid_user_data
     except gspread.exceptions.CellNotFound:
         return None
+
 
 # Define the number of expected columns
 EXPECTED_COLUMNS = 11
@@ -341,8 +428,12 @@ fertile_start = last_period + datetime.timedelta(days=13)
 fertile_end = last_period + datetime.timedelta(days=19)
 
 
-# Function to display the available options for the user to choose from
 def print_options():
+    """
+    This function prints a table of available options that the user can choose
+    from. Each option is assigned a corresponding number, and a description of
+    each option is provided.
+    """
     # Initialize colorama
     init(autoreset=True)
 
@@ -369,37 +460,28 @@ def print_options():
     red_table = f"{Fore.RED}{table}{Fore.RESET}"
     print(red_table)
 
-# Function to define animated typewriter text
-def animate_text(message, delay=0.04):
-    """
-    Prints the passed string to the console, simulating a typewriter.
-    """
-    for char in message:
-        print(char, end='', flush=True)
-        time.sleep(delay)
-
-# Function to display a processing animation
-def animate_processing():
-    processing_symbols = "|/-\\"
-    for i in range(10):
-        time.sleep(0.1)
-        print(f"\rProcessing data... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
-
-# Function to wrap text and handle text formatting
-def wrap_text(text, width=70):
-    wrapped_text = textwrap.fill(text, width=width)
-    return wrapped_text
-
 
 # Function to update user data in the terminal
 def update_data():
+    """
+    Update user data in the terminal.
+
+    This function guides the user through updating their menstrual cycle data.
+    It prompts the user to input new details, if their data is wrong or
+    needs to be updated.
+    The user's data is updated based on the provided information.
+    The user is guided through each step of the update process, and the function performs
+    input validation to ensure that valid data is entered.
+
+    The user can choose to skip updating a specific field by entering 'skip' as the input.
+
+    """
     global last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms
 
     print(f"{Fore.YELLOW}UPDATE DATA 🗃{Fore.RESET}")
     print()
     print(f"{Fore.GREEN}Please enter the new details below, and your data will be updated in our systems.{Fore.RESET}")
     print()
-
 
     # Get the updated last period date
     while True:
@@ -418,7 +500,6 @@ def update_data():
                 break
             except ValueError:
                 print(Fore.RED + "Invalid date format. Please enter the date in the format dd/mm/yyyy." + Fore.RESET)
-
 
     # Get the updated cycle length
     updated_cycle_length = input(
@@ -528,10 +609,20 @@ def update_data():
     print()
 
 
-
 def update_google_sheets(email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms):
+    """
+    Update user data in Google Sheets based on the provided information.
+
+    This function updates the user's menstrual cycle data in the Google Sheets
+    based on the provided information.
+    It finds all rows with the matching email
+    address and updates each row with the new data.
+    """
+
+    # Convert cycle_lengths list to a comma-separated string
+    cycle_lengths_str = ", ".join(str(length) for length in cycle_lengths)
+
     # Find all rows with the matching email address
-    email_column = 8  # Column index for the email address (zero-based)
     email_cells = responses.findall(email)
     user_rows = {cell.row for cell in email_cells}
 
@@ -541,12 +632,19 @@ def update_google_sheets(email, last_period, cycle_length, period_duration, cycl
         SHEET.worksheet('responses').update_cell(row, 3, str(cycle_length))
         SHEET.worksheet('responses').update_cell(row, 4, str(period_duration))
         SHEET.worksheet('responses').update_cell(row, 5, cycle_type)
-        SHEET.worksheet('responses').update_cell(row, 6, cycle_lengths)
+        SHEET.worksheet('responses').update_cell(row, 6, cycle_lengths_str)
         SHEET.worksheet('responses').update_cell(row, 7, symptoms)
 
 
-# Function to calculate dates and personalized recommendations based on user data
 def calculate_dates_and_recommendations():
+    """
+    This function calculates the next period date, fertile days start and end
+    dates based on the user's last period date and cycle length.
+    It also calls the 'personalized_recommendations()' function to generate
+    recommendations based on cycle length, period duration, and symptoms.
+    The calculated dates and recommendations are stored in global variables
+    for later use.
+    """
     global fertile_start, fertile_end, next_period
     next_period = last_period + datetime.timedelta(days=cycle_length)
     fertile_start = last_period + datetime.timedelta(days=13)
@@ -556,8 +654,18 @@ def calculate_dates_and_recommendations():
     personalized_recommendations(cycle_length, period_duration, symptoms)
 
 
-# Function to display health tips
 def display_health_tips():
+    """
+    Display health tips for managing menstrual cycle.
+
+    This function prints a list of health tips to help individuals manage
+    their menstrual cycle effectively.
+    The tips cover various aspects such as diet, exercise, rest,
+    stress management, and more.
+    If the user has an irregular cycle, additional tips are provided to address
+    specific concerns.
+    The tips are displayed in a formatted table for easy readability.
+    """
     print(f"\n{Fore.YELLOW}HEALTH TIPS 🌟{Fore.RESET}")
     print()
 
@@ -600,9 +708,16 @@ def display_health_tips():
     print()
 
 
-
-# Function to display personalized recommendations in a table
 def display_recommendations_table(symptom, tips):
+    """
+    Display personalized recommendations for dealing with a specific symptom.
+
+    This function displays a table of personalized recommendations for dealing
+    with a specific symptom during the menstrual cycle.
+    The symptom and its corresponding tips are provided as input parameters.
+    The recommendations are displayed in a formatted table for
+    easy readability.
+    """
     print(f"\n\033[91mHere are some tips for dealing with {symptom}:\033[0m")
 
     # Create a table with two columns: Tip Number and Tip Text
@@ -621,6 +736,12 @@ def display_recommendations_table(symptom, tips):
 
 
 def personalized_recommendations(cycle_length, period_duration, symptoms):
+    """
+    This function generates personalized recommendations for the user based on
+    their menstrual cycle data (cycle length and period duration)
+    and specific symptoms. The recommendations are provided in a formatted
+    manner, addressing various symptoms and offering advice for each.
+    """
     intro_message = (
         f"{Fore.GREEN}Based on your menstrual cycle data and symptoms,"
         " we have some personalized recommendations to help you stay healthy"
@@ -665,7 +786,6 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             short_period_table.add_row([wrap_text(rec)])
         print(short_period_table)
 
-
     # Define the personalized recommendations for each symptom
     recommendations = {
         "cramps": [
@@ -708,14 +828,6 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             "- Ensure you are getting enough rest and consider taking short naps if needed.",
             "- Eat energy-boosting foods like fruits, nuts, and whole grains to combat fatigue."
         ],
-        "insomnia": [
-            "- Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
-            "- Use blackout curtains and white noise machines to create a sleep-friendly environment."
-        ],
-        "anxiety": [
-            "- Practice deep breathing exercises and consider talking to a supportive friend or family member.",
-            "- Engage in regular physical activity to help reduce anxiety."
-        ],
         "mood swings": [
             "- Practice mindfulness and meditation techniques to manage mood swings.",
             "- Engage in activities that bring joy and relaxation, such as spending time with loved ones or pursuing hobbies."
@@ -728,6 +840,14 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
             "- Incorporate foods rich in potassium, such as bananas and avocados, which can help reduce water retention.",
             "- Try incorporating ginger or peppermint tea into your diet, as they may help alleviate bloating."
         ],
+        "headache": [
+            "- Stay hydrated by drinking plenty of water throughout the day.",
+            "- Consider applying a cold or warm compress to your forehead.",
+            "- Relax in a quiet, dark room to help reduce discomfort.",
+            "- Practice deep breathing exercises or meditation to ease tension.",
+            "- Over-the-counter pain relievers like ibuprofen or acetaminophen may help, but consult a healthcare professional before use.",
+            "- Avoid triggers like bright lights, loud noises, and certain foods.",
+        ]
     }
 
     # Filter the symptoms based on the user's input
@@ -749,21 +869,27 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         else:
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
             print(wrap_text("No specific recommendations available for this symptom."))
-    
+  
         print()
-        
+
     # Display the advisory message with the specified color
     advisory_message = (
         "🚨 These recommendations are meant to provide general guidance."
         " For personalized advice, consult with a healthcare professional. 🚨"
     )
     print(Fore.RED + wrap_text(advisory_message) + Fore.RESET)
-    print()    
+    print()
 
 
-
-# Function to display exercises tips
 def display_exercises_tips():
+    """
+    This function provides exercise recommendations that can help
+    reduce menstrual cramps, improve mood,
+    and promote overall well-being during the menstrual cycle.
+
+    The function displays two separate tables: one for cramp-reducing exercises
+    and another for mood-improving exercises.
+    """
     print(f"\n{Fore.YELLOW}EXERCICES TIPS 🚴‍♀️ 🏃‍♀️ 🧘‍♀️{Fore.RESET}")
     print()
     exercise_description = wrap_text(
@@ -814,10 +940,16 @@ def display_exercises_tips():
     print()
 
 
-
-# Function to display the Form Submission Data in a table
 def display_form_submission_data(timestamp, last_period, cycle_length, period_duration,
                                  cycle_type, cycle_lengths, symptoms, email, name, age):
+    """
+    This function takes various form submission data as input and presents
+    it in a tabular format for display.
+    The information includes details about the user's name, age, email,
+    last period date, cycle length,
+    period duration, cycle type, cycle lengths (if irregular),
+    and symptoms or additional information provided.
+    """
     table = PrettyTable()
     table.field_names = ["Field", "Value"]
     table.add_row(["Name", name])
@@ -852,8 +984,15 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     # Print the table
     print(table)
 
-# Function to display fertile days for the next 6 months
+
 def display_fertile_days(fertile_start, fertile_end):
+    """
+    This function takes the start and end dates of the fertile window
+    as input and displays the projected fertile days for the 
+    next 6 months in a tabular format. 
+    The fertile days information can be useful for individuals who 
+    are planning a pregnancy or want to be aware of their most likely conception periods.
+    """
     print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
     print()
 
@@ -880,8 +1019,14 @@ def display_fertile_days(fertile_start, fertile_end):
     print(table)
     print()
 
-# Function to display the calculated next period date for the next 6 months
+
 def display_next_period_date(next_period):
+    """
+    This function takes the predicted next period date as input 
+    and displays the projected start dates of the next six periods in a tabular format.
+    The information can be useful for individuals who are
+    tracking their menstrual cycle for reproductive health or planning purposes.
+    """
     print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅  🌺{Fore.RESET}")
 
     print()
@@ -912,15 +1057,14 @@ def display_next_period_date(next_period):
     print()
 
 
-# Function to clear the screen
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
 # Main loop of the application
 while True:
+    """
+    The main loop of the FemmeFlow Tracker application.
+    Displays options to the user, processes their choices, and executes corresponding actions.
+    """
     # Clear the screen before printing the options
-    clear_screen()
+    clear()
 
     # Print the options table for the user to choose from
     print_options()
@@ -930,7 +1074,7 @@ while True:
     choice = input("Enter your choice: ")
 
     # Clear the screen after the user inputs their choice
-    clear_screen()
+    clear()
 
     # Process the user's choice and execute the corresponding action
     if choice == "1":
