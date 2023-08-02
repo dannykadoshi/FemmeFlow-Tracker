@@ -1,8 +1,8 @@
 import os
-from colorama import init, Fore
 import textwrap
 import sys
 import pyfiglet
+from colorama import init, Fore
 
 # Module for opening Google Forms in the webbrowser
 import webbrowser
@@ -728,16 +728,23 @@ def display_health_tips():
         1: "Maintain a healthy diet and drink plenty of water.",
         2: "Exercise regularly to improve overall health and manage stress.",
         3: "Ensure you get enough sleep and rest during your menstrual cycle.",
-        4: "Manage stress through relaxation techniques like meditation or deep breathing.",
-        5: "Limit caffeine and alcohol intake, as they can affect your menstrual cycle.",
-        6: "Avoid smoking and exposure to secondhand smoke for better reproductive health.",
-        7: "Consider taking supplements like iron and calcium to support your health.",
+        4: "Manage stress through relaxation techniques like meditation or "
+        "deep breathing.",
+        5: "Limit caffeine and alcohol intake, as they can affect your"
+        "menstrual cycle.",
+        6: "Avoid smoking and exposure to secondhand smoke for better"
+        "reproductive health.",
+        7: "Consider taking supplements like iron and calcium to support"
+        "your health.",
     }
 
     if cycle_type.lower() == 'irregular':
-        tips[8] = "If you have irregular cycles, consider keeping a symptom diary to identify patterns."
-        tips[9] = "Talk to your healthcare provider to rule out any underlying health issues."
-        tips[10] = "Stay prepared with period supplies since irregular cycles can be unpredictable."
+        tips[8] = "If you have irregular cycles, consider keeping "
+        "a symptom diary to identify patterns."
+        tips[9] = "Talk to your healthcare provider to rule out any "
+        "underlying health issues."
+        tips[10] = "Stay prepared with period supplies since irregular "
+        "cycles can be unpredictable."
 
     # Create a table with two columns: Tip Number and Tip Text
     table = PrettyTable()
@@ -1014,8 +1021,10 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
     # Description of the Form submission data
     submission_description = wrap_text(
         f"{Fore.GREEN}Thank you for submitting your data! "
-        "Your menstrual cycle information is essential for providing personalized insights and tips. "
-        "By tracking your cycle, you can better understand your body and take proactive steps to manage "
+        "Your menstrual cycle information is essential for providing "
+        "personalized insights and tips. "
+        "By tracking your cycle, you can better understand your body "
+        "and take proactive steps to manage "
         "your well-being. "
     )
 
@@ -1037,16 +1046,19 @@ def display_fertile_days(fertile_start, fertile_end):
     as input and displays the projected fertile days for the
     next 6 months in a tabular format.
     The fertile days information can be useful for individuals who
-    are planning a pregnancy or want to be aware of their most likely conception periods.
+    are planning a pregnancy or want to be aware of their most likely
+    conception periods.
     """
     print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
     print()
 
     # Description for the fertile days function
     fertile_description = wrap_text(
-        f"{Fore.GREEN}Knowing your fertile days can be helpful if you're planning a pregnancy "
-        "or want to be aware of when you are most likely to conceive."
-        "These are the projected fertile days for the next 6 months based on your menstrual cycle data."
+        f"{Fore.GREEN}Knowing your fertile days can be helpful if you're "
+        "planning a pregnancy or want to be aware of when you are most "
+        "likely to conceive."
+        "These are the projected fertile days for the next 6 months "
+        "based on your menstrual cycle data."
         f"{Fore.RESET}"
     )
 
@@ -1069,9 +1081,11 @@ def display_fertile_days(fertile_start, fertile_end):
 def display_next_period_date(next_period):
     """
     This function takes the predicted next period date as input
-    and displays the projected start dates of the next six periods in a tabular format.
+    and displays the projected start dates of the next six periods
+    in a tabular format.
     The information can be useful for individuals who are
-    tracking their menstrual cycle for reproductive health or planning purposes.
+    tracking their menstrual cycle for reproductive health
+    or planning purposes.
     """
     print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅  🌺{Fore.RESET}")
 
@@ -1079,13 +1093,15 @@ def display_next_period_date(next_period):
 
     # Description for Next period dates
     period_description = wrap_text(
-        f"{Fore.GREEN}Tracking your menstrual cycle is vital for understanding your body and "
-        "monitoring your reproductive health."
-        "Here are the predicted start dates of your periods for the next six months."
+        f"{Fore.GREEN}Tracking your menstrual cycle is vital for "
+        "understanding your body and monitoring your reproductive health."
+        "Here are the predicted start dates of your periods "
+        "for the next six months."
         "These dates can be helpful for planning ahead and being prepared."
         "Keep in mind that individual variations are common, "
         "so the actual dates may differ slightly."
-        "Remember to listen to your body and take care of yourself throughout your cycle."
+        "Remember to listen to your body and take care "
+        "of yourself throughout your cycle."
     )
 
     print(period_description)
@@ -1106,7 +1122,8 @@ def display_next_period_date(next_period):
 while True:
     """
     The main loop of the FemmeFlow Tracker application.
-    Displays options to the user, processes their choices, and executes corresponding actions.
+    Displays options to the user, processes their choices,
+    and executes corresponding actions.
     """
     # Clear the screen before printing the options
     clear()
@@ -1134,12 +1151,15 @@ while True:
         print(f"\n{Fore.RED}❗❗ DISCLAIMER ❗❗{Fore.RESET}")
         print()
 
-        text = f"{Fore.RED}Only update it, if there are any inaccuracies or if any changes have occurred since your last access.{Fore.RESET}"
+        text = (f"{Fore.RED}Only update it, if there are any "
+                "inaccuracies or if any changes have occurred "
+                "since your last access.{Fore.RESET}")
         wrapped_text = wrap_text(text)
         print(wrapped_text)
 
         print()
-        print("Choosing 'yes' will update your data with the new information you provide.")
+        print("Choosing 'yes' will update your data with the new "
+              "information you provide.")
         print("Choosing 'no' will keep your current data unchanged.")
         print("If no changes are necessary choose 'no' to move on")
         print("\nWould you like to update your data? ('yes' / 'no')")
