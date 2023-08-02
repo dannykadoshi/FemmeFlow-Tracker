@@ -408,7 +408,7 @@ def fetch_user_data(email, expected_columns):
 
 
 # Define the number of expected columns
-EXPECTED_COLUMNS = 11
+EXPECTED_COLUMNS = 10
 
 # Fetch the user data from Google Sheets
 user_data = fetch_user_data(user_email, EXPECTED_COLUMNS)
@@ -440,7 +440,7 @@ while not user_data:
 # Extract the user's inputs from the latest Google Sheets response
 latest_response = user_data[0]
 timestamp_str, last_period_str, cycle_length_str, period_duration_str, \
-    cycle_type, cycle_lengths, symptoms, email, \
+    cycle_type, symptoms, email, \
     name, age, form_publisher = latest_response
 
 # Convert the date strings to datetime objects
@@ -510,7 +510,7 @@ def update_data():
     " by entering 'skip' as the input.
     """
     global last_period, cycle_length, period_duration, \
-        cycle_type, cycle_lengths, symptoms
+        cycle_type, symptoms
 
     print(f"{Fore.YELLOW}UPDATE DATA 🗃{Fore.RESET}")
     print()
@@ -643,7 +643,7 @@ def update_data():
 
     # Update the Google Sheets with the new data
     update_google_sheets(user_email, last_period, cycle_length,
-                         period_duration, cycle_type, cycle_lengths, symptoms)
+                         period_duration, cycle_type, symptoms)
 
     # Animate the "Data updated successfully" message
     print()
@@ -655,7 +655,7 @@ def update_data():
 
 
 def update_google_sheets(email, last_period, cycle_length,
-                         period_duration, cycle_type, cycle_lengths, symptoms):
+                         period_duration, cycle_type, symptoms):
     """
     Update user data in Google Sheets based on the provided information.
 
@@ -664,8 +664,6 @@ def update_google_sheets(email, last_period, cycle_length,
     It finds all rows with the matching email
     address and updates each row with the new data.
     """
-    # Convert cycle_lengths list to a comma-separated string
-    cycle_lengths_str = ", ".join(str(length) for length in cycle_lengths)
 
     # Find all rows with the matching email address
     email_cells = responses.findall(email)
@@ -678,8 +676,7 @@ def update_google_sheets(email, last_period, cycle_length,
         SHEET.worksheet('responses').update_cell(row, 3, str(cycle_length))
         SHEET.worksheet('responses').update_cell(row, 4, str(period_duration))
         SHEET.worksheet('responses').update_cell(row, 5, cycle_type)
-        SHEET.worksheet('responses').update_cell(row, 6, cycle_lengths_str)
-        SHEET.worksheet('responses').update_cell(row, 7, symptoms)
+        SHEET.worksheet('responses').update_cell(row, 6, symptoms)
 
 
 def calculate_dates_and_recommendations():
@@ -1043,14 +1040,13 @@ def display_exercises_tips():
 
 
 def display_form_submission_data(timestamp, last_period, cycle_length,
-                                 period_duration, cycle_type, cycle_lengths,
+                                 period_duration, cycle_type,
                                  symptoms, email, name, age):
     """
     This function takes various form submission data as input and presents
     it in a tabular format for display.
     The information includes details about the user's name, age, email,
-    last period date, cycle length,
-    period duration, cycle type, cycle lengths (if irregular),
+    last period date, cycle length, period duration, cycle type,
     and symptoms or additional information provided.
     """
     table = PrettyTable()
@@ -1062,7 +1058,6 @@ def display_form_submission_data(timestamp, last_period, cycle_length,
     table.add_row(["Cycle Length", f"{cycle_length} days"])
     table.add_row(["Period Duration", f"{period_duration} days"])
     table.add_row(["Cycle Type", cycle_type])
-    table.add_row(["Cycle Lengths (if irregular)", cycle_lengths])
     table.add_row(["Symptoms/Additional Information", symptoms])
 
     print(f"\n{Fore.YELLOW}FORM SUBMISSION DATA 🗄️  📝{Fore.RESET}")
@@ -1201,7 +1196,7 @@ while True:
         # Print the fetched data and calculated dates
         display_form_submission_data(
             timestamp, last_period, cycle_length, period_duration, cycle_type,
-            cycle_lengths, symptoms, email, name, age
+            symptoms, email, name, age
         )
         # Offer the option to update the data
         print()
