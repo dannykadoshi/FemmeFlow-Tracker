@@ -1004,6 +1004,7 @@ def display_exercises_tips():
     )
 
     print(exercise_description)
+    print()
 
     # List of exercises to reduce cramps and improve mood
     cramp_exercises = [
@@ -1020,7 +1021,6 @@ def display_exercises_tips():
         "Aerobics",
         "Jump Rope",
         "Tai Chi",
-        "Zumba",
     ]
 
     # Create a table for cramp exercises
@@ -1035,12 +1035,18 @@ def display_exercises_tips():
     for i, exercise in enumerate(mood_exercises, start=1):
         mood_table.add_row([f"{i}. {exercise}"])
 
-    # Print the tables
-    print()
-    print(cramp_table)
+    # Get formatted table strings
+    cramp_table_str = cramp_table.get_string()
+    mood_table_str = mood_table.get_string()
 
-    print()
-    print(mood_table)
+    # Split table strings into lines
+    cramp_lines = cramp_table_str.split('\n')
+    mood_lines = mood_table_str.split('\n')
+
+    # Print the tables side by side
+    for cramp_line, mood_line in zip(cramp_lines, mood_lines):
+        print(f"{cramp_line.ljust(40)} {mood_line}")
+
     print()
 
 
