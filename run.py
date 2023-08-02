@@ -58,7 +58,11 @@ def animate_processing():
     for i in range(10):
         time.sleep(0.1)
         # Print the animation on the same line using carriage return '\r'
-        print(f"\rProcessing... {processing_symbols[i % len(processing_symbols)]}", end='', flush=True)
+        print(
+            f"\rProcessing... "
+            f"{processing_symbols[i % len(processing_symbols)]}",
+            end='', flush=True
+        )
 
 
 def animate_text(message, delay=0.04):
@@ -99,7 +103,7 @@ def clear():
     """
     This function clears the terminal screen using the appropriate
     command based on the operating system.
-    It uses 'cls' command for Windows and 
+    It uses 'cls' command for Windows and
     'clear' command for other operating systems.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -131,11 +135,11 @@ def display_name():
     print(Fore.RED + centered_text + Fore.RESET)
     sleep(2)
 
-    # Animation step 3: Print each line of ASCII art one by one 
+    # Animation step 3: Print each line of ASCII art one by one
     # and sleep for 0.2 seconds
     for line in ascii_art.splitlines():
         print(Fore.RED + line.center(terminal_width) + Fore.RESET)
-        sleep(0.2)  
+        sleep(0.2)
 
     # Animation step 4: Sleep for 1.5 seconds and Clear the screen
     sleep(1.5)
@@ -184,12 +188,15 @@ def introduction():
     display_welcome_message()
     print()
 
-    print(wrap_text("FemmeFlow Tracker is a comprehensive tool designed to help you "
-                    "understand and manage your menstrual health with ease. "
-                    "Whether you want to track your menstrual cycle, predict your "
-                    "next period date, receive personalized recommendations, "
-                    "or access valuable health tips, this application has got you covered! "
-                    "Empower yourself with valuable insights about your body and well-being "
+    print(wrap_text("FemmeFlow Tracker is a comprehensive tool designed"
+                    " to help you understand and manage your"
+                    " menstrual health with ease. "
+                    "Whether you want to track your menstrual cycle, predict "
+                    "your next period date, receive personalized "
+                    "recommendations, or access valuable health tips, "
+                    "this application has got you covered! "
+                    "Empower yourself with valuable insights about your body"
+                    " and well-being "
                     "throughout your menstrual journey.", color=Fore.GREEN))
 
     print()
@@ -208,7 +215,8 @@ def introduction():
         if user_name:
             break
         else:
-            print(Fore.RED + "Error: Your name is required to continue" + Fore.RESET)
+            print(Fore.RED + "Error: Your name is required to continue"
+                  + Fore.RESET)
 
     # Continue with the rest of the introduction
     print()
@@ -266,13 +274,16 @@ def get_user_email():
     """
     print(f"{Fore.YELLOW}{user_name},{Fore.RESET}")
     print()
-    print("If you have filled in the google form, please enter the email address used:")
+    print("If you have filled in the google form, please enter the "
+          "email address used:")
     print()
     print(Fore.GREEN, end='')
     user_email = input().strip().lower()
     while not user_email:
-        animate_text(Fore.RED + "Please enter a valid email address." + Fore.RESET)
+        animate_text(Fore.RED + "Please enter a valid email "
+                     "address." + Fore.RESET)
         user_email = input().strip().lower()
+
     return user_email
 
 
@@ -282,7 +293,9 @@ def display_prompt_message():
     the requirement to complete a form with essential information in
     order to use the application.
     """
-    prompt_message = "To use this application, kindly complete a form providing essential information."
+    prompt_message = "To use this application, kindly complete a " \
+                     "form providing essential information."
+
     red_prompt_message = f"{Fore.RED}{prompt_message}{Fore.RESET}"
     animate_text(red_prompt_message)
 
@@ -291,7 +304,8 @@ def display_prompt_message():
 display_prompt_message()
 print()
 print()
-print(f"{Fore.YELLOW}{user_name}, would you like to enter your information in the Google Form? (yes/no){Fore.RESET}")
+print(f"{Fore.YELLOW}{user_name}, would you like to enter your "
+      f"information in the Google Form? (yes/no){Fore.RESET}")
 print()
 print()
 response = input().strip().lower()
@@ -299,41 +313,57 @@ clear()
 
 # Validate the user's response
 while response not in ['yes', 'no']:
-    print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+    print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'."
+          + Fore.RESET)
+
     response = input().strip().lower()
 
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
     open_google_form()
-    print(f"{Fore.YELLOW}Press Enter when you have submitted the data in the Google Form...{Fore.RESET}")
+    print(f"{Fore.YELLOW}Press Enter when you have submitted the "
+          f"data in the Google Form...{Fore.RESET}")
+
     input()  # Wait for the user to press Enter
     clear()
 else:
     animate_text("You chose not to enter your information in the Google Form.")
     print()
     print()
-    animate_text("For FemmeFlow Tracker to work, it requires your menstrual cycle data.")
+    animate_text("For FemmeFlow Tracker to work, it requires your "
+                 "menstrual cycle data.")
+
     print()
     print()
-    reconsider_response = input("Would you like to reconsider and open the Google Form now? (yes/no)  ").strip().lower()
+    reconsider_response = input("Would you like to reconsider and open the "
+                                "Google Form now? (yes/no)  ").strip().lower()
+
     clear()
 
     while reconsider_response not in ['yes', 'no']:
-        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'.")
         reconsider_response = input().strip().lower()
+        print(Fore.RESET)
 
     if reconsider_response == 'yes':
         print()
         open_google_form()
-        input("Press Enter when you have submitted the data in the Google Form...")
+        input("Press Enter when you have submitted the data "
+              "in the Google Form...")
+
     elif reconsider_response == 'no':
         print()
         print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
         print()
-        print(f"{Fore.GREEN}Thank you for accessing FemmeFlow Tracker!{Fore.RESET}")
-        print(f"{Fore.GREEN}To unlock all the application functions, data submission is required!{Fore.RESET}")
-        print(f"{Fore.GREEN}If you change your mind, you're welcome to come back at any time.{Fore.RESET}")
-        print(f"{Fore.GREEN}We hope to see you again soon! Have a great day!{Fore.RESET}")
+        print(f"{Fore.GREEN}Thank you for accessing FemmeFlow "
+              "Tracker!{Fore.RESET}")
+        print(f"{Fore.GREEN}To unlock all the application functions, "
+              "data submission is required!{Fore.RESET}")
+        print(f"{Fore.GREEN}If you change your mind, you're welcome to "
+              "come back at any time.{Fore.RESET}")
+        print(f"{Fore.GREEN}We hope to see you again soon! "
+              "Have a great day!{Fore.RESET}")
+
         print()
         exit()
 
@@ -385,15 +415,18 @@ user_data = fetch_user_data(user_email, EXPECTED_COLUMNS)
 # Check if the user data is found
 while not user_data:
     print(
-        Fore.RED + "User data not found for the provided email address." + Fore.RESET
+        Fore.RED + "User data not found for the " +
+        "provided email address." + Fore.RESET
     )
-    print("Do you want to try entering the correct email address again? (yes/no)")
+    print("Do you want to try entering the correct " +
+          "email address again? (yes/no)")
     print()
     retry_response = input().strip().lower()
     print()
 
     while retry_response not in ['yes', 'no']:
-        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." + Fore.RESET)
+        print(Fore.RED + "Invalid response. Please enter 'yes' or 'no'." +
+              Fore.RESET)
         retry_response = input().strip().lower()
 
     if retry_response == 'yes':
@@ -468,17 +501,20 @@ def update_data():
     It prompts the user to input new details, if their data is wrong or
     needs to be updated.
     The user's data is updated based on the provided information.
-    The user is guided through each step of the update process, and the function performs
+    The user is guided through each step of the update process,"
+    " and the function performs
     input validation to ensure that valid data is entered.
 
-    The user can choose to skip updating a specific field by entering 'skip' as the input.
-
+    The user can choose to skip updating a specific field"
+    " by entering 'skip' as the input.
     """
-    global last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms
+    global last_period, cycle_length, period_duration, \
+        cycle_type, cycle_lengths, symptoms
 
     print(f"{Fore.YELLOW}UPDATE DATA 🗃{Fore.RESET}")
     print()
-    print(f"{Fore.GREEN}Please enter the new details below, and your data will be updated in our systems.{Fore.RESET}")
+    print(f"{Fore.GREEN}Please enter the new details below, and your "
+          f"data will be updated in our systems.{Fore.RESET}")
     print()
 
     # Get the updated last period date
@@ -490,14 +526,18 @@ def update_data():
         if updated_last_period.lower() == 'skip':
             break
         elif updated_last_period == '':
-            print(Fore.RED + "Invalid input. Last Period date not updated." + Fore.RESET)
+            print(Fore.RED + "Invalid input. Last Period date not " +
+                  "updated." + Fore.RESET)
             break
         else:
             try:
-                last_period = datetime.datetime.strptime(updated_last_period, '%d/%m/%Y').date()
+                last_period = datetime.datetime.strptime(updated_last_period,
+                                                         '%d/%m/%Y').date()
+
                 break
             except ValueError:
-                print(Fore.RED + "Invalid date format. Please enter the date in the format dd/mm/yyyy." + Fore.RESET)
+                print(Fore.RED + "Invalid date format. Please enter the date"
+                      " in the format dd/mm/yyyy." + Fore.RESET)
 
     # Get the updated cycle length
     updated_cycle_length = input(
@@ -507,7 +547,8 @@ def update_data():
         try:
             cycle_length = int(updated_cycle_length)
         except ValueError:
-            print(Fore.RED + "Invalid input. Cycle Length not updated." + Fore.RESET)
+            print(Fore.RED + "Invalid input. Cycle Length " +
+                  "not updated." + Fore.RESET)
 
     # Get the updated period duration
     updated_period_duration = input(
@@ -517,7 +558,8 @@ def update_data():
         try:
             period_duration = int(updated_period_duration)
         except ValueError:
-            print(Fore.RED + "Invalid input. Period Duration not updated." + Fore.RESET)
+            print(Fore.RED + "Invalid input. Period Duration not updated." +
+                  Fore.RESET)
 
     # Get the updated cycle type
     cycle_type_options = ["regular", "irregular"]
@@ -538,7 +580,8 @@ def update_data():
         try:
             cycle_lengths = [int(cycle.strip()) for cycle in cycle_lengths_list]
         except ValueError:
-            print(Fore.RED + "Invalid input. Cycle Lengths (if irregular) not updated." + Fore.RESET)
+            print(Fore.RED + "Invalid input. Cycle Lengths (if "
+                  "irregular) not updated." + Fore.RESET)
 
     # Get the updated symptoms/additional information
     available_symptoms = [
@@ -549,19 +592,21 @@ def update_data():
 
     # Description for available symptoms
     symptoms_description = wrap_text(
-        f"{Fore.GREEN}Here are the list of symptoms available, type all that apply separated by comma:"
+        f"{Fore.GREEN}Here are the list of symptoms available, type all "
+        "that apply separated by comma:"
     )
     print(symptoms_description)
 
     # Display the available symptoms in a table-like format
     symptoms_table = PrettyTable(["Available Symptoms"])
-    symptoms_table.max_width["Available Symptoms"] = 40  # Set the maximum width for the table
+    symptoms_table.max_width["Available Symptoms"] = 40
     for symptom in available_symptoms:
         symptoms_table.add_row([wrap_text(symptom)])
     print(symptoms_table)
 
     # Convert all symptom names to lowercase for case-insensitive comparison
-    available_symptoms_lower = [symptom.lower() for symptom in available_symptoms]
+    available_symptoms_lower = [symptom.lower() for symptom in
+                                available_symptoms]
 
     # Prompt the user to update symptoms
     while True:
@@ -573,8 +618,10 @@ def update_data():
         if updated_symptoms == 'skip':
             break
 
-        if not updated_symptoms:  # If the user presses Enter without entering anything
-            print(Fore.RED + "Invalid input. Symptoms/Additional Information not updated." + Fore.RESET)
+        # If the user presses Enter without entering anything
+        if not updated_symptoms:
+            print(Fore.RED + "Invalid input. Symptoms/Additional Information "
+                  "not updated." + Fore.RESET)
             print()
             clear()
             break
@@ -669,8 +716,10 @@ def display_health_tips():
 
     # Description of the tips
     description = wrap_text(
-        f"{Fore.GREEN}Taking care of your health during your menstrual cycle is essential. "
-        "Follow these tips to improve your well-being and make your period more manageable. "
+        f"{Fore.GREEN}Taking care of your health during your"
+        " menstrual cycle is essential. "
+        "Follow these tips to improve your well-being and make "
+        "your period more manageable. "
     )
     print(description)
     print()
@@ -867,7 +916,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         else:
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
             print(wrap_text("No specific recommendations available for this symptom."))
-  
+
         print()
 
     # Display the advisory message with the specified color
@@ -897,7 +946,6 @@ def display_exercises_tips():
     )
 
     print(exercise_description)
-
 
     # List of exercises to reduce cramps and improve mood
     cramp_exercises = [
@@ -986,9 +1034,9 @@ def display_form_submission_data(timestamp, last_period, cycle_length, period_du
 def display_fertile_days(fertile_start, fertile_end):
     """
     This function takes the start and end dates of the fertile window
-    as input and displays the projected fertile days for the 
-    next 6 months in a tabular format. 
-    The fertile days information can be useful for individuals who 
+    as input and displays the projected fertile days for the
+    next 6 months in a tabular format.
+    The fertile days information can be useful for individuals who
     are planning a pregnancy or want to be aware of their most likely conception periods.
     """
     print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
@@ -997,7 +1045,7 @@ def display_fertile_days(fertile_start, fertile_end):
     # Description for the fertile days function
     fertile_description = wrap_text(
         f"{Fore.GREEN}Knowing your fertile days can be helpful if you're planning a pregnancy "
-        "or want to be aware of when you are most likely to conceive." 
+        "or want to be aware of when you are most likely to conceive."
         "These are the projected fertile days for the next 6 months based on your menstrual cycle data."
         f"{Fore.RESET}"
     )
@@ -1020,7 +1068,7 @@ def display_fertile_days(fertile_start, fertile_end):
 
 def display_next_period_date(next_period):
     """
-    This function takes the predicted next period date as input 
+    This function takes the predicted next period date as input
     and displays the projected start dates of the next six periods in a tabular format.
     The information can be useful for individuals who are
     tracking their menstrual cycle for reproductive health or planning purposes.
@@ -1032,17 +1080,16 @@ def display_next_period_date(next_period):
     # Description for Next period dates
     period_description = wrap_text(
         f"{Fore.GREEN}Tracking your menstrual cycle is vital for understanding your body and "
-        "monitoring your reproductive health." 
-        "Here are the predicted start dates of your periods for the next six months." 
-        "These dates can be helpful for planning ahead and being prepared." 
+        "monitoring your reproductive health."
+        "Here are the predicted start dates of your periods for the next six months."
+        "These dates can be helpful for planning ahead and being prepared."
         "Keep in mind that individual variations are common, "
-        "so the actual dates may differ slightly." 
+        "so the actual dates may differ slightly."
         "Remember to listen to your body and take care of yourself throughout your cycle."
     )
 
     print(period_description)
     print()
-
 
     table = PrettyTable(["Month", "Next Period Date"])
     for _ in range(6):
