@@ -764,7 +764,7 @@ def display_health_tips():
     table.field_names = ["Tip Number", "Tip Text"]
 
     # Set the maximum width for the Tip Text column
-    table.max_width["Tip Text"] = 75
+    table.max_width["Tip Text"] = 55
 
     # Add each tip to the table
     for tip_number, tip_text in tips.items():
@@ -792,7 +792,7 @@ def display_recommendations_table(symptom, tips):
     table.field_names = ["Tip Number", "Tip Text"]
 
     # Set the maximum width for the columns
-    table.max_width["Tip Text"] = 70
+    table.max_width["Tip Text"] = 60
 
     # Add each tip to the table
     for i, tip in enumerate(tips, start=1):
@@ -825,7 +825,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         ]
         print("\n\033[1mCycle Length Advice (if cycle < 28 days):\033[0m")
         cycle_table = PrettyTable(["Recommendations"])
-        cycle_table.max_width["Recommendations"] = 70
+        cycle_table.max_width["Recommendations"] = 60
         for rec in cycle_advice:
             cycle_table.add_row([wrap_text(rec)])
         print(cycle_table)
@@ -838,7 +838,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         ]
         print("\n\033[1mPeriod Duration Advice (if duration > 7 days):\033[0m")
         duration_table = PrettyTable(["Recommendations"])
-        duration_table.max_width["Recommendations"] = 70
+        duration_table.max_width["Recommendations"] = 60
         for rec in duration_advice:
             duration_table.add_row([wrap_text(rec)])
         print(duration_table)
@@ -851,7 +851,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         ]
         print("\n\033[1mShort Period Advice (if duration < 3 days):\033[0m")
         short_period_table = PrettyTable(["Recommendations"])
-        short_period_table.max_width["Recommendations"] = 70
+        short_period_table.max_width["Recommendations"] = 60
         for rec in short_period_advice:
             short_period_table.add_row([wrap_text(rec)])
         print(short_period_table)
@@ -964,7 +964,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         if symptom in recommendations:
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
             table = PrettyTable(["Recommendations"])
-            table.max_width["Recommendations"] = 70
+            table.max_width["Recommendations"] = 60
             for rec in recommendations[symptom]:
                 table.add_row([wrap_text(rec)])
             print(table)
@@ -1084,7 +1084,7 @@ def display_form_submission_data(timestamp, last_period, cycle_length,
     print()
 
     # Set the max width for each column in the table
-    table_max_width = 70
+    table_max_width = 60
     for field in table.field_names:
         table.max_width[field] = table_max_width
 
