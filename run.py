@@ -1092,6 +1092,9 @@ def display_form_submission_data(timestamp, last_period, cycle_length,
 
     print(submission_description)
     print()
+    input("Press Enter to view your data...\n")
+
+    clear()
 
     # Set the max width for each column in the table
     table_max_width = 60
@@ -1213,20 +1216,31 @@ while True:
             cycle_lengths, symptoms, email, name, age
         )
         # Offer the option to update the data
+        print()
+        print("Do you need to update your details?")
+        print()
         print(f"\n{Fore.RED}❗❗ DISCLAIMER ❗❗{Fore.RESET}")
         print()
-
-        text = (f"{Fore.RED}Only update it, if there are any "
+        text = (f"{Fore.RED}Only update your data, if there are any "
                 "inaccuracies or if any changes have occurred "
-                "since your last access.{Fore.RESET}")
+                "since your last access.")
         wrapped_text = wrap_text(text)
         print(wrapped_text)
+        print()
+        input("Press Enter to continue...\n")
 
+        clear()
+
+        print()
+        print(f"\n{Fore.YELLOW}UPDATING OPTIONS 🗄️  📝{Fore.RESET}")
         print()
         print("Choosing 'yes' will update your data with the new "
               "information you provide.")
         print("Choosing 'no' will keep your current data unchanged.")
-        print("If no changes are necessary choose 'no' to move on")
+        print()
+        print(f"\n{Fore.RED}If no changes are necessary "
+              f"choose 'no' to move on{Fore.RESET}")
+        print()
         print("\nWould you like to update your data? ('yes' / 'no')")
         print()
         update_choice = input().strip().lower()
