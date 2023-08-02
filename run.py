@@ -397,7 +397,8 @@ def fetch_user_data(email, expected_columns):
 
         # Sort responses by timestamp in descending order to get the latest one
         valid_user_data.sort(
-            key=lambda x: datetime.datetime.strptime(x[0], "%d/%m/%Y %H:%M:%S"),
+            key=lambda x:
+            datetime.datetime.strptime(x[0], "%d/%m/%Y %H:%M:%S"),
             reverse=True,
         )
 
@@ -566,7 +567,8 @@ def update_data():
     updated_cycle_type = input(
         f"Cycle Type ({cycle_type}): "
     ).strip().lower()
-    if updated_cycle_type != 'skip' and updated_cycle_type in cycle_type_options:
+    if (updated_cycle_type != 'skip' and
+            updated_cycle_type in cycle_type_options):
         cycle_type = updated_cycle_type
     else:
         print(Fore.RED + "Invalid input. Cycle Type not updated." + Fore.RESET)
@@ -578,7 +580,8 @@ def update_data():
     if updated_cycle_lengths.lower() != 'skip':
         cycle_lengths_list = updated_cycle_lengths.split(",")
         try:
-            cycle_lengths = [int(cycle.strip()) for cycle in cycle_lengths_list]
+            cycle_lengths = [int(cycle.strip())
+                             for cycle in cycle_lengths_list]
         except ValueError:
             print(Fore.RED + "Invalid input. Cycle Lengths (if "
                   "irregular) not updated." + Fore.RESET)
@@ -627,15 +630,23 @@ def update_data():
             break
 
         # Split the input into a list of symptoms
-        updated_symptoms_list = [symptom.strip() for symptom in updated_symptoms.split(",")]
+        updated_symptoms_list = [symptom.strip()
+                                 for symptom in updated_symptoms.split(",")]
 
         # Check if all entered symptoms are valid
-        if all(symptom in available_symptoms_lower for symptom in updated_symptoms_list):
-            # Find the corresponding symptoms in the original case and update the 'symptoms' variable
-            symptoms = ", ".join([next(symptom for symptom in available_symptoms if symptom.lower() == s) for s in updated_symptoms_list])
+        if all(symptom in available_symptoms_lower
+               for symptom in updated_symptoms_list):
+            # Find the corresponding symptoms in the original case
+            # and update the 'symptoms' variable
+            symptoms = ", ".join([
+                next(symptom for symptom in available_symptoms
+                     if symptom.lower() == s)
+                for s in updated_symptoms_list
+            ])
             break
         else:
-            print(Fore.RED + "Invalid input. Please enter valid symptoms from the list." + Fore.RESET)
+            print(Fore.RED + "Invalid input. Please enter valid symptoms"
+                  " from the list." + Fore.RESET)
 
     # Display the processing animation
     print()
@@ -643,7 +654,8 @@ def update_data():
     print()
 
     # Update the Google Sheets with the new data
-    update_google_sheets(user_email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms)
+    update_google_sheets(user_email, last_period, cycle_length,
+                         period_duration, cycle_type, cycle_lengths, symptoms)
 
     # Animate the "Data updated successfully" message
     print()
@@ -654,7 +666,8 @@ def update_data():
     print()
 
 
-def update_google_sheets(email, last_period, cycle_length, period_duration, cycle_type, cycle_lengths, symptoms):
+def update_google_sheets(email, last_period, cycle_length,
+                         period_duration, cycle_type, cycle_lengths, symptoms):
     """
     Update user data in Google Sheets based on the provided information.
 
@@ -663,7 +676,6 @@ def update_google_sheets(email, last_period, cycle_length, period_duration, cycl
     It finds all rows with the matching email
     address and updates each row with the new data.
     """
-
     # Convert cycle_lengths list to a comma-separated string
     cycle_lengths_str = ", ".join(str(length) for length in cycle_lengths)
 
@@ -673,7 +685,8 @@ def update_google_sheets(email, last_period, cycle_length, period_duration, cycl
 
     # Update each row with the new data
     for row in user_rows:
-        SHEET.worksheet('responses').update_cell(row, 2, last_period.strftime('%d/%m/%Y'))
+        SHEET.worksheet('responses').update_cell(
+            row, 2, last_period.strftime('%d/%m/%Y'))
         SHEET.worksheet('responses').update_cell(row, 3, str(cycle_length))
         SHEET.worksheet('responses').update_cell(row, 4, str(period_duration))
         SHEET.worksheet('responses').update_cell(row, 5, cycle_type)
@@ -806,7 +819,8 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
         cycle_advice = [
-            "- Maintain a healthy lifestyle with regular exercise and a balanced diet.",
+            "- Maintain a healthy lifestyle with regular exercise"
+            " and a balanced diet.",
             "- Get plenty of rest and manage stress during your period."
         ]
         print("\n\033[1mCycle Length Advice (if cycle < 28 days):\033[0m")
@@ -819,7 +833,8 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     # Check the period duration and offer relevant advice
     if period_duration > 7:
         duration_advice = [
-            "- If you experience prolonged periods, consider consulting a healthcare professional."
+            "- If you experience prolonged periods, consider consulting "
+            "a healthcare professional."
         ]
         print("\n\033[1mPeriod Duration Advice (if duration > 7 days):\033[0m")
         duration_table = PrettyTable(["Recommendations"])
@@ -831,7 +846,8 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     # Check if the period length is too short
     if period_duration < 3:
         short_period_advice = [
-            "- If you experience very short periods, consider discussing this with a healthcare professional."
+            "- If you experience very short periods, consider discussing "
+            "this with a healthcare professional."
         ]
         print("\n\033[1mShort Period Advice (if duration < 3 days):\033[0m")
         short_period_table = PrettyTable(["Recommendations"])
@@ -843,86 +859,119 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     # Define the personalized recommendations for each symptom
     recommendations = {
         "cramps": [
-            "- Engage in light exercises, such as yoga or walking, to reduce cramps.",
+            "- Engage in light exercises, such as yoga or walking, "
+            "to reduce cramps.",
             "- Apply a heating pad to the lower abdomen to soothe cramps."
         ],
         "acne": [
-            "- Keep your skin clean and consider using non-comedogenic skincare products.",
-            "- Avoid touching your face and change pillowcases regularly to prevent acne breakouts."
+            "- Keep your skin clean and consider using non-comedogenic"
+            " skincare products.",
+            "- Avoid touching your face and change pillowcases "
+            "regularly to prevent acne breakouts."
         ],
         "nausea": [
-            "- Avoid greasy or heavy foods, and try eating smaller, more frequent meals.",
+            "- Avoid greasy or heavy foods, and try eating smaller, "
+            "more frequent meals.",
             "- Drink ginger tea or peppermint tea to help alleviate nausea."
         ],
         "anxiety": [
-            "- Practice deep breathing exercises and consider talking to a supportive friend or family member.",
+            "- Practice deep breathing exercises and consider talking "
+            "to a supportive friend or family member.",
             "- Engage in regular physical activity to help reduce anxiety."
         ],
         "breast tenderness": [
-            "- Wear a supportive bra and consider applying a warm compress to alleviate breast tenderness.",
-            "- Avoid consuming caffeine and salty foods, which can worsen breast tenderness."
+            "- Wear a supportive bra and consider applying a warm compress "
+            "to alleviate breast tenderness.",
+            "- Avoid consuming caffeine and salty foods, which can worsen "
+            "breast tenderness."
         ],
         "food cravings": [
-            "- Satisfy cravings in moderation, and try to choose healthier alternatives when possible.",
-            "- Keep healthy snacks, like fruits and nuts, readily available to curb cravings."
+            "- Satisfy cravings in moderation, and try to choose healthier "
+            "alternatives when possible.",
+            "- Keep healthy snacks, like fruits and nuts, readily available "
+            "to curb cravings."
         ],
         "insomnia": [
-            "- Create a bedtime routine to relax before sleep, and avoid caffeine and electronic devices before bedtime.",
-            "- Use blackout curtains and white noise machines to create a sleep-friendly environment."
+            "- Create a bedtime routine to relax before sleep, and avoid "
+            "caffeine and electronic devices before bedtime.",
+            "- Use blackout curtains and white noise machines to create "
+            "a sleep-friendly environment."
         ],
         "hot flashes": [
-            "- Wear lightweight and breathable clothing, and try to stay in a cool environment.",
-            "- Avoid triggers like spicy foods and caffeine that can worsen hot flashes."
+            "- Wear lightweight and breathable clothing, and try to stay "
+            "in a cool environment.",
+            "- Avoid triggers like spicy foods and caffeine that "
+            "can worsen hot flashes."
         ],
         "dizziness": [
-            "- Stay hydrated and avoid sudden changes in position. If dizziness persists, consult a healthcare professional.",
-            "- Practice relaxation techniques, such as deep breathing, to manage dizziness."
+            "- Stay hydrated and avoid sudden changes in position."
+            " If dizziness persists, consult a healthcare professional.",
+            "- Practice relaxation techniques, such as deep breathing, "
+            "to manage dizziness."
         ],
         "fatigue": [
-            "- Ensure you are getting enough rest and consider taking short naps if needed.",
-            "- Eat energy-boosting foods like fruits, nuts, and whole grains to combat fatigue."
+            "- Ensure you are getting enough rest and consider taking short "
+            "naps if needed.",
+            "- Eat energy-boosting foods like fruits, nuts, and whole grains "
+            "to combat fatigue."
         ],
         "mood swings": [
-            "- Practice mindfulness and meditation techniques to manage mood swings.",
-            "- Engage in activities that bring joy and relaxation, such as spending time with loved ones or pursuing hobbies."
-            "- Consider keeping a mood journal to identify patterns and triggers for your mood swings."
+            "- Practice mindfulness and meditation techniques to manage "
+            "mood swings.",
+            "- Engage in activities that bring joy and relaxation, such as "
+            "spending time with loved ones or pursuing hobbies."
+            "- Consider keeping a mood journal to identify patterns and "
+            "triggers for your mood swings."
         ],
         "bloating": [
-            "- Stay hydrated and drink plenty of water to help reduce bloating.",
-            "- Avoid consuming foods that are known to cause bloating, such as beans, cabbage, and carbonated drinks.",
-            "- Consider eating smaller, more frequent meals to prevent overeating and bloating.",
-            "- Incorporate foods rich in potassium, such as bananas and avocados, which can help reduce water retention.",
-            "- Try incorporating ginger or peppermint tea into your diet, as they may help alleviate bloating."
+            "- Stay hydrated and drink plenty of water to help reduce "
+            "bloating.",
+            "- Avoid consuming foods that are known to cause bloating, "
+            "such as beans, cabbage, and carbonated drinks.",
+            "- Consider eating smaller, more frequent meals to prevent "
+            "overeating and bloating.",
+            "- Incorporate foods rich in potassium, such as bananas and "
+            "avocados, which can help reduce water retention.",
+            "- Try incorporating ginger or peppermint tea into your diet, "
+            "as they may help alleviate bloating."
         ],
         "headache": [
             "- Stay hydrated by drinking plenty of water throughout the day.",
             "- Consider applying a cold or warm compress to your forehead.",
             "- Relax in a quiet, dark room to help reduce discomfort.",
-            "- Practice deep breathing exercises or meditation to ease tension.",
-            "- Over-the-counter pain relievers like ibuprofen or acetaminophen may help, but consult a healthcare professional before use.",
-            "- Avoid triggers like bright lights, loud noises, and certain foods.",
+            "- Practice deep breathing exercises or meditation to "
+            "ease tension.",
+            "- Over-the-counter pain relievers like ibuprofen or "
+            "acetaminophen may help, but consult a healthcare "
+            "professional before use.",
+            "- Avoid triggers like bright lights, loud noises, "
+            "and certain foods.",
         ]
     }
 
     # Filter the symptoms based on the user's input
     user_symptoms = symptoms.split(",")
-    user_symptoms = [symptom.strip().capitalize() for symptom in user_symptoms if symptom.strip().capitalize() in recommendations]
+    user_symptoms = [symptom.strip().capitalize()
+                     for symptom in user_symptoms
+                     if symptom.strip().capitalize() in recommendations]
 
     # Convert user-inputted symptoms and dictionary keys to lowercase
-    user_symptoms = [symptom.strip().lower() for symptom in symptoms.split(",")]
+    user_symptoms = [symptom.strip().lower()
+                     for symptom in symptoms.split(",")]
 
     # Display personalized recommendations for each selected symptom
     for symptom in user_symptoms:
         if symptom in recommendations:
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
             table = PrettyTable(["Recommendations"])
-            table.max_width["Recommendations"] = 70  # Set the maximum width for the table
+            table.max_width["Recommendations"] = 70
             for rec in recommendations[symptom]:
                 table.add_row([wrap_text(rec)])
             print(table)
         else:
             print(f"\n\033[1m{symptom.capitalize()}:\033[0m")
-            print(wrap_text("No specific recommendations available for this symptom."))
+            print(wrap_text("No specific recommendations available for "
+                            "this symptom."))
 
         print()
 
@@ -947,9 +996,11 @@ def display_exercises_tips():
     print(f"\n{Fore.YELLOW}EXERCICES TIPS 🚴‍♀️ 🏃‍♀️ 🧘‍♀️{Fore.RESET}")
     print()
     exercise_description = wrap_text(
-        f"{Fore.GREEN}Regular physical activity can help reduce menstrual cramps, "
-        "improve mood, and promote overall well-being during your menstrual cycle. "
-        "Here are some exercises that you can try to alleviate discomfort and boost your mood."
+        f"{Fore.GREEN}Regular physical activity can help reduce menstrual "
+        "cramps, improve mood, and promote overall well-being during "
+        "your menstrual cycle. "
+        "Here are some exercises that you can try to alleviate "
+        "discomfort and boost your mood."
     )
 
     print(exercise_description)
@@ -993,8 +1044,9 @@ def display_exercises_tips():
     print()
 
 
-def display_form_submission_data(timestamp, last_period, cycle_length, period_duration,
-                                 cycle_type, cycle_lengths, symptoms, email, name, age):
+def display_form_submission_data(timestamp, last_period, cycle_length,
+                                 period_duration, cycle_type, cycle_lengths,
+                                 symptoms, email, name, age):
     """
     This function takes various form submission data as input and presents
     it in a tabular format for display.
@@ -1049,7 +1101,9 @@ def display_fertile_days(fertile_start, fertile_end):
     are planning a pregnancy or want to be aware of their most likely
     conception periods.
     """
-    print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆  🌼{Fore.RESET}")
+    print(f"\n{Fore.YELLOW}FERTILE DAYS FOR THE NEXT 6 MONTHS 📆",
+          f"🌼{Fore.RESET}")
+
     print()
 
     # Description for the fertile days function
@@ -1087,7 +1141,8 @@ def display_next_period_date(next_period):
     tracking their menstrual cycle for reproductive health
     or planning purposes.
     """
-    print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅  🌺{Fore.RESET}")
+    print(f"\n{Fore.YELLOW}NEXT PERIOD DATES FOR THE NEXT 6 MONTHS 📅",
+          f"🌺{Fore.RESET}")
 
     print()
 
@@ -1188,12 +1243,15 @@ while True:
         print()
         print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
         print()
-        print(f"{Fore.GREEN}Thank you for using FemmeFlow Tracker!{Fore.RESET}")
-        print(f"{Fore.GREEN}We hope to see you again soon! Have a great day!{Fore.RESET}")
+        print(f"{Fore.GREEN}Thank you for using FemmeFlow Tracker!",
+              f"{Fore.RESET}")
+        print(f"{Fore.GREEN}We hope to see you again soon!",
+              f"Have a great day!{Fore.RESET}")
         print()
-        break  # Exit the application loop if the user chooses to quit
+        break
     else:
-        print(Fore.RED + "Invalid choice. Please enter a number between 1 and 7." + Fore.RESET)
+        print(Fore.RED + "Invalid choice. Please enter a number",
+              "between 1 and 7." + Fore.RESET)
 
     # Pause before continuing
     input("Press Enter to continue...\n")
