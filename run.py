@@ -1,31 +1,29 @@
-# Module for working with dates and times
-import datetime
-# Module for opening web browsers (Open Google Forms)
-import webbrowser
-# Module for creating ASCII art text
-import pyfiglet
-# Module for terminal text color formatting
-from colorama import init, Fore
-# Module for interacting with the operating system
 import os
-# Module for creating pretty tables in the terminal
-import prettytable
-# Module for working with Google Sheets
-import gspread
-# Module for wrapping text to a specified width
+from colorama import init, Fore
 import textwrap
-# Module for interacting with the Python interpreter
 import sys
-# Module for working with time-related functions
-import time
-# Module for Google Sheets authentication
+import pyfiglet
+
+# Module for opening Google Forms in the webbrowser
+import webbrowser
+
+# Module for working with Google Sheets and authentication
+import gspread
 from google.oauth2.service_account import Credentials
-# Importing the sleep function from time module
+
+# Module for working with time and importing the
+# sleep function from time module
+import time
 from time import sleep
+
 # Module for representing time intervals
+import datetime
 from datetime import timedelta
+
 # Module for creating and formatting tables in the terminal
+import prettytable
 from prettytable import PrettyTable
+
 # Module for parsing date strings
 from dateutil.parser import parse
 
