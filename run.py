@@ -563,28 +563,16 @@ def update_data():
                   Fore.RESET)
 
     # Get the updated cycle type
-    cycle_type_options = ["regular", "irregular"]
+    cycle_type_options = ["regular", "irregular", "skip"]
     updated_cycle_type = input(
         f"Cycle Type ({cycle_type}): "
     ).strip().lower()
-    if (updated_cycle_type != 'skip' and
-            updated_cycle_type in cycle_type_options):
-        cycle_type = updated_cycle_type
+    if updated_cycle_type in cycle_type_options:
+        if updated_cycle_type != 'skip':
+            cycle_type = updated_cycle_type
     else:
-        print(Fore.RED + "Invalid input. Cycle Type not updated." + Fore.RESET)
-
-    # Get the updated cycle lengths for irregular cycles
-    updated_cycle_lengths = input(
-        f"Cycle Lengths (if irregular) ({cycle_lengths}): "
-    ).strip()
-    if updated_cycle_lengths.lower() != 'skip':
-        cycle_lengths_list = updated_cycle_lengths.split(",")
-        try:
-            cycle_lengths = [int(cycle.strip())
-                             for cycle in cycle_lengths_list]
-        except ValueError:
-            print(Fore.RED + "Invalid input. Cycle Lengths (if "
-                  "irregular) not updated." + Fore.RESET)
+        print(Fore.RED + "Invalid input. Cycle Lengths (if "
+              "irregular) not updated." + Fore.RESET)
 
     # Get the updated symptoms/additional information
     available_symptoms = [
