@@ -176,19 +176,19 @@ def display_application_rules():
     """
     rules_table = PrettyTable()
     rules_table.field_names = [f"{Fore.RED}Step{Fore.RESET}", f"{Fore.RED}Description{Fore.RESET}"]
-    rules_table.max_width = 70
+    rules_table.max_width = 72
 
     rules_data = [
         ("1", "Enter Your Name: On the next screen, you'll provide your name. This is mandatory to personalize "
               "your experience."),
-        ("2", "New Users: If you haven't filled out the Google Form before, follow these steps:\n"
+        ("2", "New Users: follow these steps:\n"
               "   a. Copy the provided Google Form link and paste it in a web browser.\n"
-              "   b. Complete the Google Form with your menstrual cycle details.\n"
+              "   b. Complete the Form with your menstrual cycle details.\n"
               "   c. Return to the application and provide the email address used in the form."),
         ("3", "Returning Users: If you've previously used the application:\n"
               "   a. You don't need to fill out the form again. Just press Enter when prompted.\n"
               "   b. Provide your email address to fetch your data."),
-        ("4", "Data Retrieval and Calculations: The application will fetch your data from the form and perform "
+        ("4", "Data Retrieval: The application will fetch your data from the form and perform "
               "necessary calculations."),
         ("5", "Explore Options: A table of options will be presented for you to explore.\n"
               "   Feel free to access health tips, recommendations, predict your next period, access "
@@ -196,9 +196,9 @@ def display_application_rules():
     ]
 
     for step, description in rules_data:
-        wrapped_description = wrap_text(description, width=65, color=Fore.RESET)
+        wrapped_description = wrap_text(description, width=67, color=Fore.RESET)
         rules_table.add_row([step, wrapped_description])
-        rules_table.add_row(["", "-" * 65])
+        rules_table.add_row(["", "-" * 67])
 
     print(f"{Fore.RED}{rules_table}{Fore.RESET}")
     input("\nPress Enter to proceed to FemmeFlow Tracker...")
