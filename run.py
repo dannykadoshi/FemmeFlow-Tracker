@@ -168,40 +168,50 @@ user_name = None  # Initialize the user_name as None
 
 def display_application_rules(input_rule_choice=None):
     """
-    Display the application functionality rules and explanation.
-
-    This function displays the rules and explanation of how the FemmeFlow Tracker
-    application works. It provides information about the options available to the user
+    This function displays the rules and explanation of how the
+    FemmeFlow Tracker application works.
+    It provides information about the options available to the user
     and how they can navigate through the application.
     """
     rules_table = PrettyTable()
-    rules_table.field_names = [f"{Fore.RED}Step{Fore.RESET}", f"{Fore.RED}Description{Fore.RESET}"]
+    rules_table.field_names = [
+        f"{Fore.RED}Step{Fore.RESET}",
+        f"{Fore.RED}Description{Fore.RESET}"
+    ]
     rules_table.max_width = 72
 
     rules_data = [
-        ("1", "Enter Your Name: On the next screen, you'll provide your name. This is mandatory to personalize "
-              "your experience."),
+        ("1", "Enter Your Name: On the next screen, you'll provide your name. "
+              "This is mandatory to personalize your experience."),
         ("2", "New Users: follow these steps:\n"
-              "   a. Copy the provided Google Form link and paste it in a web browser.\n"
+              "   a. Copy the provided Google Form link and paste it in "
+              "a web browser.\n"
               "   b. Complete the Form with your menstrual cycle details.\n"
-              "   c. Return to the application and provide the email address used in the form."),
+              "   c. Return to the application and provide the email address "
+              "used in the form."),
         ("3", "Returning Users: If you've previously used the application:\n"
-              "   a. You don't need to fill out the form again. Just press Enter when prompted.\n"
+              "   a. You don't need to fill out the form again. Just press "
+              "Enter when prompted.\n"
               "   b. Provide your email address to fetch your data."),
-        ("4", "Data Retrieval: The application will fetch your data from the form and perform "
+        ("4", "Data Retrieval: The application will fetch your data from "
+              "the form and perform "
               "necessary calculations."),
-        ("5", "Explore Options: A table of options will be presented for you to explore.\n"
-              "   Feel free to access health tips, recommendations, predict your next period, access "
+        ("5", "Explore Options: A table of options will be presented "
+              "for you to explore.\n"
+              "   Feel free to access health tips, recommendations, "
+              "predict your next period, access "
               "fertile days, and more.")
     ]
 
     for step, description in rules_data:
-        wrapped_description = wrap_text(description, width=67, color=Fore.RESET)
+        wrapped_description = wrap_text(
+            description, width=67, color=Fore.RESET
+        )
         rules_table.add_row([step, wrapped_description])
         rules_table.add_row(["", "-" * 67])
 
     print(f"{Fore.RED}{rules_table}{Fore.RESET}")
-    
+
     # Check if the user is accessing the rules and avoid the input message
     if input_rule_choice == 'yes':
         return
@@ -233,7 +243,7 @@ def introduction():
 
     # Ask the user if they want to access the application functionality rules
     print()
-    print("Do you want to access the application functionality rules? (yes/no)")
+    print("Do you want to access the application functionality rules?(yes/no)")
     access_rules_choice = input().strip().lower()
 
     if access_rules_choice == "yes":
@@ -297,8 +307,10 @@ def open_google_form():
 
     print(f"{Fore.YELLOW}GOOGLE FORM 🗃 {Fore.RESET}")
     print()
-    animate_text(Fore.GREEN + wrap_text("If you are a new user, fill up the form by "
-          "copying and pasting the link provided in your browser:" + Fore.RESET))
+    animate_text(Fore.GREEN + wrap_text("If you are a new user, fill up "
+                                        "the form by copying and pasting the "
+                                        "link provided in "
+                                        "your browser:" + Fore.RESET))
     print()
     print()
     cprint("COPY AND PAST THE LINK IN YOUR BROWSER: ", "red", end="")
@@ -351,14 +363,16 @@ def display_prompt_message():
     the requirement to complete a form with essential information in
     order to use the application.
     """
-    prompt_message = "To utilize this application, please ensure you provide crucial " \
-                 "information through the form or conveniently log in using " \
-                 "your email address. Your input is essential for optimal functionality."
+    prompt_message = "To utilize this application, please ensure you " \
+                     "provide crucial information through the form " \
+                     " or conveniently log in using your email address." \
+                     " Your input is essential for optimal functionality."
 
     wrapped_prompt_message = wrap_text(prompt_message)
-    red_wrapped_prompt_message = f"{Fore.RED}{wrapped_prompt_message}{Fore.RESET}"
+    red_wrapped_prompt_message = (
+        f"{Fore.RED}{wrapped_prompt_message}{Fore.RESET}"
+    )
     animate_text(red_wrapped_prompt_message)
-
 
 
 # Prompt the user with an option to open the Google Form
@@ -392,15 +406,15 @@ else:
     animate_text("You chose not to continue.")
     print()
     print()
-    animate_text(wrap_text("For FemmeFlow Tracker to work, it requires you to continue "
-                           "and enter your data in the Google Form or enter your email "
-                           "if you are a returning user.")
-    )
+    animate_text(wrap_text("For FemmeFlow Tracker to work, it requires you to "
+                           "continue and enter your data in the Google Form "
+                           "or enter your email if you are a returning user."))
 
     print()
     print()
-    reconsider_response = input("Would you like to reconsider and continue "
-                                "to the next screen? (yes/no)  ").strip().lower()
+    reconsider_response = input("Would you like to reconsider "
+                                "and continue to the "
+                                "next screen? (yes/no) ").strip().lower()
 
     clear()
 
