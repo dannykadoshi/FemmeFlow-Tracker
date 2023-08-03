@@ -170,6 +170,7 @@ def display_welcome_message():
     This function displays the application name "FemmeFlow Tracker"
     using ASCII art with an animation effect.
     """
+    print()
     welcome_message = "🌺 WELCOME TO FEMMEFLOW TRACKER! 🌺"
     red_welcome_message = f"{Fore.RED}{welcome_message}{Fore.RESET}"
     animate_text(red_welcome_message)
@@ -306,7 +307,6 @@ print()
 print()
 print(f"{Fore.YELLOW}{user_name}, would you like to enter your "
       f"information in the Google Form? (yes/no){Fore.RESET}")
-print()
 print()
 response = input().strip().lower()
 clear()
@@ -757,8 +757,6 @@ def display_health_tips():
            "help regulate your cycle.",
         5: "Maintain a balanced and nutritious diet to support your overall "
            "health and menstrual cycle.",
-        6: "Consider herbal teas like ginger or chamomile that might help "
-           "alleviate irregular cycle symptoms.",
     }
 
     # Create a table with two columns: Tip Number and Tip Text
@@ -829,7 +827,8 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     and specific symptoms. The recommendations are provided in a formatted
     manner, addressing various symptoms and offering advice for each.
     """
-    print(f"\n{Fore.YELLOW}PERSONALIZED RECOMMENDATIONS ✍🏻{Fore.RESET}")
+    print(f"\n{Fore.YELLOW}PERSONALIZED RECOMMENDATIONS ✍🏻 {Fore.RESET}")
+    print()
     intro_message = (
         f"{Fore.GREEN}Based on your menstrual cycle data and symptoms,"
         " we have some personalized recommendations to help you stay healthy"
@@ -1016,6 +1015,7 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
 
     # Display the advisory message with the specified color
     clear()
+    print()
     advisory_message = (
         "🚨 These recommendations are meant to provide general guidance."
         " For personalized advice, consult with a healthcare professional. 🚨"
