@@ -516,6 +516,7 @@ def update_data():
     print()
     print(f"{Fore.GREEN}Please enter the new details below, and your "
           f"data will be updated in our systems.{Fore.RESET}")
+    print(f"{Fore.RED}Your name and age cannot be updated{Fore.RESET}")
     print()
 
     # Get the updated last period date
@@ -573,6 +574,8 @@ def update_data():
     else:
         print(Fore.RED + "Invalid input. Cycle Lengths (if "
               "irregular) not updated." + Fore.RESET)
+
+    clear()
 
     # Get the updated symptoms/additional information
     available_symptoms = [
@@ -725,43 +728,71 @@ def display_health_tips():
 
     clear()
 
-    # Tips dictionary
-    tips = {
+    # Tips dictionary for regular cycle
+    tips_regular = {
         1: "Maintain a healthy diet and drink plenty of water.",
-        2: "Exercise regularly to improve overall health and manage stress.",
-        3: "Ensure you get enough sleep and rest during your menstrual cycle.",
+        2: "Exercise regularly to improve health and manage stress.",
+        3: "Ensure you get enough sleep and rest during your cycle.",
         4: "Manage stress through relaxation techniques like meditation or "
-        "deep breathing.",
-        5: "Limit caffeine and alcohol intake, as they can affect your"
-        "menstrual cycle.",
-        6: "Avoid smoking and exposure to secondhand smoke for better"
-        "reproductive health.",
-        7: "Consider taking supplements like iron and calcium to support"
-        "your health.",
+           "deep breathing.",
+        5: "Limit caffeine and alcohol intake, as they can affect your cycle.",
+        6: "Consider taking supplements like iron and calcium to support "
+           "your health.",
+        7: "Practice mindfulness and engage in activities that bring "
+           "you joy and relaxation.",
+        8: "Keep track of your menstrual cycle on a calendar to better "
+           "understand patterns and changes.",
+
     }
 
-    if cycle_type.lower() == 'irregular':
-        tips[8] = "If you have irregular cycles, consider keeping "
-        "a symptom diary to identify patterns."
-        tips[9] = "Talk to your healthcare provider to rule out any "
-        "underlying health issues."
-        tips[10] = "Stay prepared with period supplies since irregular "
-        "cycles can be unpredictable."
+    # Tips dictionary for irregular cycle
+    tips_irregular = {
+        1: "If you have irregular cycles, consider keeping a symptom diary "
+           "to identify patterns.",
+        2: "Talk to your healthcare provider to rule out any underlying "
+           "health issues.",
+        3: "Stay prepared with period supplies since irregular cycles can "
+           "be unpredictable.",
+        4: "Explore stress-reduction activities like yoga or tai chi to "
+           "help regulate your cycle.",
+        5: "Maintain a balanced and nutritious diet to support your overall "
+           "health and menstrual cycle.",
+        6: "Consider herbal teas like ginger or chamomile that might help "
+           "alleviate irregular cycle symptoms.",
+    }
 
     # Create a table with two columns: Tip Number and Tip Text
-    table = PrettyTable()
-    table.field_names = ["Tip Number", "Tip Text"]
+    table_regular = PrettyTable()
+    table_regular.field_names = ["Tip Number", "Tip Text"]
+    table_irregular = PrettyTable()
+    table_irregular.field_names = ["Tip Number", "Tip Text"]
 
-    # Set the maximum width for the Tip Text column
-    table.max_width["Tip Text"] = 55
+    # Set the maximum width for the Tip Text columns
+    table_regular.max_width["Tip Text"] = 60
+    table_irregular.max_width["Tip Text"] = 60
 
-    # Add each tip to the table
-    for tip_number, tip_text in tips.items():
-        table.add_row([tip_number, wrap_text(tip_text)])
+    # Add regular tips to the regular tips table
+    for tip_number, tip_text in tips_regular.items():
+        table_regular.add_row([tip_number, wrap_text(tip_text)])
 
-    # Print the table
-    print(table)
+    # Add irregular tips to the irregular tips table
+    for tip_number, tip_text in tips_irregular.items():
+        table_irregular.add_row([tip_number, wrap_text(tip_text)])
+
+    # Print the regular tips table
+    print(f"\n{Fore.YELLOW}REGULAR PERIOD CYCLE TIPS 🩸{Fore.RESET}")
+    print(table_regular)
     print()
+
+    # Check if there are irregular tips to display
+    if tips_irregular:
+        input("Press Enter to see tips for irregular menstrual cycle...")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f"\n{Fore.YELLOW}IRREGULAR PERIOD CYCLE TIPS 🩸 🩸{Fore.RESET}")
+        print(table_irregular)
+        print()
+    else:
+        input("Press Enter to continue...")
 
 
 def display_recommendations_table(symptom, tips):
