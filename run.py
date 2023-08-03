@@ -242,19 +242,22 @@ def open_google_form():
 
     print(f"{Fore.YELLOW}GOOGLE FORM 🗃 {Fore.RESET}")
     print()
-    print(Fore.RED + wrap_text("RETURNING USER?") + Fore.RESET)
+    animate_text(Fore.GREEN + wrap_text("If you are a new user, fill up the form by "
+          "copying and pasting the link provided in your browser:" + Fore.RESET))
     print()
-    print(wrap_text(
-        "Save time! Skip the form, by pressing 'Enter,' and providing the "
-        "email address previously used to fill up the Google form."
-    ))
-    print("Your convenience matters!")
-    print()
-    print(Fore.GREEN + wrap_text("If you are a new user, fill up the form by "
-          "copying and pasting the link bellow in your browser:" + Fore.RESET))
     print()
     cprint("COPY AND PAST THE LINK IN YOUR BROWSER: ", "red", end="")
     print(colored(form_url, "blue", attrs=["underline"]))
+    print()
+    animate_text(Fore.GREEN + wrap_text("RETURNING USER?") + Fore.RESET)
+    print()
+    print()
+    animate_text(wrap_text(
+        "Save time! Skip the form, by pressing 'Enter,' and provide the "
+        "email address previously used to fill up the Google form. "
+        "Your convenience matters!"
+    ))
+    print()
     print()
     print(wrap_text(
         "After entering the information, "
@@ -262,8 +265,6 @@ def open_google_form():
         "your data and all features of this application"
     ))
     print()
-
-    webbrowser.open(form_url)
 
 
 def get_user_email():
@@ -295,19 +296,22 @@ def display_prompt_message():
     the requirement to complete a form with essential information in
     order to use the application.
     """
-    prompt_message = "To use this application, kindly complete a " \
-                     "form providing essential information."
+    prompt_message = "To utilize this application, please ensure you provide crucial " \
+                 "information through the form or conveniently log in using " \
+                 "your email address. Your input is essential for optimal functionality."
 
-    red_prompt_message = f"{Fore.RED}{prompt_message}{Fore.RESET}"
-    animate_text(red_prompt_message)
+    wrapped_prompt_message = wrap_text(prompt_message)
+    red_wrapped_prompt_message = f"{Fore.RED}{wrapped_prompt_message}{Fore.RESET}"
+    animate_text(red_wrapped_prompt_message)
+
 
 
 # Prompt the user with an option to open the Google Form
 display_prompt_message()
 print()
 print()
-print(f"{Fore.YELLOW}{user_name}, would you like to enter your "
-      f"information in the Google Form? (yes/no){Fore.RESET}")
+print(f"{Fore.YELLOW}{user_name}, would you like to continue? "
+      f" (yes/no){Fore.RESET}")
 print()
 response = input().strip().lower()
 clear()
@@ -321,25 +325,27 @@ while response not in ['yes', 'no']:
 
 clear()
 
-# If the user enters 'yes', open the Google Form in the web browser
+# If the user enters 'yes'
 if response == 'yes':
     open_google_form()
-    print(f"{Fore.YELLOW}Press Enter when you have submitted the "
-          f"data in the Google Form...{Fore.RESET}")
-
+    print(wrap_text(f"{Fore.YELLOW}Press Enter when you have submitted the "
+                    f"data in the Google Form and/or are ready"
+                    f" to enter your email...{Fore.RESET}"))
     input()
     clear()
 else:
-    animate_text("You chose not to enter your information in the Google Form.")
+    animate_text("You chose not to continue.")
     print()
     print()
-    animate_text("For FemmeFlow Tracker to work, it requires your "
-                 "menstrual cycle data.")
+    animate_text(wrap_text("For FemmeFlow Tracker to work, it requires you to continue "
+                           "and enter your data in the Google Form or enter your email "
+                           "if you are a returning user.")
+    )
 
     print()
     print()
-    reconsider_response = input("Would you like to reconsider and open the "
-                                "Google Form now? (yes/no)  ").strip().lower()
+    reconsider_response = input("Would you like to reconsider and continue "
+                                "to the next screen? (yes/no)  ").strip().lower()
 
     clear()
 
@@ -360,13 +366,13 @@ else:
         print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
         print()
         print(f"{Fore.GREEN}Thank you for accessing FemmeFlow "
-              "Tracker!{Fore.RESET}")
+              "Tracker!")
         print(f"{Fore.GREEN}To unlock all the application functions, "
-              "data submission is required!{Fore.RESET}")
+              "data submission is required!")
         print(f"{Fore.GREEN}If you change your mind, you're welcome to "
-              "come back at any time.{Fore.RESET}")
+              "come back at any time.")
         print(f"{Fore.GREEN}We hope to see you again soon! "
-              "Have a great day!{Fore.RESET}")
+              "Have a great day!")
 
         print()
         exit()
