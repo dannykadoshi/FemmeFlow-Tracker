@@ -283,7 +283,7 @@ def get_user_email():
     while not user_email:
         animate_text(Fore.RED + "Please enter a valid email "
                      "address." + Fore.RESET)
-        print()             
+        print()
         user_email = input().strip().lower()
 
     return user_email
@@ -318,6 +318,8 @@ while response not in ['yes', 'no']:
           + Fore.RESET)
 
     response = input().strip().lower()
+
+clear()    
 
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
