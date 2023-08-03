@@ -327,7 +327,7 @@ if response == 'yes':
     print(f"{Fore.YELLOW}Press Enter when you have submitted the "
           f"data in the Google Form...{Fore.RESET}")
 
-    input()  # Wait for the user to press Enter
+    input()
     clear()
 else:
     animate_text("You chose not to enter your information in the Google Form.")
@@ -353,6 +353,8 @@ else:
         open_google_form()
         input("Press Enter when you have submitted the data "
               "in the Google Form...")
+
+    clear()          
 
     elif reconsider_response == 'no':
         print()
