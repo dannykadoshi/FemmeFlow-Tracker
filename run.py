@@ -166,7 +166,7 @@ def center_logo(logo_lines, width):
 user_name = None  # Initialize the user_name as None
 
 
-def display_application_rules():
+def display_application_rules(input_rule_choice=None):
     """
     Display the application functionality rules and explanation.
 
@@ -176,7 +176,7 @@ def display_application_rules():
     """
     rules_table = PrettyTable()
     rules_table.field_names = [f"{Fore.RED}Step{Fore.RESET}", f"{Fore.RED}Description{Fore.RESET}"]
-    rules_table.max_width = 75
+    rules_table.max_width = 72
 
     rules_data = [
         ("1", "Enter Your Name: On the next screen, you'll provide your name. This is mandatory to personalize "
@@ -196,13 +196,17 @@ def display_application_rules():
     ]
 
     for step, description in rules_data:
-        wrapped_description = wrap_text(description, width=70, color=Fore.RESET)
+        wrapped_description = wrap_text(description, width=67, color=Fore.RESET)
         rules_table.add_row([step, wrapped_description])
-        rules_table.add_row(["", "-" * 70])
+        rules_table.add_row(["", "-" * 67])
 
     print(f"{Fore.RED}{rules_table}{Fore.RESET}")
-    input("\nPress Enter to proceed to FemmeFlow Tracker...")
+    
+    # Check if the user is accessing the rules and avoid the input message
+    if input_rule_choice == 'yes':
+        return
 
+    input("\nPress Enter to proceed to FemmeFlow Tracker...")
 
 
 def display_welcome_message():
@@ -547,7 +551,8 @@ def print_options():
     table.add_row(["4", "Next Period Date"])
     table.add_row(["5", "Personalized Recommendations"])
     table.add_row(["6", "Exercises Tips"])
-    table.add_row(["7", "Quit the application"])
+    table.add_row(["7", "Application Rules"])
+    table.add_row(["8", "Quit the application"])
 
     # Set the table text color to red using colorama
     red_table = f"{Fore.RED}{table}{Fore.RESET}"
@@ -1359,6 +1364,10 @@ while True:
         # Display exercises tips
         display_exercises_tips()
     elif choice == "7":
+        # Display the application functionality rules without input message
+        display_application_rules(input_rule_choice='yes')
+        print()
+    elif choice == "8":
         print()
         print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
         print()
@@ -1371,7 +1380,7 @@ while True:
         break
     else:
         print(Fore.RED + "Invalid choice. Please enter a number",
-              "between 1 and 7." + Fore.RESET)
+              "between 1 and 8." + Fore.RESET)
 
     # Pause before continuing
     input("Press Enter to continue...\n")
