@@ -3,6 +3,7 @@ import textwrap
 import sys
 import pyfiglet
 from colorama import init, Fore
+from termcolor import colored, cprint
 
 # Module for opening Google Forms in the webbrowser
 import webbrowser
@@ -238,14 +239,22 @@ def open_google_form():
     to the application to access their data and utilize its features.
     """
     form_url = "https://forms.gle/ja7VxdgBAutRLz348"
-    webbrowser.open(form_url)
 
-    print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
+    print(f"{Fore.YELLOW}GOOGLE FORM 🗃 {Fore.RESET}")
+    print()
+    print(Fore.RED + wrap_text("RETURNING USER?") + Fore.RESET)
     print()
     print(wrap_text(
-        "Google Form opened in your web browser. "
-        "Please enter your information there."
+        "Save time! Skip the form, press 'Enter,' and provide the "
+        "email previously used to fill up the form."
     ))
+    print("Your convenience matters!")
+    print()
+    print(Fore.GREEN + wrap_text("If you are a new user, fill up the form by "
+          "opening the link bellow in your web browser:" + Fore.RESET))
+    print()
+    cprint("CLICK ON THE LINK TO OPEN GOOGLE FORM: ", "red", end="")
+    print(colored(form_url, "blue", attrs=["underline"]))
     print()
     print(wrap_text(
         "After entering the information, "
@@ -253,16 +262,8 @@ def open_google_form():
         "your data and all features of this application"
     ))
     print()
-    print(Fore.RED + wrap_text(
-        "RETURNING USER?"
-    ))
-    print()
-    print(Fore.GREEN + wrap_text(
-        "Save time! Skip the form, press 'Enter,' and provide the "
-        "email previously used for personalized insights."
-        "Your convenience matters!"
-    ))
-    print()
+
+    webbrowser.open(form_url)
 
 
 def get_user_email():
@@ -275,8 +276,7 @@ def get_user_email():
     """
     print(f"{Fore.YELLOW}{user_name},{Fore.RESET}")
     print()
-    print("If you have filled in the google form, please enter the "
-          "email address used:")
+    print("Enter the email address used to fill up the Form:")
     print()
     print(Fore.GREEN, end='')
     user_email = input().strip().lower()
