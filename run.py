@@ -176,7 +176,7 @@ def display_application_rules():
     """
     rules_table = PrettyTable()
     rules_table.field_names = [f"{Fore.RED}Step{Fore.RESET}", f"{Fore.RED}Description{Fore.RESET}"]
-    rules_table.max_width = 72
+    rules_table.max_width = 75
 
     rules_data = [
         ("1", "Enter Your Name: On the next screen, you'll provide your name. This is mandatory to personalize "
@@ -196,9 +196,9 @@ def display_application_rules():
     ]
 
     for step, description in rules_data:
-        wrapped_description = wrap_text(description, width=67, color=Fore.RESET)
+        wrapped_description = wrap_text(description, width=70, color=Fore.RESET)
         rules_table.add_row([step, wrapped_description])
-        rules_table.add_row(["", "-" * 67])
+        rules_table.add_row(["", "-" * 70])
 
     print(f"{Fore.RED}{rules_table}{Fore.RESET}")
     input("\nPress Enter to proceed to FemmeFlow Tracker...")
