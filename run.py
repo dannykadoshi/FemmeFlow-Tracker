@@ -166,6 +166,55 @@ def center_logo(logo_lines, width):
 user_name = None  # Initialize the user_name as None
 
 
+def display_application_rules():
+    """
+    Display the application functionality rules and explanation.
+
+    This function displays the rules and explanation of how the FemmeFlow Tracker
+    application works. It provides information about the options available to the user
+    and how they can navigate through the application.
+    """
+    introduction_text = (
+        f"{Fore.GREEN}Welcome to FemmeFlow Tracker!\n"
+        "FemmeFlow Tracker is designed to empower you in managing your menstrual cycle and overall well-being. "
+        "Explore the following steps to make the most of your experience:\n\n"
+    )
+    wrapped_introduction = wrap_text(introduction_text, width=70, color=Fore.RESET)
+    print(wrapped_introduction)
+    print()
+
+    rules_table = PrettyTable()
+    rules_table.field_names = [f"{Fore.RED}Step{Fore.RESET}", f"{Fore.RED}Description{Fore.RESET}"]
+    rules_table.max_width = 75
+
+    rules_data = [
+        ("1", "Enter Your Name: On the next screen, you'll provide your name. This is mandatory to personalize "
+              "your experience."),
+        ("2", "New Users: If you haven't filled out the Google Form before, follow these steps:\n"
+              "   a. Copy the provided Google Form link and paste it in a web browser.\n"
+              "   b. Complete the Google Form with your menstrual cycle details.\n"
+              "   c. Return to the application and provide the email address used in the form."),
+        ("3", "Returning Users: If you've previously used the application:\n"
+              "   a. You don't need to fill out the form again. Just press Enter when prompted.\n"
+              "   b. Provide your email address to fetch your data."),
+        ("4", "Data Retrieval and Calculations: The application will fetch your data from the form and perform "
+              "necessary calculations."),
+        ("5", "Explore Options: A table of options will be presented for you to explore.\n"
+              "   Feel free to access health tips, receive recommendations, predict your next period, access "
+              "fertile days, and more."),
+        ("6", "Exit: When you're ready to finish, you can exit the application using the 'Exit' option.")
+    ]
+
+    for step, description in rules_data:
+        wrapped_description = wrap_text(description, width=70, color=Fore.RESET)
+        rules_table.add_row([step, wrapped_description])
+        rules_table.add_row(["", "-" * 70])  # Add a line after each rule
+
+    print(f"{Fore.RED}{rules_table}{Fore.RESET}")
+    input("\nPress Enter to proceed to FemmeFlow Tracker...")
+
+
+
 def display_welcome_message():
     """
     This function displays the application name "FemmeFlow Tracker"
@@ -187,6 +236,18 @@ def introduction():
     ensures a non-empty name is provided before proceeding.
     """
     display_name()
+
+    # Ask the user if they want to access the application functionality rules
+    print()
+    print("Do you want to access the application functionality rules? (yes/no)")
+    access_rules_choice = input().strip().lower()
+
+    if access_rules_choice == "yes":
+        clear()
+        display_application_rules()
+
+    clear()
+
     display_welcome_message()
     print()
 
