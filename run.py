@@ -353,8 +353,7 @@ else:
         open_google_form()
         input("Press Enter when you have submitted the data "
               "in the Google Form...")
-
-    clear()          
+        clear()
 
     elif reconsider_response == 'no':
         print()
