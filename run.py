@@ -245,8 +245,8 @@ def open_google_form():
     print(Fore.RED + wrap_text("RETURNING USER?") + Fore.RESET)
     print()
     print(wrap_text(
-        "Save time! Skip the form, press 'Enter,' and provide the "
-        "email previously used to fill up the form."
+        "Save time! Skip the form, by pressing 'Enter,' and providing the "
+        "email address previously used to fill up the Google form."
     ))
     print("Your convenience matters!")
     print()
@@ -284,6 +284,7 @@ def get_user_email():
         animate_text(Fore.RED + "Please enter a valid email "
                      "address." + Fore.RESET)
         user_email = input().strip().lower()
+    print()    
 
     return user_email
 
