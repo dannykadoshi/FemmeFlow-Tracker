@@ -191,9 +191,8 @@ def display_application_rules():
         ("4", "Data Retrieval and Calculations: The application will fetch your data from the form and perform "
               "necessary calculations."),
         ("5", "Explore Options: A table of options will be presented for you to explore.\n"
-              "   Feel free to access health tips, receive recommendations, predict your next period, access "
-              "fertile days, and more."),
-        ("6", "Exit: When you're ready to finish, you can exit the application using the 'Exit' option.")
+              "   Feel free to access health tips, recommendations, predict your next period, access "
+              "fertile days, and more.")
     ]
 
     for step, description in rules_data:
