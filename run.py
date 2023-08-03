@@ -319,7 +319,7 @@ while response not in ['yes', 'no']:
 
     response = input().strip().lower()
 
-clear()    
+clear()
 
 # If the user enters 'yes', open the Google Form in the web browser
 if response == 'yes':
