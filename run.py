@@ -283,8 +283,8 @@ def get_user_email():
     while not user_email:
         animate_text(Fore.RED + "Please enter a valid email "
                      "address." + Fore.RESET)
+        print()             
         user_email = input().strip().lower()
-    print()    
 
     return user_email
 
