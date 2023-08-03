@@ -829,12 +829,17 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
     and specific symptoms. The recommendations are provided in a formatted
     manner, addressing various symptoms and offering advice for each.
     """
+    print(f"\n{Fore.YELLOW}PERSONALIZED RECOMMENDATIONS ✍🏻{Fore.RESET}")
     intro_message = (
         f"{Fore.GREEN}Based on your menstrual cycle data and symptoms,"
         " we have some personalized recommendations to help you stay healthy"
         " and comfortable during your period:"
     )
     print(wrap_text(intro_message))
+    print()
+    input("Press Enter to continue...")
+
+    clear()
 
     # Check the cycle length and offer relevant advice
     if cycle_length < 28:
@@ -849,6 +854,10 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         for rec in cycle_advice:
             cycle_table.add_row([wrap_text(rec)])
         print(cycle_table)
+        print()
+        input("Press Enter to continue...")
+
+    clear()
 
     # Check the period duration and offer relevant advice
     if period_duration > 7:
@@ -862,6 +871,10 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         for rec in duration_advice:
             duration_table.add_row([wrap_text(rec)])
         print(duration_table)
+        print()
+        input("Press Enter to continue...")
+
+    clear()
 
     # Check if the period length is too short
     if period_duration < 3:
@@ -875,6 +888,10 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
         for rec in short_period_advice:
             short_period_table.add_row([wrap_text(rec)])
         print(short_period_table)
+        print()
+        input("Press Enter to continue...")
+
+    clear()
 
     # Define the personalized recommendations for each symptom
     recommendations = {
@@ -994,8 +1011,11 @@ def personalized_recommendations(cycle_length, period_duration, symptoms):
                             "this symptom."))
 
         print()
+        input("Press Enter to see the next symptom...")
+        clear()
 
     # Display the advisory message with the specified color
+    clear()
     advisory_message = (
         "🚨 These recommendations are meant to provide general guidance."
         " For personalized advice, consult with a healthcare professional. 🚨"
