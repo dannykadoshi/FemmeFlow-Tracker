@@ -1305,10 +1305,11 @@ while True:
         print()
         print(f"{Fore.YELLOW}{user_name}{Fore.RESET}")
         print()
-        print(f"{Fore.GREEN}Thank you for using FemmeFlow Tracker!",
-              f"{Fore.RESET}")
-        print(f"{Fore.GREEN}We hope to see you again soon!",
-              f"Have a great day!{Fore.RESET}")
+        thank_you_message = (
+            f"{Fore.GREEN}Thank you for using FemmeFlow Tracker!\n"
+            f"We hope to see you again soon! Have a great day!{Fore.RESET}"
+        )
+        print(wrap_text(thank_you_message))
         print()
         break
     else:
