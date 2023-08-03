@@ -251,9 +251,9 @@ def open_google_form():
     print("Your convenience matters!")
     print()
     print(Fore.GREEN + wrap_text("If you are a new user, fill up the form by "
-          "opening the link bellow in your web browser:" + Fore.RESET))
+          "copying and pasting the link bellow in your browser:" + Fore.RESET))
     print()
-    cprint("CLICK ON THE LINK TO OPEN GOOGLE FORM: ", "red", end="")
+    cprint("COPY AND PAST THE LINK IN YOUR BROWSER: ", "red", end="")
     print(colored(form_url, "blue", attrs=["underline"]))
     print()
     print(wrap_text(
