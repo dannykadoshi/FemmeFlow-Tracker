@@ -1,32 +1,40 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# FEMMEFLOW TRACKER 📆🩸🩸🩸
 
-Welcome,
+### Deployed Application: [FemmeFlow Tracker](https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+**FemmeFlow Tracker** is an interactive and user-friendly Python-based application designed to empower women to better understand and manage their menstrual cycles. By providing insightful information, personalized recommendations, and health tips, this application aims to enhance well-being and support users in their menstrual health journey.
 
-## Reminders
+The application's core mission is to empower women by offering a dynamic blend of data-driven insights.
+FemmeFlow Tracker stands as a reliable companion, providing invaluable assistance every step of the way.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+FemmeFlow Tracker: Empowering Your Menstrual Health Journey
 
-## Creating the Heroku app
+**FemmeFlow Tracker** is a meticulously crafted, interactive, and user-friendly Python-based application that aims to revolutionize the way individuals comprehend and manage their menstrual cycles. Delving beyond mere period tracking, this empowering tool provides a comprehensive suite of features that facilitate deep insights, personalized guidance, and practical health tips, fostering a holistic approach to menstrual well-being. 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The application's core mission is to empower users by offering a dynamic blend of data-driven insights and empathetic support throughout their menstrual health journey. Whether you seek to navigate the intricacies of your cycle, alleviate discomfort, or achieve your reproductive goals, FemmeFlow Tracker stands as a reliable companion, providing invaluable assistance every step of the way.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+**Our Goals:**
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- **Personalized Recommendations:** Tailored to your individual menstrual profile, the application provides personalized recommendations that encompass exercise tips, stress management tips, and more, enhancing your ability to manage your cycle effectively.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- **Empowering Health Tips:** Explore a treasure trove of health tips that extend beyond the conventional, offering proactive guidance to optimize your well-being during every phase of your menstrual cycle.
 
-Connect your GitHub repository and deploy as normal.
+- **Future Projection:** FemmeFlow Tracker doesn't just help you in the present; it offers glimpses into the future by projecting fertile days and predicting the start dates of upcoming periods, allowing you to plan and prepare with confidence.
 
-## Constraints
+- **User-Centric Approach:** Backed by a commitment to user well-being, FemmeFlow Tracker places you at the center of the experience, ensuring that the application is not just informative but also intuitive and empathetic.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+![Am I responsive](/Docs/am-i-responsive.png)
+[Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
----
 
-Happy coding!
+## FEATURES
+
+Discover a range of features that provide personalized insights, health tips, and predictions, enhancing your well-being and menstrual health journey. Dive into the following capabilities that FemmeFlow Tracker offers:
+
+### Landing Page: An Inviting Introduction
+
+Step into the world of FemmeFlow Tracker through its captivating landing page. As you enter, you'll be greeted by a central black terminal. Atop this terminal window, a thoughtfully designed logo, crafted using Canva Premium, proudly presents the iconic FemmeFlow Tracker emblem. Just above the logo, a beckoning "Run Program" button entices you to embark on your journey.
+
+Beneath the terminal, a white background image takes shape, portraying a tasteful arrangement of menstrual pads. This image, meticulously created using Canva Premium, seamlessly weaves into the application's theme, echoing the essence of menstrual health and comfort. With every element thoughtfully orchestrated, the landing page encapsulates the spirit of FemmeFlow Tracker – user-friendly, empowering, and attuned to your well-being.
+
+![Landing Page](/Docs/landing_page.png)

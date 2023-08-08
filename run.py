@@ -4,22 +4,15 @@ import sys
 import pyfiglet
 from colorama import init, Fore
 from termcolor import colored, cprint
-
-# Module for opening Google Forms in the webbrowser
 import webbrowser
+import time
+from time import sleep
+import datetime
+from datetime import timedelta
 
 # Module for working with Google Sheets and authentication
 import gspread
 from google.oauth2.service_account import Credentials
-
-# Module for working with time and importing the
-# sleep function from time module
-import time
-from time import sleep
-
-# Module for representing time intervals
-import datetime
-from datetime import timedelta
 
 # Module for creating and formatting tables in the terminal
 import prettytable
