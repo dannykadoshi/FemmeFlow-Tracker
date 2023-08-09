@@ -9,7 +9,7 @@ FemmeFlow Tracker stands as a reliable companion, providing invaluable assistanc
 
 **FemmeFlow Tracker:** Empowering Your Menstrual Health Journey
 
-**OUR MAIN GOALS:**
+**➡️ OUR MAIN GOALS:**
 
 - **Personalized Recommendations:** Tailored to your individual menstrual profile, the application provides personalized recommendations that encompass exercise tips, stress management tips, and more, enhancing your ability to manage your cycle effectively.
 
@@ -23,29 +23,29 @@ FemmeFlow Tracker stands as a reliable companion, providing invaluable assistanc
 [Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
 ---
-## FEATURES
+## ➡️ FEATURES
 ---
 Discover a range of features that provide personalized insights, health tips, and predictions, enhancing your well-being and menstrual health journey. Dive into the following capabilities that FemmeFlow Tracker offers:
 
-### LANDING PAGE: AN INVITING INTRODUCTION
-
+### ➥ LANDING PAGE: AN INVITING INTRODUCTION
+--- 
 Step into the world of FemmeFlow Tracker through its captivating landing page. As you enter, you'll be greeted by a central black terminal. Atop this terminal window, a thoughtfully designed logo, crafted using Canva Premium, proudly presents the iconic FemmeFlow Tracker emblem. Just above the logo, a beckoning "Run Program" button entices you to embark on your journey.
 
 Beneath the terminal, a white background image takes shape, portraying a tasteful arrangement of menstrual pads. This image, meticulously created using Canva Premium, seamlessly weaves into the application's theme, echoing the essence of menstrual health and comfort. With every element thoughtfully orchestrated, the landing page encapsulates the spirit of FemmeFlow Tracker – user-friendly, empowering, and attuned to your well-being.
 
 ![Landing Page](readme-files/landing_page.png)
 
-### APPLICATION INTRODUCTION
-
+### ➥ APPLICATION INTRODUCTION
+---
 The `introduction()` function serves as the initial interaction point between the user and the FemmeFlow Tracker application. Its purpose is to provide a warm and informative welcome to the user, setting the stage for their interaction with the application's features. Here's a breakdown of the introductory features:
 
-#### Displaying application Name with animation
+#### ⤵️ Displaying application Name with animation ⤵️
 
 - The function begins by invoking the `display_name()` function, which presents the application name "FemmeFlow Tracker" in ASCII art with an animation effect. 
 - The `display_name()` function begins by defining the application name as "FemmeFlow Tracker" and generating the corresponding ASCII art using the "slant" font style from the pyfiglet library. To ensure the presentation's elegance, the function dynamically calculates the terminal width to center-align the text.
 ![ASCII art](readme-files/ascii-intro.png)
 
-#### Access Application Functionality Rules
+#### ⤵️ Access Application Functionality Rules ⤵️
 
 - After displaying the application name, the user is prompted with a choice to access the application's functionality rules. 
 ![Rules question](readme-files/rules-question.png)
@@ -55,8 +55,8 @@ The `introduction()` function serves as the initial interaction point between th
 
 - If the user chooses not to access the rules **("no" input)**, the function clears the screen, and the application will them display the welcoming message. 
 
-### WELCOMING PAGE AND USER'S NAME PROMPT
-
+### ➥ WELCOMING PAGE AND USER'S NAME PROMPT
+---
 - Following the display of the rules or if the user chooses not to access them, the function clears the screen again and proceeds to display a detailed welcome message and description of the FemmeFlow Tracker application's purpose. 
 - This description highlights the application's capabilities, such as tracking the menstrual cycle, predicting the next period date, offering personalized recommendations, and providing health tips.
 - The user is then prompted to enter their name. Input validation ensures that a non-empty name is provided before proceeding. This step adds a personalized touch to the user's experience and prepares the application to address them by name. 
@@ -66,8 +66,8 @@ The `introduction()` function serves as the initial interaction point between th
 
 By guiding the user through a visually engaging and informative introduction, the `introduction()` function establishes a welcoming and user-centric environment, encouraging users to explore the various features FemmeFlow Tracker has to offer.
 
-### ESSENTIAL INFORMATION GATHERING DISCLAIMER
-
+### ➥ ESSENTIAL INFORMATION GATHERING DISCLAIMER
+---
 The `display_prompt_message()` function and the subsequent user interaction steps collectively contribute to guiding the user through the process of providing essential information to utilize the FemmeFlow Tracker application. Here's a breakdown of this feature:
 
 - **Display Prompt Message:** The `display_prompt_message()` function is responsible for presenting the user with a prompt message that informs them about the requirement to complete a form with essential information to use the application. The message emphasizes the importance of user input for optimal functionality. The message is visually enhanced by wrapping the text and displaying it in red using color formatting from the `colorama` library. The text is also animated for added visual interest.
@@ -90,8 +90,8 @@ The `display_prompt_message()` function and the subsequent user interaction step
 
 This feature of the application focuses on user engagement and decision-making, ensuring that the user is informed about the data submission process and has the opportunity to make a choice that aligns with their preferences. The application's clear messaging and well-structured interactions enhance the user experience.
 
-### OPEN GOOGLE FORM PAGE
-
+### ➥ OPEN GOOGLE FORM PAGE
+---
 The `open_google_form()` function is responsible for facilitating the process of opening a specified Google Form URL in the user's default web browser. This feature allows users, whether new or returning, to enter their information into the Google Form, which is a crucial step for utilizing the FemmeFlow Tracker application. Here's a breakdown of this feature:
 
 - **Open Google Form URL:** The function starts by specifying the URL of the Google Form (`form_url`). This URL is the location where users can input their information. [FemmeFlow tracker Google Form](https://forms.gle/BmqAMvNzfy4sn7YU8). Without filling in the form, the user cannot access the main features of this application.
@@ -108,8 +108,8 @@ Overall, this feature provides clear instructions and guidance to users on how t
 
 ![Open Google form disclaimer page](readme-files/google-form.png)
 
-### AUTOMATED EMAIL NOTIFICATIONS
-
+### ➥ AUTOMATED EMAIL NOTIFICATIONS
+---
 - **Dedicated email address:** A dedicated email address has been established exclusively for use with the application, ensuring an enhanced and more gratifying user experience when receiving correspondence from our platform.
 
 - **Tailored Email:** Following the submission of menstrual cycle information via the form, the application rapidly generates a tailored email employing the Apps Script functionality.
@@ -118,8 +118,8 @@ Overall, this feature provides clear instructions and guidance to users on how t
 
 ![Email after form submission](readme-files/email-new-form-submission.png)
 
-### EMAIL COLECTION AND VALIDATION
-
+### ➥ EMAIL COLECTION AND VALIDATION
+---
 The `get_user_email()` function handles the process of collecting and validating the user's email address, which is used to match the email address they provided in the Google Form. This feature ensures that the user is properly identified and can access their data and the application's features. Here's an explanation of this function's behavior:
 
 - **Display Prompt and User Name:** The function starts by addressing the user by their name in yellow.
@@ -138,8 +138,8 @@ The `get_user_email()` function handles the process of collecting and validating
 
 Overall, this feature ensures that the user's email address is collected accurately and matches the one they used in the Google Form. By collecting this information, the application can associate the user with their data and provide them with personalized access to its features. The use of colored text and input validation helps guide the user through the process and ensures that the correct information is obtained for successful interaction with the application.
 
-### FETCH USER DATA
-
+### ➥ FETCH USER DATA
+---
 The `fetch_user_data` function is responsible for retrieving and processing user data from a Google Sheets response worksheet based on the provided email address. The function performs the following steps:
 
 - **Find Rows with Matching Email:** The function searches for all rows in the Google Sheets response worksheet that match the provided email address. It identifies the cells containing the email and determines the corresponding row numbers.
@@ -154,9 +154,9 @@ The `fetch_user_data` function is responsible for retrieving and processing user
 
 The `fetch_user_data` function plays a crucial role in retrieving and preparing user responses for further processing and analysis within the FemmeFlow Tracker application. It ensures that only valid and relevant data are considered while providing a mechanism to access the most recent user responses based on the timestamp.
 
-### OPTIONS TABLE
-
-#### Table Overview
+### ➥ OPTIONS TABLE
+---
+#### ⤵️ TABLE OVERVIEW ⤵️
 
 The `print_options()` function is responsible for displaying a table of available options that the user can choose from within the FemmeFlow Tracker application. It provides a clear and user-friendly interface for the user to make selections. Here's how this function works:
 
@@ -183,7 +183,7 @@ The `print_options()` function is responsible for displaying a table of availabl
 
 Overall, the `print_options()` function contributes to the user-friendly and interactive nature of the FemmeFlow Tracker application. It provides a structured presentation of the available features, making it easy for users to select the functionality they wish to access. The use of colors and a well-formatted table enhances the visual appeal and usability of the application's interface.
 
-#### TABLE OPTION 1 - Health tips
+#### ⤵️ TABLE OPTION 1 - Health tips ⤵️
 
 The `display_health_tips` function is responsible for providing users with valuable health tips to effectively manage their menstrual cycle. This feature is designed to improve users' well-being and make their periods more manageable. The function operates as follows:
 
@@ -202,7 +202,7 @@ The `display_health_tips` function is responsible for providing users with valua
 
 Overall, the `display_health_tips` function enhances the user's knowledge about maintaining good health during the menstrual cycle by offering practical and tailored advice. The function utilizes formatting and prompts to ensure that users can access and understand the tips easily, promoting a positive and informed menstrual health journey.
 
-#### TABLE OPTION 2 - Form Submission Data
+#### ⤵️ TABLE OPTION 2 - Form Submission Data ⤵️
 
 The `update_data` function allows users to update their menstrual cycle data through the terminal. This feature provides users with the flexibility to correct or modify their details as needed. The function operates as follows:
 
@@ -236,7 +236,7 @@ The `update_data` function allows users to update their menstrual cycle data thr
 
 The `update_data` function provides users with a user-friendly way to modify their menstrual cycle data, ensuring that the application's information remains accurate and up-to-date.
 
-#### Updating Google Sheets 
+#### ⤵️ Updating Google Sheets ⤵️
 
 The `update_google_sheets` function is responsible for updating user data in the Google Sheets document based on the changes edited in the terminal. This function plays a crucial role in maintaining accurate and up-to-date records of users' menstrual cycle data. 
 Here's how the function works:
@@ -253,7 +253,7 @@ Here's how the function works:
 
 By utilizing the `update_google_sheets` function, the application maintains a synchronized and consistent dataset in the Google Sheets document, reflecting the most recent information about users' menstrual cycle data. This process is vital for ensuring that users receive accurate insights, recommendations, and predictions based on their updated details.
 
-#### TABLE OPTION 3 - Fertile Days
+#### ⤵️ TABLE OPTION 3 - Fertile Days ⤵️
 
 The `display_fertile_days` function serves the purpose of presenting projected fertile days for the next 6 months to users. This feature is particularly useful for individuals who are planning a pregnancy or seeking to understand their potential conception periods. Here's an overview of how the function works:
 
@@ -273,7 +273,7 @@ The `display_fertile_days` function serves the purpose of presenting projected f
 In summary, the `display_fertile_days` function offers a user-friendly and informative presentation of projected fertile days over the next 6 months. This feature empowers users with valuable insights into their fertility windows, supporting their family planning and conception-related decisions.
 ![Fertile table](readme-files/fertile-days.png)
 
-### TABLE OPTION 4 - Fertile Days
+#### ⤵️ TABLE OPTION 4 - Fertile Days ⤵️
 
 The `display_next_period_date` function offers users insights into their predicted next period dates for the upcoming six months. This feature is designed to aid individuals in tracking their menstrual cycle, whether for reproductive health awareness or planning purposes. Here's a breakdown of how the function operates:
 
@@ -292,7 +292,7 @@ The `display_next_period_date` function offers users insights into their predict
 In summary, the `display_next_period_date` function provides users with a visually appealing and informative overview of their anticipated next period dates over the upcoming six months. 
 ![Next Period](readme-files/next-period.png)
 
-### TABLE OPTION 5 - Personalized Recommendations
+#### ⤵️ TABLE OPTION 5 - Personalized Recommendations ⤵️ 
 
 The three functions presented bellow work together to calculate important menstrual cycle dates, display personalized recommendations for specific symptoms, and provide tailored advice to users based on their cycle data and symptoms.
 
@@ -304,13 +304,13 @@ The `calculate_dates_and_recommendations` function calculates important dates fo
 
 - **Invoking Personalized Recommendations:** The function calls the `personalized_recommendations` function with `cycle_length`, `period_duration`, and `symptoms` as arguments to generate personalized recommendations.
 
-#### Display_recommendations_table Function
+#### ⤵️ Display_recommendations_table Function ⤵️ 
 
 The `display_recommendations_table` function is responsible for displaying personalized recommendations for dealing with a specific symptom. Here's an overview:
 
 - **Display Recommendations:** The function displays a header in RED, indicating the specific symptom for which recommendations are being displayed. It then creates a table using the PrettyTable library to present the recommendations in a structured format.
 
-#### Personalized_recommendations Function
+#### ⤵️ Personalized_recommendations Function ⤵️ 
 
 The `personalized_recommendations` function generates personalized recommendations based on menstrual cycle data, addressing symptoms and offering advice. Here's an overview of how it works:
 
@@ -318,7 +318,7 @@ The `personalized_recommendations` function generates personalized recommendatio
 ![Personalized Recommendations Intro](readme-files/personalized-recommendations-intro.png)
 
 - **Cycle Length Advice:** Advice is provided if the user's cycle length is less than 28 days. The advice is displayed in a formatted table.
-![Cycle Length Advice](readme-files/cycle%20-lengh-advice.png)
+![Cycle Length Advice](readme-files/cycle-lengh-advice.png)
 
 - **Period Duration Advice:** Advice is provided if the user's period duration is greater than 7 days. The advice is displayed in a similar table format.
 ![Period Duration Advice](readme-files/period-duration-advice.png)
@@ -334,7 +334,7 @@ The `personalized_recommendations` function generates personalized recommendatio
 
 In summary, this comprehensive approach supports users in managing their well-being during their menstrual cycle.
 
-### TABLE OPTION 6 - Exercises Tips
+#### ⤵️ TABLE OPTION 6 - Exercises Tips ⤵️
 
 The `display_exercises_tips` function provides exercise recommendations to help reduce menstrual cramps, improve mood, and promote overall well-being during the menstrual cycle. It displays two separate tables: one for cramp-reducing exercises and another for mood-improving exercises. Here's how the function works:
 
@@ -351,7 +351,7 @@ The `display_exercises_tips` function provides exercise recommendations to help 
 In summary, the `display_exercises_tips` function provides users with exercise recommendations that can help alleviate discomfort and improve mood during their menstrual cycle. The function's organized presentation of exercise options contributes to users' well-being and provides them with practical strategies for managing their menstrual symptoms.
 ![Exercises Tips ](readme-files/Exercises-tips.png)
 
-### TABLE OPTION 7 - Application Rules
+#### ⤵️ TABLE OPTION 7 - Application Rules ⤵️ 
 
 - Choosing option 7 allows the user to view the rules and functionality of the FemmeFlow Tracker application again. 
 - This feature provides information about how the application works, its features, and any specific guidelines users should follow. 
@@ -360,7 +360,7 @@ In summary, the `display_exercises_tips` function provides users with exercise r
 In summary, option 7 provides a quick way for users to access information about the application's functionality
 ![Rules of application ](readme-files/rules-table.png)
 
-### TABLE OPTION 8 - Exit the Application
+#### ⤵️ TABLE OPTION 8 - Exit the Application ⤵️ 
 
 - The user's name (retrieved from the `user_name` variable) is displayed in yellow.
 - A thank you message is displayed in green, expressing gratitude for using the FemmeFlow Tracker.
@@ -370,11 +370,11 @@ In summary, option 7 provides a quick way for users to access information about 
 In summary, option 8 allows users to gracefully exit the application with a friendly farewell message.
 ![Exit Application ](readme-files/exit-application.png)
 
-### FEATURES LEFT TO IMPLEMENT
-
+### ➥ FEATURES LEFT TO IMPLEMENT
+---
 Absolutely, those are great ideas for enhancing your FemmeFlow Tracker application. Let me elaborate on each of them:
 
-#### Sign Up and Sign In System
+#### ⤵️ Sign Up and Sign In System ⤵️ 
 
 Implementing a sign-up and sign-in system will allow users to create accounts and securely access their personalized menstrual cycle data.
 
@@ -397,39 +397,38 @@ Sending users a monthly email reminder a few days before their period is due to 
 By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
 
 ---
-## UX DESIGN
+## ➡️ UX DESIGN
 ---
-
-### STRATEGY
 
 The FemmeFlow Tracker App aims to provide a comprehensive and user-friendly solution for women to track and manage their menstrual cycles effectively. Users can access valuable insights about their menstrual health, including cycle predictions, fertile windows, personalized recommendations, and exercise tips.
 
-### USER GOALS
-
+### ➥ USER GOALS
+---
 - Users want to track their menstrual cycles and receive accurate predictions for their next period and fertile days.
 - Users need personalized recommendations to manage symptoms and enhance their well-being during their menstrual cycle.
 - Users wish to access exercise tips tailored to their needs to alleviate cramps and improve mood.
 
-### APPLICATION ADMIN GOALS
+### ➥ APPLICATION ADMIN GOALS
+---
 - Offer users a comprehensive range of features, including cycle tracking, predictions, recommendations, and exercise tips.
 - Implement clear and intuitive navigation for users to access different functionalities seamlessly.
 - Provide accurate and helpful information in a visually appealing and readable format.
 - Develop a user-centric design with clean, reusable, and well-documented code, following best practices for readability and maintainability.
 - Handle errors gracefully and ensure the security of sensitive user data.
   
-### SCOPE
-
+### ➥ SCOPE
+---
 - Users can input their menstrual cycle data, including the last period date, cycle length, period duration, cycle type, and symptoms.
 - The app calculates and displays the next period date, fertile days, and provides personalized recommendations for each symptom.
 - Users can access exercise tips to reduce cramps, improve mood, and enhance well-being during their menstrual cycle.
 
-### STRUCTURE
-
+### ➥ STRUCTURE
+---
 - The app's structure is designed with clear navigation, guiding users to different functionalities such as cycle tracking, predictions, recommendations, and exercise tips.
 - User data is organized and stored securely, ensuring privacy and confidentiality.
 
-### COLOUR SCHEME
-
+### ➥ COLOUR SCHEME
+---
 The color scheme for the FemmeFlow Tracker application is a combination of different colors, each serving a specific purpose. Here is a description of the color scheme elements:
 
 1. Yellow (Fore.YELLOW):
@@ -457,45 +456,45 @@ The color scheme for the FemmeFlow Tracker application is a combination of diffe
 
 The color scheme in the application effectively convey different types of information to the user. It uses contrasting colors to highlight important details, create visual hierarchy, and guide users' attention to key elements. The color choices align with standard conventions for conveying meaning, such as using green for positive messages and red for warnings.
 
-### IMAGERY AND LANDING PAGE INTERFACE
-
+### ➥ IMAGERY AND LANDING PAGE INTERFACE
+---
 The imagery and style of the FemmeFlow Tracker application create a visually engaging and cohesive user experience, aligning with the theme and purpose of the app.
 
-#### Logo Description
+#### ⤵️ Logo Description ⤵️
 - The logo serves as the visual identity of the FemmeFlow Tracker application. It features a pair of hands that are pointing to a calendar while holding a menstrual pad. This imagery effectively captures the essence of the app, which is centered around tracking menstrual cycles. The hands represent empowerment and guidance, suggesting that the app assists users in understanding and managing their menstrual health. The text "FemmeFlow Tracker" is displayed prominently beside the imagery, indicating the app's name. Beneath the name, the tagline "A tool to empower women!" reinforces the app's purpose of providing valuable insights and support to women. Additionally, three blood drop emojis further reinforce the menstrual cycle theme.
 ![Application Logo ](readme-files/app-logo.png)
 
-#### Favicon Image
+#### ⤵️ Favicon Image ⤵️
 - The favicon image for the FemmeFlow Tracker application is a condensed representation of the logo, focusing on the essential elements to create a recognizable and visually appealing icon. The favicon image captures the portion of the logo where the "FemmeFlow Tracker" text and the tagline "A tool to empower women!" are located.
 ![Favicon Image ](readme-files/favicon-image.png)
 
-#### Terminal Interface
+#### ⤵️ Terminal Interface ⤵️
 - The central focus of the app's interface is the terminal. It is displayed prominently in the middle of the page and showcases a fixed-width area where text-based interactions take place.
 
-#### Background Image
+#### ⤵️ Background Image ⤵️
 - The background of the application adds depth and context to the overall design. It features a white background with subtle visual elements at the very bottom. These visual elements consist of menstrual pads, which creatively reinforce the menstrual cycle theme. The pads are strategically placed at the bottom of the background, ensuring they do not interfere with the readability of the terminal and other essential elements.
 ![Landing page showing background image ](readme-files/landing-page-app.png)
 
 In summary, the imagery and style of the FemmeFlow Tracker application are thoughtfully designed to align with its purpose of helping users track and manage their menstrual cycles.
 
-### RESPONSIVE DESIGN
-
+### ➥ RESPONSIVE DESIGN
+---
 - The application's design is responsive, catering to various screen sizes. On smaller screens, such as mobile devices, the background image adapts to cover the entire screen while maintaining the logo's visibility and legibility. This responsive approach ensures that users have a consistent and enjoyable experience across different devices.
 
 By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
 ---
-## TECHNOLOGIES USED
+## ➡️ TECHNOLOGIES USED
 ---
 
-### LANGUAGES USED
-
+### ➥ LANGUAGES USED
+---
 - **Python:** More than 80% of the programming language employed in creating this application was Python.
 - **HTML:** Some adjustments were implemented to the imported format from Code Institute.
 - **CSS:** Several modifications were introduced to the styling to attain the desired visuals and layout that best fit the application.
 
-### FRAMEWORKS, LIBRARIES & PROGRAMS USED
-
+### ➥ FRAMEWORKS, LIBRARIES & PROGRAMS USED
+---
 - **os:** Used to access system methods for tasks like clearing the terminal screen.
 - **textwrap:** Utilized for formatting text output within the terminal.
 - **sys:** Used for system-specific functions and operations.
@@ -524,13 +523,13 @@ By adopting this UX design approach, the FemmeFlow Tracker App is tailored to em
   ![Calculated_data Sheet ](readme-files/calculated-data-sheet.png)
 
 ---
-## TESTING
+## ➡️ TESTING
 ---
 
 To access the testing results please check the [TESTING.md](TESTING.md) file
 
 --- 
-## DEVELOPMENT AND DEPLOYMENT PROCESS
+## ➡️ DEVELOPMENT AND DEPLOYMENT PROCESS
 ---
 
 - Developed a terminal-based game in Python utilizing the Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template)
@@ -541,8 +540,8 @@ To access the testing results please check the [TESTING.md](TESTING.md) file
 - Deployed the fully functional application on the Heroku platform, granting users easy access and interaction.
 - Access the live application [HERE](https://femmeflow-tracker-06bab98fd82a.herokuapp.com/).
 
-### CREATING A NEW REPOSITORY
-
+### ➥ CREATING A NEW REPOSITORY
+---
 To establish a new repository for the project, I followed these steps:
 
 1. Sign in to or create an account on [GitHub](https://github.com/).
@@ -553,8 +552,8 @@ To establish a new repository for the project, I followed these steps:
 6. Access [CodeAnywhere](https://app.codeanywhere.com/).
 7. Initiate a new workspace by clicking "New Workspace." Paste the previously copied Repository URL and proceed by clicking "Create."
 
-### LINK GOOGLE FORM TO GOOGLE SPREADSHEET
-
+### ➥ LINK GOOGLE FORM TO GOOGLE SPREADSHEET
+---
 Here's a step-by-step guide on how to link responses from a Google Form to Google Sheets:
 
 1. **Access Google Forms and Create Form:**
@@ -593,8 +592,8 @@ Here's a step-by-step guide on how to link responses from a Google Form to Googl
 
 By following these steps, you'll be able to seamlessly link responses from your Google Form to a Google Sheets spreadsheet, making it easy to collect, manage, and analyze the data submitted by respondents.
 
-### CONNECT SPREADSHEET WITH PYTHON
-
+### ➥ CONNECT SPREADSHEET WITH PYTHON
+---
 Step-by-step guide on how to connect Google Sheets spreadsheet with Python using the Google Cloud Platform (GCP) UI:
 
 1. **Set Up a Project in Google Cloud Platform:**
@@ -687,8 +686,8 @@ This code initializes the necessary credentials, authorizes the `gspread` client
 
 By following these steps, you'll be able to connect your Google Sheets spreadsheet with Python using the Google Cloud Platform UI and retrieve data from your spreadsheet using the Google Sheets API.
 
-### GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL
-
+### ➥ GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL
+---
 To send automated emails based on the calculated data in the Google Sheets, I used the following Google Apps Script function. This function retrieves the necessary information from the spreadsheet and sends a personalized email to the last entry in the calculated_data sheet.
 
 ```javascript
@@ -740,8 +739,8 @@ function sendAutomatedEmailToLastEntry() {
 
 Remember to adjust the HTML email content, subject, and sender details as needed. This setup will help you automatically send personalized emails to users based on the data in your Google Sheets.
 
-### DEPLOYING ON HEROKU
-
+### ➥ DEPLOYING ON HEROKU
+---
 I Followed these steps to deploy the project on Heroku using the Code Institute [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template):
 
 1. **Prepare Dependencies:**
@@ -776,11 +775,11 @@ I Followed these steps to deploy the project on Heroku using the Code Institute 
    - After the first deployment, enable "Enable Automatic Deploys" to keep your app up to date with each push to your repository.
 
 ---
-## CREDITS
+## ➡️ CREDITS
 ---
 
-### LEARNING RESOURCES
-
+### ➥ LEARNING RESOURCES 📚 🧠
+---
 The journey of mastering Python was enriched by various online resources that provided valuable insights and knowledge:
 
 - [w3schools Python Tutorial](https://www.w3schools.com/python/): An interactive platform that offered comprehensive tutorials and practical examples, aiding in my understanding of Python programming.
@@ -791,24 +790,24 @@ The journey of mastering Python was enriched by various online resources that pr
 
 - [Google Python Documentation](https://google.com): Google's documentation for Python programming provided deep insights and references for solving coding challenges.
 
-### LEARNING VIDEOS
-
+### ➥ LEARNING VIDEOS 📚 🎥
+---
 A significant portion of my Python learning journey was propelled by these insightful YouTube videos:
 
 - [Python Full Course - Learn Python in 12 Hours | Python Tutorial For Beginners | Edureka](https://www.youtube.com/watch?v=eWRfhZUzrAc)
 - [Learn Python - Full Course for Beginners [Tutorial]](https://www.youtube.com/watch?v=b093aqAZiPU)
 - [Python Tutorial for Beginners [Full Course] 2019](https://www.youtube.com/watch?v=_uQrJ0TkZlc)
 
-### DESIGN AND VISUALS
-
+### ➥ DESIGN AND VISUALS 🎨 👀
+---
 Special recognition goes to Canva, a user-friendly design platform that played a pivotal role in creating the captivating logo and engaging background image, enhancing the visual appeal of my project.
 
-### README INSPIRATION
-
+### ➥ README INSPIRATION 📖 💡
+---
 I draw inspiration from the meticulous documentation of [American Pizza Order System](https://github.com/useriasminna/american_pizza_order_system), which served as a valuable reference and guide in shaping the structure and presentation of this README file.
 
-### PERSONAL JOURNEY AND INSPIRATION
-
+### ➥ PERSONAL JOURNEY AND INSPIRATION 🚀 🌟
+---
 The inception of this project was fueled by a profound personal connection. As a woman, I understood the unique challenges and experiences that come with managing one's menstrual cycle. Driven by a desire to empower and support women, I embarked on a Python-based journey to develop an application that would provide insights and assistance to fellow individuals.
 
 The decision to dive into Python was met with both excitement and apprehension, as I had never ventured into this programming realm before. Countless hours of research, determination, and sleepless nights became the norm as I strived to bring my vision to life. Through the maze of challenges, I discovered the joy of problem-solving and coding creativity.
