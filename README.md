@@ -1,15 +1,15 @@
-# FEMMEFLOW TRACKER 📆🩸🩸🩸
+# FEMMEFLOW TRACKER 📆🩸🩸
 
-### Deployed Application: [FemmeFlow Tracker](https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
+### DEPLOYED APPLICATION: [FEMMEFLOW TRACKER 🩸](https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
 **FemmeFlow Tracker** is an interactive and user-friendly Python-based application designed to empower women to better understand and manage their menstrual cycles. By providing insightful information, personalized recommendations, and health tips, this application aims to enhance well-being and support users in their menstrual health journey.
 
 The application's core mission is to empower women by offering a dynamic blend of data-driven insights.
 FemmeFlow Tracker stands as a reliable companion, providing invaluable assistance every step of the way.
 
-FemmeFlow Tracker: Empowering Your Menstrual Health Journey
+**FemmeFlow Tracker:** Empowering Your Menstrual Health Journey
 
-**Our Main Goals:**
+**OUR MAIN GOALS:**
 
 - **Personalized Recommendations:** Tailored to your individual menstrual profile, the application provides personalized recommendations that encompass exercise tips, stress management tips, and more, enhancing your ability to manage your cycle effectively.
 
@@ -22,12 +22,12 @@ FemmeFlow Tracker: Empowering Your Menstrual Health Journey
 ![Am I responsive](readme-files/am-i-responsive.png)
 [Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
-
+---
 ## FEATURES
-
+---
 Discover a range of features that provide personalized insights, health tips, and predictions, enhancing your well-being and menstrual health journey. Dive into the following capabilities that FemmeFlow Tracker offers:
 
-### Landing Page: An Inviting Introduction
+### LANDING PAGE: AN INVITING INTRODUCTION
 
 Step into the world of FemmeFlow Tracker through its captivating landing page. As you enter, you'll be greeted by a central black terminal. Atop this terminal window, a thoughtfully designed logo, crafted using Canva Premium, proudly presents the iconic FemmeFlow Tracker emblem. Just above the logo, a beckoning "Run Program" button entices you to embark on your journey.
 
@@ -296,8 +296,7 @@ In summary, the `display_next_period_date` function provides users with a visual
 
 The three functions presented bellow work together to calculate important menstrual cycle dates, display personalized recommendations for specific symptoms, and provide tailored advice to users based on their cycle data and symptoms.
 
-
-#### CALCULATE_DATES_AND_RECOMENDATIONS FUNCTION
+####  Calculate_dates_and_recommendations function
 
 The `calculate_dates_and_recommendations` function calculates important dates for the user's menstrual cycle and invokes the `personalized_recommendations` function to generate personalized recommendations. Here's a description of how it works:
 
@@ -305,20 +304,15 @@ The `calculate_dates_and_recommendations` function calculates important dates fo
 
 - **Invoking Personalized Recommendations:** The function calls the `personalized_recommendations` function with `cycle_length`, `period_duration`, and `symptoms` as arguments to generate personalized recommendations.
 
----
-
-#### DISPLAY_RECOMMENDATIONS_TABLE FUNCTION
+#### Display_recommendations_table Function
 
 The `display_recommendations_table` function is responsible for displaying personalized recommendations for dealing with a specific symptom. Here's an overview:
 
 - **Display Recommendations:** The function displays a header in RED, indicating the specific symptom for which recommendations are being displayed. It then creates a table using the PrettyTable library to present the recommendations in a structured format.
 
----
-
-#### PERSONALIZED_RECOMMENDATIONS FUNCTION
+#### Personalized_recommendations Function
 
 The `personalized_recommendations` function generates personalized recommendations based on menstrual cycle data, addressing symptoms and offering advice. Here's an overview of how it works:
-
 
 - **Introduction and User Interaction:** The function displays a header in YELLOW and an introductory message. Users are prompted to press Enter to continue.
 ![Personalized Recommendations Intro](readme-files/personalized-recommendations-intro.png)
@@ -402,7 +396,9 @@ Sending users a monthly email reminder a few days before their period is due to 
 
 By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
 
-## UX DESIGN FOR FEMMEFLOW TRACKER APP
+---
+## UX DESIGN
+---
 
 ### STRATEGY
 
@@ -488,7 +484,9 @@ In summary, the imagery and style of the FemmeFlow Tracker application are thoug
 
 By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
+---
 ## TECHNOLOGIES USED
+---
 
 ### LANGUAGES USED
 
@@ -524,4 +522,295 @@ By adopting this UX design approach, the FemmeFlow Tracker App is tailored to em
 
   - **Calculated Data Sheet:** This sheet contains calculated data derived from the user-submitted information.
   ![Calculated_data Sheet ](readme-files/calculated-data-sheet.png)
- 
+
+---
+## TESTING
+---
+
+To access the testing results please check the [TESTING.md](TESTING.md) file
+
+--- 
+## DEVELOPMENT AND DEPLOYMENT PROCESS
+---
+
+- Developed a terminal-based game in Python utilizing the Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template)
+- Began development within the mock terminal template, then transitioned to local repository for further enhancements using CodeAnywhere.
+- Integrated a [Google Form](https://forms.gle/BmqAMvNzfy4sn7YU8) to collect user details, establishing a seamless link between user input and data storage.
+- Leveraged Google Sheets as the data repository, facilitating the storage and management of user information from the Google Form.
+- Enabled users to update their data through the Google Form within the terminal application.
+- Deployed the fully functional application on the Heroku platform, granting users easy access and interaction.
+- Access the live application [HERE](https://femmeflow-tracker-06bab98fd82a.herokuapp.com/).
+
+### CREATING A NEW REPOSITORY
+
+To establish a new repository for the project, I followed these steps:
+
+1. Sign in to or create an account on [GitHub](https://github.com/).
+2. Navigate to the [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template) repository.
+3. Click on the "Use this template" dropdown menu and choose "Create a new repository."
+4. On the ensuing page, provide a name for the new repository in the "Repository name" field. Opt for the "Public" visibility option to ensure the repository's accessibility. Finally, select "Create repository."
+5. Copy the repository's address from the browser's address bar.
+6. Access [CodeAnywhere](https://app.codeanywhere.com/).
+7. Initiate a new workspace by clicking "New Workspace." Paste the previously copied Repository URL and proceed by clicking "Create."
+
+### LINK GOOGLE FORM TO GOOGLE SPREADSHEET
+
+Here's a step-by-step guide on how to link responses from a Google Form to Google Sheets:
+
+1. **Access Google Forms and Create Form:**
+   - Log in to your Google account.
+   - Go to [Google Forms](https://www.google.com/forms).
+   - Click the "+" icon (+) to create a new form.
+   - Add your questions and customize the form as needed.
+
+2. **Link Responses to Google Sheets:**
+   - Once your form is created, click on the "Responses" tab at the top of the form editor.
+
+3. **Create a New Spreadsheet:**
+   - In the "Responses" tab, you'll see a green Sheets icon (Google Sheets logo) on the right-hand side.
+   - Click on the green Sheets icon to create a new Google Sheets spreadsheet.
+
+4. **Choose Destination:**
+   - A dialog box will appear asking you to choose where to store your form responses.
+   - You can either create a new spreadsheet or select an existing one.
+   - Choose "Create a new spreadsheet" if you want to create a dedicated spreadsheet for the form responses.
+
+5. **Access Google Sheets:**
+   - Once you've chosen the destination, click "Create" or "Select" (depending on your choice).
+   - Google Forms will automatically create a linked Google Sheets spreadsheet.
+
+6. **View Form Responses in Google Sheets:**
+   - You'll be redirected to the newly created Google Sheets spreadsheet.
+   - The spreadsheet will have columns corresponding to each question in your form, as well as a timestamp column for each response.
+
+7. **Collect and Analyze Data:**
+   - As respondents submit your form, their responses will be automatically added to the linked Google Sheets spreadsheet.
+   - You can view, analyze, and manipulate the collected data in Google Sheets.
+
+8. **Access Form and Spreadsheet Anytime:**
+   - Your form is now set up to collect responses directly into the linked Google Sheets spreadsheet.
+   - You can access your form and the linked spreadsheet at any time from your Google Forms and Google Drive accounts.
+
+By following these steps, you'll be able to seamlessly link responses from your Google Form to a Google Sheets spreadsheet, making it easy to collect, manage, and analyze the data submitted by respondents.
+
+### CONNECT SPREADSHEET WITH PYTHON
+
+Step-by-step guide on how to connect Google Sheets spreadsheet with Python using the Google Cloud Platform (GCP) UI:
+
+1. **Set Up a Project in Google Cloud Platform:**
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Click on the project drop-down menu at the top and select "New Project."
+   - Enter a name for your project (FemmeFlow Tracker) and choose an organization (No organisation). Click "Create."
+
+2. **Enable Google Sheets API:**
+   - In the Google Cloud Console, navigate to "APIs & Services" > "Library" using the sidebar menu.
+   - Search for "Google Sheets API" and click on it.
+   - Click the "Enable" button to enable the API for the project.
+
+3. **Set Up OAuth 2.0 Credentials:**
+   - While still in the Google Cloud Console, proceed to "APIs & Services" > "Credentials" from the sidebar menu.
+   - Click on the "Create Credentials" button.
+   - In the "Which API are you using?" dropdown, opt for Google Drive API.
+   - Indicate "Application Data" for the data you'll access.
+   - For the question regarding API usage with platforms like Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions, select "No, I'm not using them," and then click Next.
+   - Provide a name for your Service Account, such as FemmeFlowTracker, and proceed to click Create.
+   - From the Role Dropdown, choose "Basic" > "Editor," and continue.
+   - Access the service account you've just created by clicking on it.
+   - Navigate to the "Keys" tab on the subsequent page.
+   - Click the Add Key dropdown, followed by selecting "Create New Key."
+   - Opt for the JSON format and confirm by clicking Create.
+
+4. **Download Credentials JSON File:**
+   - After creating the credentials, click on the download icon next to your newly created OAuth 2.0 client ID under "OAuth 2.0 Client IDs."
+   - This file contains the credentials your Python script will use to access Google Sheets.
+
+5. **Add Credentials to Workspace:**
+   - Locate the JSON credentials file that you downloaded in the previous step. You can typically find it in your computer's "Downloads" folder.
+   - Drag and drop the JSON file into your project workspace.
+   - Rename the JSON file to `creds.json`.
+
+6. **Open and Inspect `creds.json`:**
+   - Open the `creds.json` file within your workspace.
+   - Locate the `client_email` value in the JSON file (it will look like `your-project-id@your-project-name.iam.gserviceaccount.com`).
+
+7. **Share Google Sheets with Service Account Email:**
+   - Go back to your Google Sheets document.
+   - Click the "Share" button located at the top right corner.
+   - Paste the copied `client_email` into the sharing dialog box. Ensure you remove any surrounding quotes.
+   - Choose the appropriate access level. For example, you can select "Editor" to grant full editing access.
+   - Uncheck the "Notify People" option to avoid sending notifications.
+   - Click the "Share" button to grant access to the service account email. This action permits your Python project to access and edit the spreadsheet.
+
+8. **Protect Sensitive Credentials:**
+   - As the `creds.json` file contains sensitive information, it must never be committed or pushed to GitHub to ensure security.
+   - Notice the `.gitignore` file in your workspace, which contains a list of files and directories that should not be committed or pushed to GitHub.
+   - To safeguard your credentials, add `creds.json` to the `.gitignore` file. This prevents it from being accidentally uploaded to your version control repository.
+   - Save the `.gitignore` file after adding `creds.json` by pressing CTRL-S (or equivalent for your system).
+
+9. **Install Required Python Libraries:**
+   - In your Python environment, install the required libraries using pip:
+     ```
+     pip3 install google-auth
+     ```
+
+10. **Use Python Code to Access Google Sheets:**
+
+Use the following Python code to access your Google Sheets spreadsheet. 
+
+```python
+# Module for working with Google Sheets and authentication
+import gspread
+from google.oauth2.service_account import Credentials
+
+# Set up Google Sheets credentials and scope
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# Load credentials from the service account file and create scoped credentials
+CREDS = Credentials.from_service_account_file('path/to/your/downloaded/credentials.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+
+# Authorize the gspread client using the scoped credentials
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+
+# Open the Google Sheets document named 'FemmeFlow Tracker (Responses)'
+SHEET = GSPREAD_CLIENT.open('sheet name')
+
+# Access the 'responses' worksheet within the Google Sheets document
+responses = SHEET.worksheet('sheet name')
+```
+
+This code initializes the necessary credentials, authorizes the `gspread` client, and opens the 'FemmeFlow Tracker (Responses)' Google Sheets document, giving access to the 'responses' worksheet. 
+
+By following these steps, you'll be able to connect your Google Sheets spreadsheet with Python using the Google Cloud Platform UI and retrieve data from your spreadsheet using the Google Sheets API.
+
+### GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL
+
+To send automated emails based on the calculated data in the Google Sheets, I used the following Google Apps Script function. This function retrieves the necessary information from the spreadsheet and sends a personalized email to the last entry in the calculated_data sheet.
+
+```javascript
+function sendAutomatedEmailToLastEntry() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var calculatedDataSheet = ss.getSheetByName('calculated_data');
+  var emailColumn = calculatedDataSheet.getRange("C:C").getValues();
+  
+  // Loop through the emailColumn array in reverse to find the last non-empty row
+  var lastRow = emailColumn.length;
+  for (var i = lastRow - 1; i >= 0; i--) {
+    if (emailColumn[i][0] !== "") {
+      lastRow = i + 1; // Add 1 to convert from 0-based index to 1-based row number
+      break;
+    }
+  }
+  
+  // Get the values from the last row
+  var email = calculatedDataSheet.getRange(lastRow, 3).getValue(); // Email is in column C
+  var name = calculatedDataSheet.getRange(lastRow, 2).getValue(); // Name is in column B
+  var nextPeriodDate = calculatedDataSheet.getRange(lastRow, 7).getValue(); // Next Period Date in column G
+  var fertileStartDate = calculatedDataSheet.getRange(lastRow, 8).getValue(); // Fertile Start Date in column H
+  var fertileEndDate = calculatedDataSheet.getRange(lastRow, 9).getValue(); // Fertile End Date in column I
+
+  var subject = 'Thank You for Using FemmeFlow Tracker!';
+  var message = `
+    <!DOCTYPE html>
+    <html>
+    <!-- ... (Rest of the HTML content) ... -->
+    </html>
+  `;
+
+  MailApp.sendEmail({
+    to: email,
+    subject: subject,
+    htmlBody: message,
+  });
+}
+
+// To set up this function, I followed these steps:
+// 1. Open Google Sheets document.
+// 2. Click on the "Extensions" menu, then select "Apps Script."
+// 3. Replace the default code with the provided function.
+// 4. Save the script and give it a name.
+// 5. Click the clock icon to open the project's triggers.
+// 6. Add a new trigger: Choose which function to run > Which runs at deployment (Head) > Select Event source (From spreadsheet) > Select event type (On form submit).
+// 7. Click "Save" to schedule the automated email.
+```
+
+Remember to adjust the HTML email content, subject, and sender details as needed. This setup will help you automatically send personalized emails to users based on the data in your Google Sheets.
+
+### DEPLOYING ON HEROKU
+
+I Followed these steps to deploy the project on Heroku using the Code Institute [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template):
+
+1. **Prepare Dependencies:**
+   - Open your terminal and navigate to your project directory.
+   - Create a list of project dependencies to be installed by Heroku by running the command `pip3 freeze > requirements.txt`.
+
+2. **Heroku Account Setup:**
+   - Visit [Heroku](https://heroku.com/) and log in to your account or sign up for a free account.
+   - From the Heroku dashboard, click the "New" dropdown and choose "Create new app".
+   - Enter a unique name, "femmeflow-tracker", under "App name".
+   - Select "Europe" as the region and click "Create app".
+
+3. **Configure Environment Variables:**
+   - In the Heroku dashboard, navigate to the "Settings" tab.
+   - Scroll down to "Config Vars" and click "Reveal Config Vars".
+   - Add a new entry: set "KEY" to "CREDS" and paste the entire content of your "creds.json" file as the "VALUE".
+
+4. **Configure Buildpacks:**
+   - Scroll down to "Buildpacks" and click "Add buildpack".
+   - Select "python" as the first buildpack, then click "Add Buildpack".
+   - Repeat the process, selecting "node.js" as the second buildpack.
+   - Ensure the buildpacks are in the correct order, with "python" first.
+
+5. **Connect to GitHub:**
+   - Go to the "Deploy" tab in the Heroku dashboard.
+   - Under "Deployment method", select "GitHub" and click "Connect to GitHub".
+   - Search for and select your "femmeflow-tracker" repository, then click "Connect".
+
+6. **Deploy App:**
+   - On the first deployment, scroll down to "Manual deploy" and click "Deploy Branch" to build the app.
+   - View the deployment logs to ensure everything is working correctly.
+   - After the first deployment, enable "Enable Automatic Deploys" to keep your app up to date with each push to your repository.
+
+---
+## CREDITS
+---
+
+### LEARNING RESOURCES
+
+The journey of mastering Python was enriched by various online resources that provided valuable insights and knowledge:
+
+- [w3schools Python Tutorial](https://www.w3schools.com/python/): An interactive platform that offered comprehensive tutorials and practical examples, aiding in my understanding of Python programming.
+
+- [Python Official Website's Getting Started Guide](https://www.python.org/about/gettingstarted/): The official Python documentation provided essential information for beginners, assisting me in laying the foundation for my project.
+
+- [Programiz Python Programming Examples](https://www.programiz.com/python-programming/examples): Programiz's extensive collection of Python programming examples was an invaluable resource, offering hands-on learning experiences.
+
+- [Google Python Documentation](https://google.com): Google's documentation for Python programming provided deep insights and references for solving coding challenges.
+
+### LEARNING VIDEOS
+
+A significant portion of my Python learning journey was propelled by these insightful YouTube videos:
+
+- [Python Full Course - Learn Python in 12 Hours | Python Tutorial For Beginners | Edureka](https://www.youtube.com/watch?v=eWRfhZUzrAc)
+- [Learn Python - Full Course for Beginners [Tutorial]](https://www.youtube.com/watch?v=b093aqAZiPU)
+- [Python Tutorial for Beginners [Full Course] 2019](https://www.youtube.com/watch?v=_uQrJ0TkZlc)
+
+### DESIGN AND VISUALS
+
+Special recognition goes to Canva, a user-friendly design platform that played a pivotal role in creating the captivating logo and engaging background image, enhancing the visual appeal of my project.
+
+### README INSPIRATION
+
+I draw inspiration from the meticulous documentation of [American Pizza Order System](https://github.com/useriasminna/american_pizza_order_system), which served as a valuable reference and guide in shaping the structure and presentation of this README file.
+
+### PERSONAL JOURNEY AND INSPIRATION
+
+The inception of this project was fueled by a profound personal connection. As a woman, I understood the unique challenges and experiences that come with managing one's menstrual cycle. Driven by a desire to empower and support women, I embarked on a Python-based journey to develop an application that would provide insights and assistance to fellow individuals.
+
+The decision to dive into Python was met with both excitement and apprehension, as I had never ventured into this programming realm before. Countless hours of research, determination, and sleepless nights became the norm as I strived to bring my vision to life. Through the maze of challenges, I discovered the joy of problem-solving and coding creativity.
+
+The completion of this project stands as a testament to my dedication and newfound Python seek to proficiency. It reflects my unwavering commitment to leveraging technology to make a positive impact in the lives of women everywhere, offering a tool that empowers them on their unique journeys.
