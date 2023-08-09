@@ -366,20 +366,45 @@ In summary, option 7 provides a quick way for users to access information about 
 In summary, option 8 allows users to gracefully exit the application with a friendly farewell message.
 ![Exit Application ](readme-files/exit-application.png)
 
+### FEATURES LEFT TO IMPLEMENT
+
+Absolutely, those are great ideas for enhancing your FemmeFlow Tracker application. Let me elaborate on each of them:
+
+#### Sign Up and Sign In System
+
+Implementing a sign-up and sign-in system will allow users to create accounts and securely access their personalized menstrual cycle data.
+
+- **User Registration:** Create a registration form where users can provide their name, email address, and choose a password. Use a secure authentication method to store user credentials.
+
+- **Security:** Implement strong security measures, including encryption of sensitive data and secure password storage using techniques like bcrypt.
+
+#### Monthly Email Reminder
+
+Sending users a monthly email reminder a few days before their period is due to help them prepare and manage their menstrual health effectively.
+
+- **User Preferences:** Within the user profile, include an option for users to opt-in to receive email reminders. Allow them to set the number of days before their expected period date when they'd like to receive the email.
+
+- **Email Automation:** Implement an email automation system using a service like SendGrid or a similar email delivery service. Schedule automated emails to be sent to users based on their preferences.
+
+- **Customizable Content:** Personalize the email content with the user's name and provide valuable information such as upcoming period dates, cycle insights, and relevant health tips.
+
+- **Unsubscribe Option:** Include an unsubscribe option in the emails so users can easily opt-out of receiving reminders if they no longer wish to receive them.
+
+By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
+
 ## UX DESIGN FOR FEMMEFLOW TRACKER APP
 
 ### STRATEGY
 
 The FemmeFlow Tracker App aims to provide a comprehensive and user-friendly solution for women to track and manage their menstrual cycles effectively. Users can access valuable insights about their menstrual health, including cycle predictions, fertile windows, personalized recommendations, and exercise tips.
 
-### USER STORIES
+### USER GOALS
 
-**User Goals:**
 - Users want to track their menstrual cycles and receive accurate predictions for their next period and fertile days.
 - Users need personalized recommendations to manage symptoms and enhance their well-being during their menstrual cycle.
 - Users wish to access exercise tips tailored to their needs to alleviate cramps and improve mood.
 
-**Site Administrator Goals:**
+### APPLICATION ADMIN GOALS
 - Offer users a comprehensive range of features, including cycle tracking, predictions, recommendations, and exercise tips.
 - Implement clear and intuitive navigation for users to access different functionalities seamlessly.
 - Provide accurate and helpful information in a visually appealing and readable format.
@@ -388,7 +413,6 @@ The FemmeFlow Tracker App aims to provide a comprehensive and user-friendly solu
   
 ### SCOPE
 
-**Essential Content:**
 - Users can input their menstrual cycle data, including the last period date, cycle length, period duration, cycle type, and symptoms.
 - The app calculates and displays the next period date, fertile days, and provides personalized recommendations for each symptom.
 - Users can access exercise tips to reduce cramps, improve mood, and enhance well-being during their menstrual cycle.
@@ -398,13 +422,7 @@ The FemmeFlow Tracker App aims to provide a comprehensive and user-friendly solu
 - The app's structure is designed with clear navigation, guiding users to different functionalities such as cycle tracking, predictions, recommendations, and exercise tips.
 - User data is organized and stored securely, ensuring privacy and confidentiality.
 
-By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
-
-Certainly, here's the UX/UI design description for your FemmeFlow Tracker app based on your provided Python code and the HTML and styling you've shared, without the images:
-
 ### COLOUR SCHEME
-
-The color scheme of the FemmeFlow Tracker application, helps create an inviting and user-friendly interface.
 
 The color scheme for the FemmeFlow Tracker application is a combination of different colors, each serving a specific purpose. Here is a description of the color scheme elements:
 
@@ -433,8 +451,6 @@ The color scheme for the FemmeFlow Tracker application is a combination of diffe
 
 The color scheme in the application effectively convey different types of information to the user. It uses contrasting colors to highlight important details, create visual hierarchy, and guide users' attention to key elements. The color choices align with standard conventions for conveying meaning, such as using green for positive messages and red for warnings.
 
-Overall, the color scheme enhances the application's user interface by making it visually appealing, easy to read, and efficient in communicating information to the user.
-
 ### IMAGERY AND LANDING PAGE INTERFACE
 
 The imagery and style of the FemmeFlow Tracker application create a visually engaging and cohesive user experience, aligning with the theme and purpose of the app.
@@ -450,7 +466,7 @@ The imagery and style of the FemmeFlow Tracker application create a visually eng
 #### Terminal Interface
 - The central focus of the app's interface is the terminal. It is displayed prominently in the middle of the page and showcases a fixed-width area where text-based interactions take place.
 
-#### Background Imagery
+#### Background Image
 - The background of the application adds depth and context to the overall design. It features a white background with subtle visual elements at the very bottom. These visual elements consist of menstrual pads, which creatively reinforce the menstrual cycle theme. The pads are strategically placed at the bottom of the background, ensuring they do not interfere with the readability of the terminal and other essential elements.
 ![Landing page showing background image ](readme-files/landing-page-app.png)
 
@@ -459,4 +475,6 @@ In summary, the imagery and style of the FemmeFlow Tracker application are thoug
 ### RESPONSIVE DESIGN
 
 - The application's design is responsive, catering to various screen sizes. On smaller screens, such as mobile devices, the background image adapts to cover the entire screen while maintaining the logo's visibility and legibility. This responsive approach ensures that users have a consistent and enjoyable experience across different devices.
+
+By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
