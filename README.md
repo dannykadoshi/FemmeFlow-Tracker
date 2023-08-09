@@ -110,10 +110,12 @@ Overall, this feature provides clear instructions and guidance to users on how t
 
 ### AUTOMATED EMAIL NOTIFICATIONS
 
-- A dedicated email address has been established exclusively for use with the application, ensuring an enhanced and more gratifying user experience when receiving correspondence from our platform.
-- FemmeFlow Tracker introduces an exceptional and user-friendly aspect that elevates user satisfaction: the implementation of automated email notifications.
-- Following the submission of menstrual cycle information via the form, the application rapidly generates a tailored email employing the Apps Script functionality.
-- This email serves as a conduit of crucial insights regarding the upcoming menstrual cycle, encompassing essential details such as the projected next period date and the window of fertility.
+- **Dedicated email address:** A dedicated email address has been established exclusively for use with the application, ensuring an enhanced and more gratifying user experience when receiving correspondence from our platform.
+
+- **Tailored Email:** Following the submission of menstrual cycle information via the form, the application rapidly generates a tailored email employing the Apps Script functionality.
+
+- **Insightfull data:** This email serves as a conduit of crucial insights regarding the upcoming menstrual cycle, encompassing essential details such as the projected next period date and the window of fertility.
+
 ![Email after form submission](readme-files/email-new-form-submission.png)
 
 ### EMAIL COLECTION AND VALIDATION
@@ -486,3 +488,40 @@ In summary, the imagery and style of the FemmeFlow Tracker application are thoug
 
 By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
+## TECHNOLOGIES USED
+
+### LANGUAGES USED
+
+- **Python:** More than 80% of the programming language employed in creating this application was Python.
+- **HTML:** Some adjustments were implemented to the imported format from Code Institute.
+- **CSS:** Several modifications were introduced to the styling to attain the desired visuals and layout that best fit the application.
+
+### FRAMEWORKS, LIBRARIES & PROGRAMS USED
+
+- **os:** Used to access system methods for tasks like clearing the terminal screen.
+- **textwrap:** Utilized for formatting text output within the terminal.
+- **sys:** Used for system-specific functions and operations.
+- **pyfiglet:** Employed for generating ASCII art text banners.
+- **colorama:** Used in conjunction with `termcolor` for applying colors to terminal text.
+- **termcolor:** Utilized for applying foreground and background colors to terminal text.
+- **webbrowser:** Enabled the program to open web browser windows.
+- **time:** Accessed the sleep method for introducing pauses during critical points of information relay.
+- **datetime:** Employed for date and time operations and manipulation.
+- **prettytable:** Utilized for creating and formatting tables within the terminal.
+- **dateutil.parser:** Used for parsing date strings.
+- **gspread:** Used for interacting with Google Sheets, enabling CRUD actions.
+- **google.oauth2.service_account:** Imported for working with Google Sheets and authentication.
+- **Code Institute PEP8 Linter:** Utilized to perform a code check, ensuring adherence to Python coding standards and best practices.
+- **Code Anywhere:** Employed as a cloud-based Integrated Development Environment (IDE) for the initial stages of the project.
+- **Git:** Used for version control, enabling efficient tracking and management of code changes.
+- **GitHub:** Acted as a cloud repository for Git version control.
+- **Google Form:** Utilized to create a user-friendly form for users to input their data, which is integral for the application's functionality. [FemmeFlow tracker Google Form](https://forms.gle/BmqAMvNzfy4sn7YU8)
+
+- **Google Sheets:** A cloud-based service utilized to store the data collected from the Google Form. The information stored in Google Sheets is essential for maintaining and operating the application. It consists of two primary sheets:
+
+  - **Responses Sheet:** This sheet contains data collected from user submissions through the Google Form. It includes details such as the timestamp of submission, user-provided menstrual cycle information, symptoms, email address, name, and age.
+  ![Responses Sheet ](readme-files/responses-sheet.png)
+
+  - **Calculated Data Sheet:** This sheet contains calculated data derived from the user-submitted information.
+  ![Calculated_data Sheet ](readme-files/calculated-data-sheet.png)
+ 
