@@ -110,9 +110,10 @@ Overall, this feature provides clear instructions and guidance to users on how t
 
 ### AUTOMATED EMAIL NOTIFICATIONS
 
-- FemmeFlow Tracker offers a unique and convenient feature that enhances user experience by sending automated email notifications. 
-- After submitting menstrual cycle data through the form, the application promptly generates a personalized email using the Apps Script.
-- The email delivers vital information about upcoming menstrual cycle, including the anticipated next period date and the fertile window.
+- A dedicated email address has been established exclusively for use with the application, ensuring an enhanced and more gratifying user experience when receiving correspondence from our platform.
+- FemmeFlow Tracker introduces an exceptional and user-friendly aspect that elevates user satisfaction: the implementation of automated email notifications.
+- Following the submission of menstrual cycle information via the form, the application rapidly generates a tailored email employing the Apps Script functionality.
+- This email serves as a conduit of crucial insights regarding the upcoming menstrual cycle, encompassing essential details such as the projected next period date and the window of fertility.
 ![Email after form submission](readme-files/email-new-form-submission.png)
 
 ### EMAIL COLECTION AND VALIDATION
