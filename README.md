@@ -23,7 +23,7 @@ The application's core mission is to empower users by offering a dynamic blend o
 
 - **User-Centric Approach:** Backed by a commitment to user well-being, FemmeFlow Tracker places you at the center of the experience, ensuring that the application is not just informative but also intuitive and empathetic.
 
-![Am I responsive](../FemmeFlow-Tracker/docs/am-i-responsive.png)
+![Am I responsive](docs/am-i-responsive.png)
 [Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
 
@@ -37,7 +37,7 @@ Step into the world of FemmeFlow Tracker through its captivating landing page. A
 
 Beneath the terminal, a white background image takes shape, portraying a tasteful arrangement of menstrual pads. This image, meticulously created using Canva Premium, seamlessly weaves into the application's theme, echoing the essence of menstrual health and comfort. With every element thoughtfully orchestrated, the landing page encapsulates the spirit of FemmeFlow Tracker – user-friendly, empowering, and attuned to your well-being.
 
-![Landing Page](../FemmeFlow-Tracker/docs/landing_page.png)
+![Landing Page](docs/landing_page.png)
 
 ### APPLICATION INTRODUCTION
 
@@ -47,15 +47,15 @@ The `introduction()` function serves as the initial interaction point between th
 
 - The function begins by invoking the `display_name()` function, which presents the application name "FemmeFlow Tracker" in ASCII art with an animation effect. 
 - The `display_name()` function begins by defining the application name as "FemmeFlow Tracker" and generating the corresponding ASCII art using the "slant" font style from the pyfiglet library. To ensure the presentation's elegance, the function dynamically calculates the terminal width to center-align the text.
-![ASCII art](../FemmeFlow-Tracker/docs/ascii-intro.png)
+![ASCII art](docs/ascii-intro.png)
 
 #### Access Application Functionality Rules
 
 - After displaying the application name, the user is prompted with a choice to access the application's functionality rules. 
-![Rules question](../FemmeFlow-Tracker/docs/rules-question.png)
+![Rules question](docs/rules-question.png)
 
 - If the user chooses to access the rules **("yes" input)**, the function clears the screen, and the `display_application_rules()` function is called to present the user with a clear understanding of how the application works. After the user is done with the rules they can press enter and they will be redirected to the welcoming message.
-![Rules of application](../FemmeFlow-Tracker/docs/rules.png)
+![Rules of application](docs/rules.png)
 
 - If the user chooses not to access the rules **("no" input)**, the function clears the screen, and the application will them display the welcoming message. 
 
@@ -64,7 +64,7 @@ The `introduction()` function serves as the initial interaction point between th
 - Following the display of the rules or if the user chooses not to access them, the function clears the screen again and proceeds to display a detailed welcome message and description of the FemmeFlow Tracker application's purpose. 
 - This description highlights the application's capabilities, such as tracking the menstrual cycle, predicting the next period date, offering personalized recommendations, and providing health tips.
 - The user is then prompted to enter their name. Input validation ensures that a non-empty name is provided before proceeding. This step adds a personalized touch to the user's experience and prepares the application to address them by name. 
-![Welcoming Message](../FemmeFlow-Tracker/docs/welcome-message.png)
+![Welcoming Message](docs/welcome-message.png)
 - After obtaining the user's name, the function clears the screen one final time and prepares for further interaction. This sets the stage for the user to engage with the application's features, armed with knowledge about its purpose and functionality.
 - Throughout the function's execution, animation effects and color highlighting (using the Fore class from the colorama library) enhance the visual appeal and readability of the messages presented to the user.
 
@@ -77,20 +77,20 @@ The `display_prompt_message()` function and the subsequent user interaction step
 - **Display Prompt Message:** The `display_prompt_message()` function is responsible for presenting the user with a prompt message that informs them about the requirement to complete a form with essential information to use the application. The message emphasizes the importance of user input for optimal functionality. The message is visually enhanced by wrapping the text and displaying it in red using color formatting from the `colorama` library. The text is also animated for added visual interest.
 
 - **User Interaction - Initial Prompt:** After displaying the prompt message, the application prompts the user with a question: `"Would you like to continue? (yes/no)"` This gives the user the choice to proceed with providing the necessary information or to opt out. The user's response is captured, and the screen is cleared for clarity.
-![Prompt Message disclaimer](../FemmeFlow-Tracker/docs/prompt-disclaimer.png)
+![Prompt Message disclaimer](docs/prompt-disclaimer.png)
 
 - **User Response Validation:** The user's response is then validated to ensure it matches either "yes" or "no." If the response is invalid, an error message is displayed in red, prompting the user to enter a valid response.
-![Invalid response message](../FemmeFlow-Tracker/docs/invalid-response.png)
+![Invalid response message](docs/invalid-response.png)
 
 - **User's Decision - Proceed (Yes):** If the user's response is "yes," the `open_google_form()` function is invoked to facilitate the opening of the Google Form where the user can submit their data. The application then prompts the user to press Enter once they have submitted the data in the Google Form and are ready to proceed.
 
 - **User's Decision - Do Not Proceed (No):** If the user's response is "no," the application informs the user that data submission is required for FemmeFlow Tracker to work effectively. The user is given the option to reconsider and proceed by submitting data in the Google Form.
-![Reconsider message after 'No' answer](../FemmeFlow-Tracker/docs/reconsider-after-no-answer.png)
+![Reconsider message after 'No' answer](docs/reconsider-after-no-answer.png)
 
 - **User Reconsideration - Proceed (Yes):** If the user chooses to reconsider and proceed ("yes"), the `open_google_form()` function is called again to open the Google Form. The user is prompted to press Enter once they have submitted the data in the form.
 
 - **User Reconsideration - Do Not Proceed (No):** If the user chooses not to proceed ("no"), a farewell message is displayed, addressing the user by name. The message expresses gratitude for accessing FemmeFlow Tracker and encourages the user to return if they change their mind. The application then gracefully exits.
-![Reconsider not to continue](../FemmeFlow-Tracker/docs/reconsider-no.png)
+![Reconsider not to continue](docs/reconsider-no.png)
 
 This feature of the application focuses on user engagement and decision-making, ensuring that the user is informed about the data submission process and has the opportunity to make a choice that aligns with their preferences. The application's clear messaging and well-structured interactions enhance the user experience.
 
@@ -110,7 +110,7 @@ The `open_google_form()` function is responsible for facilitating the process of
 
 Overall, this feature provides clear instructions and guidance to users on how to access and interact with the Google Form, whether they are new users who need to fill out the form or returning users who can bypass it using their email address. The user-friendly presentation of information, coupled with color-coded text and animation, enhances the user experience and ensures that users understand the necessary steps to proceed within the application.
 
-![Open Google form disclaimer page](../FemmeFlow-Tracker/docs/google-form.png)
+![Open Google form disclaimer page](docs/google-form.png)
 
 ### EMAIL COLECTION AND VALIDATION
 
@@ -119,14 +119,14 @@ The `get_user_email()` function handles the process of collecting and validating
 - **Display Prompt and User Name:** The function starts by addressing the user by their name in yellow.
 
 - **Prompt for Email Address:** It prompts the user to enter the email address they used to fill out the Google Form. The purpose of this input is to verify the user's identity.
-![Enter email prompt](../FemmeFlow-Tracker/docs/email-prompt.png)
+![Enter email prompt](docs/email-prompt.png)
 
 - **Input and Validation:** The user enters their email address, which is stored in the `user_email` variable. The input is converted to lowercase to ensure consistency during comparison.
 
 - **Invalid Email Handling:** If the user does not provide a valid email address (i.e., an empty input), an error message is animated in red using the `animate_text()` function. This informs the user that a valid email address is required.
 
 - **Loop for Valid Input:** The function continues to prompt the user for input until a valid email address is provided. This loop ensures that the user cannot proceed until a valid email address is entered.
-![Invalid Email Error](../FemmeFlow-Tracker/docs/invalid-email.png)
+![Invalid Email Error](docs/invalid-email.png)
 
 - **Return Valid Email:** Once a valid email address is entered, the function returns the validated email address.
 
@@ -173,7 +173,7 @@ The `print_options()` function is responsible for displaying a table of availabl
 
 - **Print Table:** The colored table is printed to the console, presenting the available options and their corresponding descriptions to the user.
 
-![Table options overview](../FemmeFlow-Tracker/docs/table-options-overview.png)
+![Table options overview](docs/table-options-overview.png)
 
 Overall, the `print_options()` function contributes to the user-friendly and interactive nature of the FemmeFlow Tracker application. It provides a structured presentation of the available features, making it easy for users to select the functionality they wish to access. The use of colors and a well-formatted table enhances the visual appeal and usability of the application's interface.
 
@@ -182,15 +182,15 @@ Overall, the `print_options()` function contributes to the user-friendly and int
 The `display_health_tips` function is responsible for providing users with valuable health tips to effectively manage their menstrual cycle. This feature is designed to improve users' well-being and make their periods more manageable. The function operates as follows:
 
 - **Display Title and Introduction:** The function displays the title "HEALTH TIPS 🌟" in yellow text, indicating that health tips are being presented. An introduction is also displayed, explaining the importance of taking care of one's health during the menstrual cycle and encouraging users to follow the provided tips.
-![Health Tips introduction](../FemmeFlow-Tracker/docs/health-tips-message.png)
+![Health Tips introduction](docs/health-tips-message.png)
 
 - **Prompt for Viewing Tips:** Users are prompted to press Enter to view the health tips. This prompt allows users to proceed at their own pace.
 
 - **Display Regular Cycle Tips:** The function presents a table of health tips for individuals with regular menstrual cycles. Each tip is assigned a number, and the tips are provided in a well-formatted table with two columns: "Tip Number" and "Tip Text." Tips cover various aspects of health, including diet, exercise, stress management, and more.
-![Regular Cicle tips](../FemmeFlow-Tracker/docs/regular-tips.png)
+![Regular Cicle tips](docs/regular-tips.png)
 
 - **Display Irregular Cycle Tips:** If the user's cycle is irregular, the function allows users to press Enter to see additional health tips specific to irregular menstrual cycles. A separate table is displayed for these irregular tips. This ensures that users with irregular cycles receive targeted advice to address their specific concerns.
-![Irregular Cicle tips](../FemmeFlow-Tracker/docs/irregular-tips.png)
+![Irregular Cicle tips](docs/irregular-tips.png)
 
 - **Continue or Proceed:** After displaying both regular and irregular tips, users are prompted to press Enter to continue. This prompt ensures that users have enough time to read and absorb the provided information.
 
@@ -201,13 +201,13 @@ Overall, the `display_health_tips` function enhances the user's knowledge about 
 The `update_data` function allows users to update their menstrual cycle data through the terminal. This feature provides users with the flexibility to correct or modify their details as needed. The function operates as follows:
 
 - **Header and Acknowledgment:** This part serves as an acknowledgment of the user's data submission and emphasizes the importance of the provided information. It underscores how tracking their menstrual cycle can lead to better insights and well-being management.
-![Form Submission Data Acknowledgement](../FemmeFlow-Tracker/docs/form-submission-message.png)
+![Form Submission Data Acknowledgement](docs/form-submission-message.png)
 
 - **Google Form Submited Data:** A formatted table displays the submitted user data, including the name, age, email, last period date, cycle length, period duration, cycle type, and symptoms. Each row represents a specific field, and the corresponding value is provided in the adjacent column.
-![Submission Data display](../FemmeFlow-Tracker/docs/form-sub-data.png)
+![Submission Data display](docs/form-sub-data.png)
 
 - **Update Option and Disclaimer** An question prompts the user to consider whether they need to update their details. It indicates that the option to update is available if there are any inaccuracies or changes since their last access. The disclaimer emphasizes the importance of updating data only if necessary. It provides a cautionary note that data should be modified only in cases of inaccuracies or changes since the user's last access.
-![Update Data disclaimer](../FemmeFlow-Tracker/docs/update-prompt.png)
+![Update Data disclaimer](docs/update-prompt.png)
 
 - **Display Title and Introduction:** The function displays the title "UPDATE DATA 🗃" in yellow text, indicating that the user's data can be updated. An introduction is provided, guiding the user through the process of updating their menstrual cycle data. The user is informed that their name and age cannot be updated.
 
@@ -218,15 +218,15 @@ The `update_data` function allows users to update their menstrual cycle data thr
 - **Get Updated Period Duration:** Similar to the cycle length, the user is prompted to input an updated period duration. If the user chooses to skip updating this field, the function proceeds. If the input is valid, the global `period_duration` variable is updated.
 
 - **Get Updated Cycle Type:** The user is prompted to update their cycle type. They can choose from options such as "regular," "irregular," or "skip." If a valid option is chosen (other than "skip"), the global `cycle_type` variable is updated.
-![Update Data](../FemmeFlow-Tracker/docs/updating-data.png)
+![Update Data](docs/updating-data.png)
 
 - **Get Updated Symptoms:** The function displays a list of available symptoms in a table-like format. The user is prompted to enter updated symptoms separated by commas. The input is converted to lowercase for case-insensitive comparison. If valid symptoms are provided, the global `symptoms` variable is updated.
-![Available symptoms list](../FemmeFlow-Tracker/docs/available-symptons-update.png)
+![Available symptoms list](docs/available-symptons-update.png)
 
 - **Processing and Data Update:** After collecting the updated information, the function displays a processing animation to indicate that the data is being updated. The Google Sheets are then updated with the new data using the `update_google_sheets` function.
 
 - **Success Message:** Once the update is complete, the function displays a success message in green text to inform the user that their data has been updated successfully.
-![Processing Animation](../FemmeFlow-Tracker/docs/processing....png)
+![Processing Animation](docs/processing....png)
 
 The `update_data` function provides users with a user-friendly way to modify their menstrual cycle data, ensuring that the application's information remains accurate and up-to-date.
 
@@ -265,7 +265,7 @@ The `display_fertile_days` function serves the purpose of presenting projected f
 - **Table Display:** Once the table is populated, the function prints the table to the terminal. The table neatly organizes and displays the projected fertile days for the next 6 months. 
 
 In summary, the `display_fertile_days` function offers a user-friendly and informative presentation of projected fertile days over the next 6 months. This feature empowers users with valuable insights into their fertility windows, supporting their family planning and conception-related decisions.
-![Fertile table](../FemmeFlow-Tracker/docs/fertile-days.png)
+![Fertile table](docs/fertile-days.png)
 
 ### TABLE OPTION 4 - Fertile Days
 
@@ -284,7 +284,7 @@ The `display_next_period_date` function offers users insights into their predict
 - **Table Display:** Once the table is populated, the function prints the table to the terminal. The table format effectively organizes and presents the forecasted next period dates for the forthcoming six months. This information is beneficial for users aiming to plan their schedules or be prepared for upcoming menstrual cycles.
 
 In summary, the `display_next_period_date` function provides users with a visually appealing and informative overview of their anticipated next period dates over the upcoming six months. 
-![Next Period](../FemmeFlow-Tracker/docs/next-period.png)
+![Next Period](docs/next-period.png)
 
 ### TABLE OPTION 5 - Personalized Recommendations
 
@@ -315,22 +315,22 @@ The `personalized_recommendations` function generates personalized recommendatio
 
 
 - **Introduction and User Interaction:** The function displays a header in YELLOW and an introductory message. Users are prompted to press Enter to continue.
-![Personalized Recommendations Intro](../FemmeFlow-Tracker/docs/personalized-recommendations-intro.png)
+![Personalized Recommendations Intro](docs/personalized-recommendations-intro.png)
 
 - **Cycle Length Advice:** Advice is provided if the user's cycle length is less than 28 days. The advice is displayed in a formatted table.
-![Cycle Length Advice](../FemmeFlow-Tracker/docs/cycle%20-lengh-advice.png)
+![Cycle Length Advice](docs/cycle%20-lengh-advice.png)
 
 - **Period Duration Advice:** Advice is provided if the user's period duration is greater than 7 days. The advice is displayed in a similar table format.
-![Period Duration Advice](../FemmeFlow-Tracker/docs/period-duration-advice.png)
+![Period Duration Advice](docs/period-duration-advice.png)
 
 - **Short Period Advice:** Advice is given if the user's period duration is less than 3 days. The advice is displayed in a formatted table.
-![Short Period Advice](../FemmeFlow-Tracker/docs/short-period-advice.png)
+![Short Period Advice](docs/short-period-advice.png)
 
 - **Symptom-Specific Recommendations:** Personalized recommendations are defined in a dictionary named `recommendations`. The function filters symptoms based on the user's input and displays recommendations for each selected symptom. Recommendations are presented in formatted tables.
-![Symptom Specific Recommendations](../FemmeFlow-Tracker/docs/symptom-specific.png)
+![Symptom Specific Recommendations](docs/symptom-specific.png)
 
 - **Advisory Message:** After all recommendations are displayed, an advisory message is shown in RED, emphasizing that the recommendations provide general guidance and encouraging users to seek personalized advice from healthcare professionals.
-![Advisory Message](../FemmeFlow-Tracker/docs/Advisory-message.png)
+![Advisory Message](docs/Advisory-message.png)
 
 In summary, this comprehensive approach supports users in managing their well-being during their menstrual cycle.
 
@@ -349,7 +349,7 @@ The `display_exercises_tips` function provides exercise recommendations to help 
 - **Displaying Tables Side by Side:** The formatted table strings are split into lines, and the corresponding lines from both tables are printed side by side to display the exercise recommendations for cramp reduction and mood improvement together.
 
 In summary, the `display_exercises_tips` function provides users with exercise recommendations that can help alleviate discomfort and improve mood during their menstrual cycle. The function's organized presentation of exercise options contributes to users' well-being and provides them with practical strategies for managing their menstrual symptoms.
-![Exercises Tips ](../FemmeFlow-Tracker/docs/Exercises-tips.png)
+![Exercises Tips ](docs/Exercises-tips.png)
 
 ### TABLE OPTION 7 - Application Rules
 
@@ -358,7 +358,7 @@ In summary, the `display_exercises_tips` function provides users with exercise r
 - The user is presented with an overview of the application's rules without having to input any additional message.
 
 In summary, option 7 provides a quick way for users to access information about the application's functionality
-![Rules of application ](../FemmeFlow-Tracker/docs/rules-table.png)
+![Rules of application ](docs/rules-table.png)
 
 ### TABLE OPTION 8 - Exit the Application
 
@@ -368,4 +368,4 @@ In summary, option 7 provides a quick way for users to access information about 
 - The application loop is exited, and the program terminates.
 
 In summary, option 8 allows users to gracefully exit the application with a friendly farewell message.
-![Exit Application ](../FemmeFlow-Tracker/docs/exit-application.png)
+![Exit Application ](docs/exit-application.png)
