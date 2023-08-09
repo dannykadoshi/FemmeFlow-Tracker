@@ -23,6 +23,69 @@ FemmeFlow Tracker stands as a reliable companion, providing invaluable assistanc
 [Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
 ---
+## TABLE OF CONTENT
+---
+
+1. [FEMMEFLOW TRACKER](#femmeflow-tracker-)
+   - [DEPLOYED APPLICATION](#deployed-application)
+
+2. [Introduction](#introduction)
+   - [Our Main Goals](#our-main-goals)
+3. [FEATURES](features)
+   - [LANDING PAGE: AN INVITING INTRODUCTION](#-landing-page-an-inviting-introduction)
+   - [APPLICATION INTRODUCTION](#-application-introduction)
+   - [WELCOMING PAGE AND USER'S NAME PROMPT](#-welcoming-page-and-users-name-prompt)
+   - [ESSENTIAL INFORMATION GATHERING DISCLAIMER](#-essential-information-gathering-disclaimer)
+   - [OPEN GOOGLE FORM PAGE](#-open-google-form-page)
+   - [AUTOMATED EMAIL NOTIFICATIONS](#-automated-email-notifications)
+   - [EMAIL COLECTION AND VALIDATION](#-email-colection-and-validation)
+   - [FETCH USER DATA](#-fetch-user-data)
+   - [OPTIONS TABLE](#-options-table)
+      - [TABLE OVERVIEW](#-table-overview)
+      - [TABLE OPTION 1 - Health tips](#-table-option-1---health-tips)
+      - [TABLE OPTION 2 - Form Submission Data](#-table-option-2---form-submission-data)
+      - [TABLE OPTION 3 - Fertile Days](#-table-option-3---fertile-days)
+      - [TABLE OPTION 4 - Fertile Days](#-table-option-4---fertile-days)
+      - [TABLE OPTION 5 - Personalized Recommendations](#-table-option-5---personalized-recommendations)
+         - [Calculate_dates_and_recommendations function](#-calculate_dates_and_recommendations-function)
+         - [Display_recommendations_table Function](#-display_recommendations_table-function)
+         - [Personalized_recommendations Function](#-personalized_recommendations-function)
+      - [TABLE OPTION 6 - Exercises Tips](#-table-option-6---exercises-tips)
+      - [TABLE OPTION 7 - Application Rules](#-table-option-7---application-rules)
+      - [TABLE OPTION 8 - Exit the Application](#-table-option-8---exit-the-application)
+   - [FEATURES LEFT TO IMPLEMENT](#-features-left-to-implement)
+      - [Sign Up and Sign In System](#-sign-up-and-sign-in-system)
+      - [Monthly Email Reminder](#-monthly-email-reminder)
+4. [UX DESIGN](#ux-design)
+   - [USER GOALS](#user-goals)
+   - [APPLICATION ADMIN GOALS](#application-admin-goals)
+   - [SCOPE](#scope)
+   - [STRUCTURE](#structure)
+   - [COLOUR SCHEME](#colour-scheme)
+   - [IMAGERY AND LANDING PAGE INTERFACE](#imagery-and-landing-page-interface)
+     - [Logo Description](#logo-description)
+     - [Favicon Image](#favicon-image)
+     - [Terminal Interface](#terminal-interface)
+     - [Background Image](#background-image)
+   - [RESPONSIVE DESIGN](#responsive-design)
+5. [TECHNOLOGIES USED](#technologies-used)
+   - [LANGUAGES USED](#languages-used)
+   - [FRAMEWORKS, LIBRARIES & PROGRAMS USED](#frameworks-libraries--programs-used)
+6. [TESTING](#testing)
+7. [DEVELOPMENT AND DEPLOYMENT PROCESS](#development-and-deployment-process)
+   - [CREATING A NEW REPOSITORY](#creating-a-new-repository)
+   - [LINK GOOGLE FORM TO GOOGLE SPREADSHEET](#link-google-form-to-google-spreadsheet)
+   - [CONNECT SPREADSHEET WITH PYTHON](#connect-spreadsheet-with-python)
+   - [GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL](#google-sheet-setup-to-send-automated-email)
+   - [DEPLOYING ON HEROKU](#deploying-on-heroku)
+8. [CREDITS](#credits)
+   - [LEARNING RESOURCES](#learning-resources)
+   - [LEARNING VIDEOS](#learning-videos)
+   - [DESIGN AND VISUALS](#design-and-visuals)
+   - [README INSPIRATION](#readme-inspiration)
+   - [PERSONAL JOURNEY AND INSPIRATION](#personal-journey-and-inspiration)
+
+---
 ## ➡️ FEATURES
 ---
 Discover a range of features that provide personalized insights, health tips, and predictions, enhancing your well-being and menstrual health journey. Dive into the following capabilities that FemmeFlow Tracker offers:
@@ -296,7 +359,7 @@ In summary, the `display_next_period_date` function provides users with a visual
 
 The three functions presented bellow work together to calculate important menstrual cycle dates, display personalized recommendations for specific symptoms, and provide tailored advice to users based on their cycle data and symptoms.
 
-####  Calculate_dates_and_recommendations function
+##### 🔽 Calculate_dates_and_recommendations function
 
 The `calculate_dates_and_recommendations` function calculates important dates for the user's menstrual cycle and invokes the `personalized_recommendations` function to generate personalized recommendations. Here's a description of how it works:
 
@@ -304,13 +367,13 @@ The `calculate_dates_and_recommendations` function calculates important dates fo
 
 - **Invoking Personalized Recommendations:** The function calls the `personalized_recommendations` function with `cycle_length`, `period_duration`, and `symptoms` as arguments to generate personalized recommendations.
 
-#### ⤵️ Display_recommendations_table Function ⤵️ 
+#####  🔽 Display_recommendations_table Function 
 
 The `display_recommendations_table` function is responsible for displaying personalized recommendations for dealing with a specific symptom. Here's an overview:
 
 - **Display Recommendations:** The function displays a header in RED, indicating the specific symptom for which recommendations are being displayed. It then creates a table using the PrettyTable library to present the recommendations in a structured format.
 
-#### ⤵️ Personalized_recommendations Function ⤵️ 
+#####  🔽 Personalized_recommendations Function 
 
 The `personalized_recommendations` function generates personalized recommendations based on menstrual cycle data, addressing symptoms and offering advice. Here's an overview of how it works:
 
@@ -382,7 +445,7 @@ Implementing a sign-up and sign-in system will allow users to create accounts an
 
 - **Security:** Implement strong security measures, including encryption of sensitive data and secure password storage using techniques like bcrypt.
 
-#### Monthly Email Reminder
+#### ⤵️ Monthly Email Reminder ⤵️
 
 Sending users a monthly email reminder a few days before their period is due to help them prepare and manage their menstrual health effectively.
 
@@ -395,6 +458,8 @@ Sending users a monthly email reminder a few days before their period is due to 
 - **Unsubscribe Option:** Include an unsubscribe option in the emails so users can easily opt-out of receiving reminders if they no longer wish to receive them.
 
 By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
+
+<a href="#table-of-contents">BACK TO TABLE OF CONTENTS 🔼</a>
 
 ---
 ## ➡️ UX DESIGN
