@@ -83,6 +83,8 @@ Beneath the terminal, a white background image takes shape, portraying a tastefu
 
 ![Landing Page](readme-files/landing_page.png)
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ APPLICATION INTRODUCTION
 
 The `introduction()` function serves as the initial interaction point between the user and the FemmeFlow Tracker application. Its purpose is to provide a warm and informative welcome to the user, setting the stage for their interaction with the application's features. Here's a breakdown of the introductory features:
@@ -103,6 +105,8 @@ The `introduction()` function serves as the initial interaction point between th
 
 - If the user chooses not to access the rules **("no" input)**, the function clears the screen, and the application will them display the welcoming message. 
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ WELCOMING PAGE AND USER'S NAME PROMPT
 ---
 - Following the display of the rules or if the user chooses not to access them, the function clears the screen again and proceeds to display a detailed welcome message and description of the FemmeFlow Tracker application's purpose. 
@@ -113,6 +117,8 @@ The `introduction()` function serves as the initial interaction point between th
 - Throughout the function's execution, animation effects and color highlighting (using the Fore class from the colorama library) enhance the visual appeal and readability of the messages presented to the user.
 
 By guiding the user through a visually engaging and informative introduction, the `introduction()` function establishes a welcoming and user-centric environment, encouraging users to explore the various features FemmeFlow Tracker has to offer.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ ESSENTIAL INFORMATION GATHERING DISCLAIMER
 ---
@@ -138,6 +144,8 @@ The `display_prompt_message()` function and the subsequent user interaction step
 
 This feature of the application focuses on user engagement and decision-making, ensuring that the user is informed about the data submission process and has the opportunity to make a choice that aligns with their preferences. The application's clear messaging and well-structured interactions enhance the user experience.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ OPEN GOOGLE FORM PAGE
 ---
 The `open_google_form()` function is responsible for facilitating the process of opening a specified Google Form URL in the user's default web browser. This feature allows users, whether new or returning, to enter their information into the Google Form, which is a crucial step for utilizing the FemmeFlow Tracker application. Here's a breakdown of this feature:
@@ -156,6 +164,8 @@ Overall, this feature provides clear instructions and guidance to users on how t
 
 ![Open Google form disclaimer page](readme-files/google-form.png)
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ AUTOMATED EMAIL NOTIFICATIONS
 ---
 - **Dedicated email address:** A dedicated email address has been established exclusively for use with the application, ensuring an enhanced and more gratifying user experience when receiving correspondence from our platform.
@@ -165,6 +175,8 @@ Overall, this feature provides clear instructions and guidance to users on how t
 - **Insightfull data:** This email serves as a conduit of crucial insights regarding the upcoming menstrual cycle, encompassing essential details such as the projected next period date and the window of fertility.
 
 ![Email after form submission](readme-files/email-new-form-submission.png)
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ EMAIL COLLECTION AND VALIDATION
 
@@ -186,6 +198,8 @@ The `get_user_email()` function handles the process of collecting and validating
 
 Overall, this feature ensures that the user's email address is collected accurately and matches the one they used in the Google Form. By collecting this information, the application can associate the user with their data and provide them with personalized access to its features. The use of colored text and input validation helps guide the user through the process and ensures that the correct information is obtained for successful interaction with the application.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ FETCH USER DATA
 ---
 The `fetch_user_data` function is responsible for retrieving and processing user data from a Google Sheets response worksheet based on the provided email address. The function performs the following steps:
@@ -201,6 +215,8 @@ The `fetch_user_data` function is responsible for retrieving and processing user
 - **Return Processed Data:** The function returns the processed and sorted user data as a list of lists, where each inner list represents a user response entry. If no valid data is found for the provided email address, the function returns `None`.
 
 The `fetch_user_data` function plays a crucial role in retrieving and preparing user responses for further processing and analysis within the FemmeFlow Tracker application. It ensures that only valid and relevant data are considered while providing a mechanism to access the most recent user responses based on the timestamp.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ OPTIONS TABLE
 ---
@@ -231,6 +247,8 @@ The `print_options()` function is responsible for displaying a table of availabl
 
 Overall, the `print_options()` function contributes to the user-friendly and interactive nature of the FemmeFlow Tracker application. It provides a structured presentation of the available features, making it easy for users to select the functionality they wish to access. The use of colors and a well-formatted table enhances the visual appeal and usability of the application's interface.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 #### ⤵ TABLE OPTION 1 ⤵
 
 The `display_health_tips` function is responsible for providing users with valuable health tips to effectively manage their menstrual cycle. This feature is designed to improve users' well-being and make their periods more manageable. The function operates as follows:
@@ -249,6 +267,8 @@ The `display_health_tips` function is responsible for providing users with valua
 - **Continue or Proceed:** After displaying both regular and irregular tips, users are prompted to press Enter to continue. This prompt ensures that users have enough time to read and absorb the provided information.
 
 Overall, the `display_health_tips` function enhances the user's knowledge about maintaining good health during the menstrual cycle by offering practical and tailored advice. The function utilizes formatting and prompts to ensure that users can access and understand the tips easily, promoting a positive and informed menstrual health journey.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 #### ⤵ TABLE OPTION 2 ⤵
 
@@ -301,6 +321,8 @@ Here's how the function works:
 
 By utilizing the `update_google_sheets` function, the application maintains a synchronized and consistent dataset in the Google Sheets document, reflecting the most recent information about users' menstrual cycle data. This process is vital for ensuring that users receive accurate insights, recommendations, and predictions based on their updated details.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 #### ⤵ TABLE OPTION 3 ⤵
 
 The `display_fertile_days` function serves the purpose of presenting projected fertile days for the next 6 months to users. This feature is particularly useful for individuals who are planning a pregnancy or seeking to understand their potential conception periods. Here's an overview of how the function works:
@@ -321,6 +343,8 @@ The `display_fertile_days` function serves the purpose of presenting projected f
 In summary, the `display_fertile_days` function offers a user-friendly and informative presentation of projected fertile days over the next 6 months. This feature empowers users with valuable insights into their fertility windows, supporting their family planning and conception-related decisions.
 ![Fertile table](readme-files/fertile-days.png)
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 #### ⤵ TABLE OPTION 4 ⤵
 
 The `display_next_period_date` function offers users insights into their predicted next period dates for the upcoming six months. This feature is designed to aid individuals in tracking their menstrual cycle, whether for reproductive health awareness or planning purposes. Here's a breakdown of how the function operates:
@@ -339,6 +363,8 @@ The `display_next_period_date` function offers users insights into their predict
 
 In summary, the `display_next_period_date` function provides users with a visually appealing and informative overview of their anticipated next period dates over the upcoming six months. 
 ![Next Period](readme-files/next-period.png)
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 #### ⤵ TABLE OPTION 5 ⤵ 
 
@@ -382,6 +408,8 @@ The `personalized_recommendations` function generates personalized recommendatio
 
 In summary, this comprehensive approach supports users in managing their well-being during their menstrual cycle.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 #### ⤵ TABLE OPTION 6 ⤵
 
 The `display_exercises_tips` function provides exercise recommendations to help reduce menstrual cramps, improve mood, and promote overall well-being during the menstrual cycle. It displays two separate tables: one for cramp-reducing exercises and another for mood-improving exercises. Here's how the function works:
@@ -398,6 +426,8 @@ The `display_exercises_tips` function provides exercise recommendations to help 
 
 In summary, the `display_exercises_tips` function provides users with exercise recommendations that can help alleviate discomfort and improve mood during their menstrual cycle. The function's organized presentation of exercise options contributes to users' well-being and provides them with practical strategies for managing their menstrual symptoms.
 ![Exercises Tips ](readme-files/Exercises-tips.png)
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 #### ⤵ TABLE OPTION 7 ⤵ 
 
@@ -417,6 +447,8 @@ In summary, option 7 provides a quick way for users to access information about 
 
 In summary, option 8 allows users to gracefully exit the application with a friendly farewell message.
 ![Exit Application ](readme-files/exit-application.png)
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ FEATURES LEFT TO IMPLEMENT
 ---
@@ -506,6 +538,8 @@ The color scheme for the FemmeFlow Tracker application is a combination of diffe
 
 The color scheme in the application effectively convey different types of information to the user. It uses contrasting colors to highlight important details, create visual hierarchy, and guide users' attention to key elements. The color choices align with standard conventions for conveying meaning, such as using green for positive messages and red for warnings.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ IMAGERY AND LANDING PAGE INTERFACE
 ---
 The imagery and style of the FemmeFlow Tracker application create a visually engaging and cohesive user experience, aligning with the theme and purpose of the app.
@@ -526,6 +560,8 @@ The imagery and style of the FemmeFlow Tracker application create a visually eng
 ![Landing page showing background image ](readme-files/landing-page-app.png)
 
 In summary, the imagery and style of the FemmeFlow Tracker application are thoughtfully designed to align with its purpose of helping users track and manage their menstrual cycles.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ RESPONSIVE DESIGN
 ---
@@ -740,6 +776,8 @@ This code initializes the necessary credentials, authorizes the `gspread` client
 
 By following these steps, you'll be able to connect your Google Sheets spreadsheet with Python using the Google Cloud Platform UI and retrieve data from your spreadsheet using the Google Sheets API.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
+
 ### ➥ GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL
 ---
 To send automated emails based on the calculated data in the Google Sheets, I used the following Google Apps Script function. This function retrieves the necessary information from the spreadsheet and sends a personalized email to the last entry in the calculated_data sheet.
@@ -792,6 +830,8 @@ function sendAutomatedEmailToLastEntry() {
 ```
 
 Remember to adjust the HTML email content, subject, and sender details as needed. This setup will help you automatically send personalized emails to users based on the data in your Google Sheets.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ### ➥ DEPLOYING ON HEROKU
 ---
