@@ -37,7 +37,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 # Open the Google Sheets document named 'FemmeFlow Tracker (Responses)'
-SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses)')
+SHEET = GSPREAD_CLIENT.open('FemmeFlow Tracker (Responses Sheet)')
 
 # Access the 'responses' worksheet within the Google Sheets document
 responses = SHEET.worksheet('responses')
@@ -748,11 +748,11 @@ def update_google_sheets(email, last_period, cycle_length,
     # Update each row with the new data
     for row in user_rows:
         SHEET.worksheet('responses').update_cell(
-            row, 2, last_period.strftime('%d/%m/%Y'))
-        SHEET.worksheet('responses').update_cell(row, 3, str(cycle_length))
-        SHEET.worksheet('responses').update_cell(row, 4, str(period_duration))
-        SHEET.worksheet('responses').update_cell(row, 5, cycle_type)
-        SHEET.worksheet('responses').update_cell(row, 6, symptoms)
+            row, 5, last_period.strftime('%d/%m/%Y'))
+        SHEET.worksheet('responses').update_cell(row, 6, str(cycle_length))
+        SHEET.worksheet('responses').update_cell(row, 7, str(period_duration))
+        SHEET.worksheet('responses').update_cell(row, 8, cycle_type)
+        SHEET.worksheet('responses').update_cell(row, 9, symptoms)
 
 
 def calculate_dates_and_recommendations():
