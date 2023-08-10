@@ -444,7 +444,7 @@ Sending users a monthly email reminder a few days before their period is due to 
 
 By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
 
-[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📖-📊)
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ---
 ## ➡ UX DESIGN
@@ -533,7 +533,7 @@ In summary, the imagery and style of the FemmeFlow Tracker application are thoug
 
 By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
-[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📖-📊)
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ---
 ## ➡ TECHNOLOGIES USED
@@ -574,7 +574,7 @@ By adopting this UX design approach, the FemmeFlow Tracker App is tailored to em
   - **Calculated Data Sheet:** This sheet contains calculated data derived from the user-submitted information.
   ![Calculated_data Sheet ](readme-files/calculated-data-sheet.png)
 
-[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📖-📊)
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ---
 ## ➡ TESTING
@@ -828,7 +828,7 @@ I Followed these steps to deploy the project on Heroku using the Code Institute 
    - View the deployment logs to ensure everything is working correctly.
    - After the first deployment, enable "Enable Automatic Deploys" to keep your app up to date with each push to your repository.
 
-[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📖-📊)
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
 
 ---
 ## ➡ CREDITS
@@ -870,4 +870,4 @@ The decision to dive into Python was met with both excitement and apprehension, 
 
 The completion of this project stands as a testament to my dedication and newfound Python seek to proficiency. It reflects my unwavering commitment to leveraging technology to make a positive impact in the lives of women everywhere, offering a tool that empowers them on their unique journeys.
 
-[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📖-📊)
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content--)
