@@ -7,7 +7,7 @@
 The application's core mission is to empower women by offering a dynamic blend of data-driven insights.
 FemmeFlow Tracker stands as a reliable companion, providing invaluable assistance every step of the way.
 
-**FemmeFlow Tracker:** Empowering Your Menstrual Health Journey
+Empowering Your Menstrual Health Journey
 
 **➡️ OUR MAIN GOALS:**
 
@@ -26,10 +26,9 @@ FemmeFlow Tracker stands as a reliable companion, providing invaluable assistanc
 ## TABLE OF CONTENT 📋 ⚙️
 ---
 
-1. [FEMMEFLOW TRACKER](#femmeflow-tracker-)
-   - [DEPLOYED APPLICATION](#deployed-application-femmeflow-tracker-🩸httpsfemmeflow-tracker-06bab98fd82aherokuappcom)
+1. [FEMMEFLOW TRACKER INTRO](#femmeflow-tracker-)
 
-2. [FEATURES](#➡️-features)
+2. [FEATURES](#-features)
    - [LANDING PAGE: AN INVITING INTRODUCTION](#➥-landing-page-an-inviting-introduction)
    - [APPLICATION INTRODUCTION](#➥-application-introduction)
    - [WELCOMING PAGE AND USER'S NAME PROMPT](#➥-welcoming-page-and-users-name-prompt)
