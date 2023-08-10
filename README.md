@@ -23,67 +23,65 @@ FemmeFlow Tracker stands as a reliable companion, providing invaluable assistanc
 [Am I responsive?](https://ui.dev/amiresponsive?url=https://femmeflow-tracker-06bab98fd82a.herokuapp.com/)
 
 ---
-## TABLE OF CONTENT
+## TABLE OF CONTENT 📋 ⚙️
 ---
 
 1. [FEMMEFLOW TRACKER](#femmeflow-tracker-)
-   - [DEPLOYED APPLICATION](#deployed-application)
+   - [DEPLOYED APPLICATION](#deployed-application-femmeflow-tracker-🩸httpsfemmeflow-tracker-06bab98fd82aherokuappcom)
 
-2. [Introduction](#introduction)
-   - [Our Main Goals](#our-main-goals)
-3. [FEATURES](features)
-   - [LANDING PAGE: AN INVITING INTRODUCTION](#-landing-page-an-inviting-introduction)
-   - [APPLICATION INTRODUCTION](#-application-introduction)
-   - [WELCOMING PAGE AND USER'S NAME PROMPT](#-welcoming-page-and-users-name-prompt)
-   - [ESSENTIAL INFORMATION GATHERING DISCLAIMER](#-essential-information-gathering-disclaimer)
-   - [OPEN GOOGLE FORM PAGE](#-open-google-form-page)
-   - [AUTOMATED EMAIL NOTIFICATIONS](#-automated-email-notifications)
-   - [EMAIL COLECTION AND VALIDATION](#-email-colection-and-validation)
-   - [FETCH USER DATA](#-fetch-user-data)
-   - [OPTIONS TABLE](#-options-table)
-      - [TABLE OVERVIEW](#-table-overview)
-      - [TABLE OPTION 1 - Health tips](#-table-option-1---health-tips)
-      - [TABLE OPTION 2 - Form Submission Data](#-table-option-2---form-submission-data)
-      - [TABLE OPTION 3 - Fertile Days](#-table-option-3---fertile-days)
-      - [TABLE OPTION 4 - Fertile Days](#-table-option-4---fertile-days)
-      - [TABLE OPTION 5 - Personalized Recommendations](#-table-option-5---personalized-recommendations)
-         - [Calculate_dates_and_recommendations function](#-calculate_dates_and_recommendations-function)
-         - [Display_recommendations_table Function](#-display_recommendations_table-function)
-         - [Personalized_recommendations Function](#-personalized_recommendations-function)
-      - [TABLE OPTION 6 - Exercises Tips](#-table-option-6---exercises-tips)
-      - [TABLE OPTION 7 - Application Rules](#-table-option-7---application-rules)
-      - [TABLE OPTION 8 - Exit the Application](#-table-option-8---exit-the-application)
-   - [FEATURES LEFT TO IMPLEMENT](#-features-left-to-implement)
-      - [Sign Up and Sign In System](#-sign-up-and-sign-in-system)
-      - [Monthly Email Reminder](#-monthly-email-reminder)
-4. [UX DESIGN](#ux-design)
-   - [USER GOALS](#user-goals)
-   - [APPLICATION ADMIN GOALS](#application-admin-goals)
-   - [SCOPE](#scope)
-   - [STRUCTURE](#structure)
-   - [COLOUR SCHEME](#colour-scheme)
-   - [IMAGERY AND LANDING PAGE INTERFACE](#imagery-and-landing-page-interface)
-     - [Logo Description](#logo-description)
-     - [Favicon Image](#favicon-image)
-     - [Terminal Interface](#terminal-interface)
-     - [Background Image](#background-image)
-   - [RESPONSIVE DESIGN](#responsive-design)
-5. [TECHNOLOGIES USED](#technologies-used)
-   - [LANGUAGES USED](#languages-used)
-   - [FRAMEWORKS, LIBRARIES & PROGRAMS USED](#frameworks-libraries--programs-used)
-6. [TESTING](#testing)
-7. [DEVELOPMENT AND DEPLOYMENT PROCESS](#development-and-deployment-process)
-   - [CREATING A NEW REPOSITORY](#creating-a-new-repository)
-   - [LINK GOOGLE FORM TO GOOGLE SPREADSHEET](#link-google-form-to-google-spreadsheet)
-   - [CONNECT SPREADSHEET WITH PYTHON](#connect-spreadsheet-with-python)
-   - [GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL](#google-sheet-setup-to-send-automated-email)
-   - [DEPLOYING ON HEROKU](#deploying-on-heroku)
-8. [CREDITS](#credits)
-   - [LEARNING RESOURCES](#learning-resources)
-   - [LEARNING VIDEOS](#learning-videos)
-   - [DESIGN AND VISUALS](#design-and-visuals)
-   - [README INSPIRATION](#readme-inspiration)
-   - [PERSONAL JOURNEY AND INSPIRATION](#personal-journey-and-inspiration)
+2. [FEATURES](#➡️-features)
+   - [LANDING PAGE: AN INVITING INTRODUCTION](#➥-landing-page-an-inviting-introduction)
+   - [APPLICATION INTRODUCTION](#➥-application-introduction)
+   - [WELCOMING PAGE AND USER'S NAME PROMPT](#➥-welcoming-page-and-users-name-prompt)
+   - [ESSENTIAL INFORMATION GATHERING DISCLAIMER](#➥-essential-information-gathering-disclaimer)
+   - [OPEN GOOGLE FORM PAGE](#➥-open-google-form-page)
+   - [AUTOMATED EMAIL NOTIFICATIONS](#➥-automated-email-notifications)
+   - [EMAIL COLECTION AND VALIDATION](#➥-email-colection-and-validation)
+   - [FETCH USER DATA](#➥-fetch-user-data)
+   - [OPTIONS TABLE](#➥-options-table)
+      - [TABLE OVERVIEW](#⤵️-table-overview-⤵️)
+      - [TABLE OPTION 1 - Health tips](#⤵️-table-option-1---health-tips-⤵️)
+      - [TABLE OPTION 2 - Form Submission Data](#⤵️-table-option-2---form-submission-data-⤵️)
+      - [TABLE OPTION 3 - Fertile Days](#⤵️-table-option-3---fertile-days-⤵️)
+      - [TABLE OPTION 4 - Fertile Days](#⤵️-table-option-4---fertile-days-⤵️)
+      - [TABLE OPTION 5 - Personalized Recommendations](#⤵️-table-option-5---personalized-recommendations-⤵️)
+         - [Calculate_dates_and_recommendations function](#🔽-calculatedatesandrecommendations-function)
+         - [Display_recommendations_table Function](#🔽-displayrecommendationstable-function)
+         - [Personalized_recommendations Function](#🔽-personalizedrecommendations-function)
+      - [TABLE OPTION 6 - Exercises Tips](#⤵️-table-option-6---exercises-tips-⤵️)
+      - [TABLE OPTION 7 - Application Rules](#⤵️-table-option-7---application-rules-⤵️)
+      - [TABLE OPTION 8 - Exit the Application](#⤵️-table-option-8---exit-the-application-⤵️)
+   - [FEATURES LEFT TO IMPLEMENT](#➥-features-left-to-implement)
+      - [Sign Up and Sign In System](#⤵️-sign-up-and-sign-in-system-⤵️)
+      - [Monthly Email Reminder](#⤵️-monthly-email-reminder-⤵️)
+3. [UX DESIGN](#➡️-ux-design)
+   - [USER GOALS](#➥-user-goals)
+   - [APPLICATION ADMIN GOALS](#➥-application-admin-goals)
+   - [SCOPE](#➥-scope)
+   - [STRUCTURE](#➥-structure)
+   - [COLOUR SCHEME](#➥-colour-scheme)
+   - [IMAGERY AND LANDING PAGE INTERFACE](#➥-imagery-and-landing-page-interface)
+     - [Logo Description](#⤵️-logo-description-⤵️)
+     - [Favicon Image](#⤵️-favicon-image-⤵️)
+     - [Terminal Interface](#⤵️-terminal-interface-⤵️)
+     - [Background Image](#⤵️-background-image-⤵️)
+   - [RESPONSIVE DESIGN](#➥-responsive-design)
+4. [TECHNOLOGIES USED](#➡️-technologies-used)
+   - [LANGUAGES USED](#➥-languages-used)
+   - [FRAMEWORKS, LIBRARIES & PROGRAMS USED](#➥-frameworks-libraries--programs-used)
+5. [TESTING](#➡️-testing)
+6. [DEVELOPMENT AND DEPLOYMENT PROCESS](#➡️-development-and-deployment-process)
+   - [CREATING A NEW REPOSITORY](#➥-creating-a-new-repository)
+   - [LINK GOOGLE FORM TO GOOGLE SPREADSHEET](#➥-link-google-form-to-google-spreadsheet)
+   - [CONNECT SPREADSHEET WITH PYTHON](#➥-connect-spreadsheet-with-python)
+   - [GOOGLE SHEET SETUP TO SEND AUTOMATED EMAIL](#➥-google-sheet-setup-to-send-automated-email)
+   - [DEPLOYING ON HEROKU](#➥-deploying-on-heroku)
+7. [CREDITS](#➡️-credits)
+   - [LEARNING RESOURCES](#➥-learning-resources-📚-🧠)
+   - [LEARNING VIDEOS](#➥-learning-videos-📚-🎥)
+   - [DESIGN AND VISUALS](#➥-design-and-visuals-🎨-👀)
+   - [README INSPIRATION](#➥-readme-inspiration-📖-💡)
+   - [PERSONAL JOURNEY AND INSPIRATION](#➥-personal-journey-and-inspiration-🚀-🌟)
 
 ---
 ## ➡️ FEATURES
@@ -459,7 +457,8 @@ Sending users a monthly email reminder a few days before their period is due to 
 
 By implementing these features, FemmeFlow Tracker application will provide valuable tools for users to manage their menstrual health and well-being more effectively.
 
-<a href="#table-of-contents">BACK TO TABLE OF CONTENTS 🔼</a>
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📋-⚙️)
+
 
 ---
 ## ➡️ UX DESIGN
@@ -548,6 +547,8 @@ In summary, the imagery and style of the FemmeFlow Tracker application are thoug
 
 By adopting this UX design approach, the FemmeFlow Tracker App is tailored to empower users with valuable insights and tools for managing their menstrual health. The design focuses on user engagement, ease of use, and the presentation of accurate and relevant information to enhance users' overall well-being and reproductive health.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📋-⚙️)
+
 ---
 ## ➡️ TECHNOLOGIES USED
 ---
@@ -586,6 +587,8 @@ By adopting this UX design approach, the FemmeFlow Tracker App is tailored to em
 
   - **Calculated Data Sheet:** This sheet contains calculated data derived from the user-submitted information.
   ![Calculated_data Sheet ](readme-files/calculated-data-sheet.png)
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📋-⚙️)
 
 ---
 ## ➡️ TESTING
@@ -839,6 +842,8 @@ I Followed these steps to deploy the project on Heroku using the Code Institute 
    - View the deployment logs to ensure everything is working correctly.
    - After the first deployment, enable "Enable Automatic Deploys" to keep your app up to date with each push to your repository.
 
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📋-⚙️)
+
 ---
 ## ➡️ CREDITS
 ---
@@ -878,3 +883,5 @@ The inception of this project was fueled by a profound personal connection. As a
 The decision to dive into Python was met with both excitement and apprehension, as I had never ventured into this programming realm before. Countless hours of research, determination, and sleepless nights became the norm as I strived to bring my vision to life. Through the maze of challenges, I discovered the joy of problem-solving and coding creativity.
 
 The completion of this project stands as a testament to my dedication and newfound Python seek to proficiency. It reflects my unwavering commitment to leveraging technology to make a positive impact in the lives of women everywhere, offering a tool that empowers them on their unique journeys.
+
+[BACK TO TABLE OF CONTENT 🔼 ](#table-of-content-📋-⚙️)
