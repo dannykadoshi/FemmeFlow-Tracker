@@ -30,7 +30,16 @@ SCOPE = [
 ]
 
 # Load credentials from the service account file and create scoped credentials
-CREDS = Credentials.from_service_account_file('creds.json')
+if os.path.exists('creds.json'):
+    CREDS = Credentials.from_service_account_file('creds.json')
+else:
+    # Load from environment variable for deployment
+    import json
+    creds_json = os.getenv('CREDS')
+    if not creds_json:
+        raise ValueError("CREDS environment variable not set and creds.json file not found")
+    creds_dict = json.loads(creds_json)
+    CREDS = Credentials.from_service_account_info(creds_dict)
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 
 # Authorize the gspread client using the scoped credentials
