@@ -51,10 +51,8 @@ function socket() {
 
 if (process.env.CREDS != null) {
     console.log("Creating creds.json file.");
-    fs.writeFile('creds.json', process.env.CREDS, 'utf8', function (err) {
-        if (err) {
-            console.log('Error writing file: ', err);
-            socket.emit("console_output", "Error saving credentials: " + err);
-        }
-    });
+    fs.writeFileSync('creds.json', process.env.CREDS, 'utf8');
+    console.log("Credentials file created successfully.");
+} else {
+    console.log("WARNING: CREDS environment variable not set");
 }
