@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: femmeflow-tracker
+    env: node
+    plan: free
+    buildCommand: npm install && pip3 install -r requirements.txt
+    startCommand: node index.js
+    envVars:
+      - key: CREDS
+        sync: false
