@@ -48,11 +48,3 @@ function socket() {
         client.tty && client.tty.write(msg);
     });
 }
-
-if (process.env.CREDS != null) {
-    console.log("Creating creds.json file.");
-    fs.writeFileSync('creds.json', process.env.CREDS, 'utf8');
-    console.log("Credentials file created successfully.");
-} else {
-    console.log("WARNING: CREDS environment variable not set");
-}

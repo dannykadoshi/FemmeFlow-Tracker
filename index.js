@@ -3,6 +3,21 @@
 // https://www.totaljs.com
 // ===================================================
 
+const fs = require('fs');
+
+// Write credentials file from environment variable BEFORE starting anything
+if (process.env.CREDS) {
+    try {
+        fs.writeFileSync('creds.json', process.env.CREDS, 'utf8');
+        console.log("✓ Credentials file created successfully");
+    } catch (err) {
+        console.error("✗ Error writing credentials file:", err.message);
+        process.exit(1);
+    }
+} else {
+    console.warn("⚠ WARNING: CREDS environment variable not set");
+}
+
 const options = {};
 
 // options.ip = '127.0.0.1';
